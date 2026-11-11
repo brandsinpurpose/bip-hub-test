@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Solid Rep HQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#052E5C; --navy2:#0A3D75; --ink:#2A3B50; --muted:#5B6B80; --soft:#F4F7FB; --pale:#EEF3F9;
+  --line:#DCE5F0; --white:#fff; --green:#B6ED5E; --green2:#A3DB45;
+  --r:18px; --shadow:0 1px 2px rgba(5,46,92,.06),0 12px 32px -12px rgba(5,46,92,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--pale);color:var(--ink);font:400 15.5px/1.6 "Open Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.h-display{font-family:Caladea,Georgia,serif;font-weight:700;letter-spacing:-.01em}
+.h-ui{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+:focus-visible{outline:3px solid var(--green2);outline-offset:3px;border-radius:8px}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.brand img{height:40px;width:auto}
+.brand span{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:800;color:var(--navy);font-size:15px;letter-spacing:.01em}
+.tabs{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{position:relative;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:600;font-size:14px;color:var(--muted);padding:9px 14px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.tab:hover{color:var(--navy);background:var(--soft)}
+.tab[aria-selected=true]{color:var(--navy);background:var(--pale)}
+.tab[aria-selected=true]::after{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:3px;border-radius:3px;background:var(--green)}
+
+/* ---------- views ---------- */
+.view{display:none}
+.view.on{display:block;animation:viewIn .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- home hero ---------- */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:56px 0 120px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 420px at 85% -10%,rgba(182,237,94,.16),transparent 60%),
+  radial-gradient(700px 500px at -10% 120%,rgba(255,255,255,.08),transparent 60%)}
+.hero svg.grid{position:absolute;inset:0;width:100%;height:100%;opacity:.07}
+.hero-in{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.eyebrow{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+.hero h1{font-size:clamp(34px,5vw,56px);line-height:1.05;margin:14px 0 14px}
+.hero p.lede{font-size:17px;color:rgba(255,255,255,.82);max-width:520px;margin:0}
+.hero-mark{justify-self:end;width:min(300px,100%);opacity:.95;filter:drop-shadow(0 20px 40px rgba(0,0,0,.25));animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+
+/* cockpit overlaps hero */
+.cockpit{position:relative;margin-top:-84px;display:grid;grid-template-columns:1.35fr 1fr;gap:18px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.now{padding:26px 28px;display:flex;gap:22px;align-items:center}
+.ring{flex-shrink:0;width:112px;height:112px;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring .num b{font-family:Caladea;font-size:34px;color:var(--navy);line-height:1}
+.ring .num small{display:block;font-size:11px;color:var(--muted);font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:600;margin-top:2px}
+.now h2{margin:0 0 6px;font-size:22px;color:var(--navy)}
+.now p{margin:0;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--pale);color:var(--navy)}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:block}
+.pill.live{background:#EEF9DA;color:#3C6A00}
+.pill.build{background:#E6EEF8;color:var(--navy2)}
+.pill.next{background:#F3F5F8;color:var(--muted)}
+.pill.you{background:#FFF4DE;color:#8A5A00}
+.meet{padding:24px 26px;display:flex;flex-direction:column;justify-content:flex-start;gap:18px;background:linear-gradient(160deg,#fff 0%,var(--soft) 100%)}
+.meet .when{display:flex;gap:16px;align-items:center}
+.cal{width:62px;flex-shrink:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);text-align:center;background:#fff}
+.cal span{display:block;background:var(--navy);color:#fff;font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.12em;padding:4px 0}
+.cal b{display:block;font:700 28px Caladea,Georgia,serif;color:var(--navy);padding:4px 0 6px}
+.meet h3{margin:0;font-size:17px;color:var(--navy)}
+.meet .t{color:var(--muted);font-size:14px}
+.meet ul{margin:0;padding-left:18px;color:var(--ink);font-size:14.5px}
+
+/* section heads */
+.sec{padding:56px 0 8px}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px;flex-wrap:wrap}
+.sec-head h2{margin:0;font-size:clamp(26px,3.2vw,36px);color:var(--navy);line-height:1.1}
+.sec-head p{margin:6px 0 0;color:var(--muted);max-width:560px}
+
+/* journey track */
+.track{position:relative;padding:34px 28px 26px;overflow:hidden}
+.track .rail{position:absolute;left:58px;right:58px;top:68px;height:4px;background:var(--line);border-radius:4px}
+.track .rail i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--navy),var(--navy2));transition:width 1.6s cubic-bezier(.3,.7,.2,1)}
+.steps{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.step{text-align:center;cursor:pointer;padding:0 4px;border-radius:14px}
+.dot{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--line);color:var(--muted);transition:transform .3s,box-shadow .3s;position:relative}
+.dot svg{width:26px;height:26px}
+.step.live .dot{background:var(--navy);border-color:var(--navy);color:#fff}
+.step.build .dot{border-color:var(--navy);color:var(--navy)}
+.step.build .dot::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid rgba(5,46,92,.18);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{from{transform:scale(.85);opacity:1}to{transform:scale(1.25);opacity:0}}
+.step:hover .dot,.step.sel .dot{transform:translateY(-3px);box-shadow:0 10px 20px -8px rgba(5,46,92,.35)}
+.step h4{margin:0 0 6px;font:700 14px/1.3 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.step .pill{font-size:10px;padding:4px 8px}
+.step-detail{margin-top:22px;border-top:1px solid var(--line);padding-top:20px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;min-height:96px}
+.step-detail .big{font:700 46px/1 Caladea,Georgia,serif;color:var(--pale);-webkit-text-stroke:1.5px var(--navy);width:56px}
+.step-detail h3{margin:0 0 4px;color:var(--navy);font-size:19px}
+.step-detail p{margin:0 0 8px}
+.step-detail ul{margin:0;padding-left:18px}
+
+/* doors */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 64px}
+.door{padding:24px;text-align:left;display:flex;flex-direction:column;gap:12px;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.door:hover{transform:translateY(-4px);box-shadow:0 18px 40px -16px rgba(5,46,92,.35)}
+.door .ico{width:46px;height:46px;border-radius:12px;background:var(--pale);display:grid;place-items:center;color:var(--navy)}
+.door .ico svg{width:24px;height:24px}
+.door b{font:700 40px/1 Caladea,Georgia,serif;color:var(--navy)}
+.door h3{margin:0;font:700 17px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.door p{margin:0;color:var(--muted);font-size:14.5px}
+.door .go{margin-top:auto;font:700 13px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);display:flex;align-items:center;gap:6px}
+.door .go::after{content:"→";transition:transform .2s}
+.door:hover .go::after{transform:translateX(4px)}
+.door .mini{position:absolute;right:-10px;top:-10px;opacity:.5}
+
+/* ---------- pipeline ---------- */
+.page-head{background:#fff;border-bottom:1px solid var(--line);padding:40px 0 30px}
+.page-head h1{margin:8px 0 8px;font-size:clamp(30px,4vw,44px);color:var(--navy);line-height:1.08}
+.page-head p{margin:0;color:var(--muted);max-width:640px}
+.page-head .eyebrow{color:var(--navy2)}
+.callout{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:16px 18px;margin:24px 0 0}
+.callout b{color:var(--navy);font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+.lanes{display:grid;grid-template-columns:1fr 2.1fr 1fr 1fr;gap:16px;margin:26px 0 40px;align-items:start}
+.lane{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.lane-h{display:flex;justify-content:space-between;align-items:baseline;padding:4px 6px 12px}
+.lane-h h3{margin:0;font:700 14px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);text-transform:uppercase;letter-spacing:.08em}
+.lane-h small{color:var(--muted);font-size:12.5px}
+.lane.hired .cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cards{display:flex;flex-direction:column;gap:8px}
+.st{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:left;font:600 13.5px/1.35 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);display:flex;gap:10px;align-items:center;transition:border-color .2s,transform .2s,box-shadow .2s}
+.st:hover,.st.sel{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(5,46,92,.4)}
+.st .n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy2)}
+.st.sel .n{background:var(--navy);color:#fff}
+.drawer{position:fixed;right:0;top:0;bottom:0;width:min(420px,100%);background:#fff;z-index:40;visibility:hidden;transform:translateX(105%);transition:transform .4s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
+.drawer.on{transform:none;visibility:visible;box-shadow:-20px 0 60px -20px rgba(5,46,92,.35)}
+.drawer-top{background:var(--navy);color:#fff;padding:22px 24px}
+.drawer-top small{font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.drawer-top h3{margin:6px 0 0;font:700 24px/1.15 Caladea,Georgia,serif}
+.drawer-body{padding:22px 24px;overflow:auto}
+.drawer-body h4{margin:0 0 6px;font:700 12px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.drawer-body p{margin:0 0 20px}
+.flow{list-style:none;margin:0 0 20px;padding:0;position:relative}
+.flow li{position:relative;padding:0 0 14px 30px}
+.flow li::before{content:"";position:absolute;left:8px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--navy);background:#fff}
+.flow li::after{content:"";position:absolute;left:13px;top:18px;bottom:0;width:2px;background:var(--line)}
+.flow li:last-child::after{display:none}
+.x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;color:#fff;display:grid;place-items:center;background:rgba(255,255,255,.12)}
+.x:hover{background:rgba(255,255,255,.22)}
+.scrim{position:fixed;inset:0;background:rgba(5,46,92,.28);z-index:39;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+
+/* ---------- automations ---------- */
+.folders{display:flex;flex-direction:column;gap:22px;margin:28px 0 48px}
+.folder{overflow:hidden}
+.folder-h{display:flex;gap:16px;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#fff,var(--soft))}
+.folder-h .fn{font:700 34px/1 Caladea,Georgia,serif;color:var(--navy);width:44px}
+.folder-h h3{margin:0;font:700 18px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.folder-h p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.folder-h .pill{margin-left:auto;flex-shrink:0}
+.autos{display:flex;flex-direction:column}
+.auto{border-bottom:1px solid var(--line)}
+.auto:last-child{border-bottom:0}
+.auto-b{width:100%;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:16px 24px;text-align:left}
+.auto-b:hover{background:var(--soft)}
+.auto-b h4{margin:0;font:700 15px/1.35 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.auto-b p{margin:3px 0 0;color:var(--muted);font-size:14px}
+.chev{width:30px;height:30px;border-radius:50%;background:var(--pale);display:grid;place-items:center;color:var(--navy);transition:transform .3s}
+.auto.open .chev{transform:rotate(180deg)}
+.auto-d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.auto.open .auto-d{grid-template-rows:1fr}
+.auto-d>div{overflow:hidden}
+.chain{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;padding:4px 24px 22px}
+.node{display:flex;align-items:center}
+.node .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:150px;max-width:220px}
+.node .box small{display:block;font:700 10.5px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.node .box span{font:600 13.5px/1.35 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.node .box.trig{background:var(--navy);border-color:var(--navy)}
+.node .box.trig small{color:var(--green)}
+.node .box.trig span{color:#fff}
+.node .box em{display:block;margin-top:6px;font:italic 400 12px/1.35 'Open Sans',sans-serif;color:#8A5A00}
+.node .box.trig em{color:var(--green)}
+.node .box button.peek{display:block;margin-top:6px;font:700 12px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy2);text-decoration:underline;text-underline-offset:3px}
+.node .arr{width:26px;height:2px;background:var(--line);position:relative;margin:0 4px}
+.node .arr::after{content:"";position:absolute;right:-1px;top:-4px;border-left:7px solid var(--line);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.node:last-child .arr{display:none}
+.branch{border:1px dashed var(--line);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px;background:var(--soft)}
+.branch small{font:700 10.5px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:2px 4px}
+.branch .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.branch .row b{font:700 12px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy2);min-width:70px}
+.branch .chip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 9px;font:600 12.5px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.msg{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.98);opacity:0;pointer-events:none;width:min(560px,calc(100% - 32px));max-height:80vh;overflow:auto;z-index:41;transition:all .3s}
+.msg.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.mail{background:#fff;border-radius:18px;box-shadow:0 30px 80px -20px rgba(5,46,92,.5);overflow:hidden}
+.mail-h{background:var(--soft);border-bottom:1px solid var(--line);padding:16px 20px;position:relative}
+.mail-h small{font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mail-h h3{margin:4px 0 0;font:700 17px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);padding-right:40px}
+.mail-h .x{color:var(--navy);background:#fff;border:1px solid var(--line)}
+.mail-b{padding:20px;white-space:pre-wrap;font-size:15px}
+.mail-b .mf{background:#EEF9DA;color:#3C6A00;border-radius:5px;padding:0 4px;font-weight:600}
+
+/* ---------- forms & links ---------- */
+.forms{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0 22px}
+.form-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.form-vis{background:var(--soft);padding:24px;border-bottom:1px solid var(--line);display:flex;justify-content:center}
+.phone{width:190px;background:#fff;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 14px 18px}
+.phone .bar2{height:5px;width:46px;border-radius:5px;background:var(--line);margin:0 auto 12px}
+.phone .prog{display:flex;gap:4px;margin-bottom:12px}
+.phone .prog i{flex:1;height:4px;border-radius:4px;background:var(--line)}
+.phone .prog i.on{background:var(--navy)}
+.phone .q{height:8px;border-radius:4px;background:var(--pale);margin:7px 0}
+.phone .q.s{width:60%}
+.phone .f{height:24px;border-radius:7px;border:1px solid var(--line);margin:6px 0 10px}
+.phone .btn{height:26px;border-radius:999px;background:var(--navy);margin-top:12px}
+.phone .btn.g{background:var(--green)}
+.form-txt{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.form-txt h3{margin:0;font:700 19px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.form-txt p{margin:0;color:var(--muted);font-size:14.5px}
+.btn-l{align-self:flex-start;margin-top:auto;display:inline-flex;align-items:center;gap:8px;font:700 14px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);background:var(--green);padding:10px 16px;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s}
+.btn-l:hover{background:var(--green2);transform:translateY(-1px)}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 56px}
+.lk{padding:18px 20px;display:flex;gap:14px;align-items:center;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.lk:hover{transform:translateY(-3px);box-shadow:0 14px 30px -14px rgba(5,46,92,.35)}
+.lk .ico{width:42px;height:42px;border-radius:12px;background:var(--pale);display:grid;place-items:center;color:var(--navy);flex-shrink:0}
+.lk .ico svg{width:22px;height:22px}
+.lk h4{margin:0;font:700 14.5px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.lk p{margin:2px 0 0;color:var(--muted);font-size:13px}
+
+/* ---------- next steps ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0 22px}
+.col{padding:24px}
+.col-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.col-h .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:700 15px "Plus Jakarta Sans",system-ui,sans-serif}
+.col-h .av.us{background:var(--navy);color:#fff}
+.col-h .av.them{background:var(--green);color:var(--navy)}
+.col-h h3{margin:0;font:700 18px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.col-h p{margin:0;color:var(--muted);font-size:13.5px}
+.todo{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.todo li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--soft)}
+.todo li .bx{flex-shrink:0;width:20px;height:20px;border-radius:6px;border:2px solid var(--navy);margin-top:2px}
+.todo li b{display:block;font:700 14.5px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.todo li span{font-size:13.5px;color:var(--muted)}
+.decided{padding:24px;margin:0 0 56px}
+.decided h3{margin:0 0 4px;font:700 18px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.decided>p{margin:0 0 16px;color:var(--muted);font-size:14px}
+.dl{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.dl div{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:12px}
+.dl svg{flex-shrink:0;width:20px;height:20px;color:#3C6A00;margin-top:2px}
+.dl b{display:block;font:700 14px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+.dl span{font-size:13px;color:var(--muted)}
+
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:0 0 30px}
+footer b{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr}.hero-mark{display:none}
+  .cockpit,.doors,.forms,.two,.links,.dl{grid-template-columns:1fr}
+  .lanes{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(3,1fr);row-gap:22px}
+  .track .rail{display:none}
+  .now{flex-direction:column;align-items:flex-start}
+  .brand span{display:none}
+  .tabs{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent);padding-right:28px}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .lane.hired .cards{grid-template-columns:1fr}
+  .chain{flex-direction:column;align-items:stretch}
+  .node{flex-direction:column;align-items:stretch}
+  .node .box{max-width:none}
+  .node .arr{width:2px;height:16px;margin:4px auto}
+  .node .arr::after{right:-4px;top:auto;bottom:-1px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--line);border-bottom:0}
+  .step-detail{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#home" data-go="home"><img src="assets/logo.png" alt="Solid Rep"><span>HQ</span></a>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" data-go="home">Home</button>
+      <button class="tab" role="tab" data-go="pipeline">Your pipeline</button>
+      <button class="tab" role="tab" data-go="automations">Automations</button>
+      <button class="tab" role="tab" data-go="forms">Forms &amp; links</button>
+      <button class="tab" role="tab" data-go="next">Next steps</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ================= HOME ================= -->
+<section class="view" id="v-home" role="tabpanel">
+  <div class="hero">
+    <svg class="grid" aria-hidden="true"><defs><pattern id="g" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#fff" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>
+    <div class="wrap hero-in">
+      <div>
+        <div class="eyebrow">Solid Rep HQ</div>
+        <h1 class="h-display">Your whole client journey, in one place.</h1>
+        <p class="lede">From the first "hello" to the registration certificate. Here's what's running, what's being built, and what comes next.</p>
+      </div>
+      <img class="hero-mark" src="assets/logo-white.png" alt="">
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="cockpit">
+      <div class="card now reveal">
+        <div class="ring" aria-label="2 of 6 steps live">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#EEF3F9" stroke-width="12"/><circle id="ringArc" cx="60" cy="60" r="50" fill="none" stroke="#052E5C" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" style="transition:stroke-dashoffset 1.6s cubic-bezier(.3,.7,.2,1)"/></svg>
+          <div class="num"><div><b>2/6</b><small>steps live</small></div></div>
+        </div>
+        <div>
+          <span class="pill you"><i></i>Your move</span>
+          <h2 class="h-ui" style="margin-top:10px">Alice's review of your pipeline</h2>
+          <p>Your 26 stages and the plan for each automation are ready. Once Alice confirms what has to happen before a client moves to the next stage, we switch things on, one folder at a time.</p>
+        </div>
+      </div>
+      <div class="card meet reveal">
+        <div class="when">
+          <div class="cal"><span>NOV</span><b>17</b></div>
+          <div><h3 class="h-ui">Weekly check-in</h3><div class="t">Tuesday · 12:30 PM Central · 2:30 PM Puerto Rico</div></div>
+        </div>
+        <ul>
+          <li>Alice's thoughts on the pipeline</li>
+          <li>A step-by-step plan for the move from Clio</li>
+          <li>Billing in SmartFunnels Pro</li>
+        </ul>
+        <div class="t" style="font-size:13px">Your Zoom link is in the calendar invite.</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-head reveal">
+        <div><h2 class="h-display">The journey</h2><p>Six steps from where you started to fully running in SmartFunnels Pro. Tap any step.</p></div>
+      </div>
+      <div class="card track reveal">
+        <div class="rail"><i id="railFill"></i></div>
+        <div class="steps" id="steps"></div>
+        <div class="step-detail" id="stepDetail" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="doors">
+      <button class="card door reveal" data-go="pipeline">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></div><b>26</b><h3>Pipeline stages</h3><p>Every step a client takes with you, from first contact to closed.</p><span class="go">See your pipeline</span>
+      </button>
+      <button class="card door reveal" data-go="automations">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>15</b><h3>Automations planned</h3><p>The emails, alerts and tasks that run on their own, in four folders.</p><span class="go">See how they work</span>
+      </button>
+      <button class="card door reveal" data-go="next">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></div><b id="doorOpen">0</b><h3>Open items</h3><p>What we're working on, and the few things we need from you.</p><span class="go">See next steps</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIPELINE ================= -->
+<section class="view" id="v-pipeline" role="tabpanel">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow">Your pipeline · Services</div>
+    <h1 class="h-display">Every client, one board.</h1>
+    <p>These are the 26 stages you built. Each client is a card that moves from left to right. Tap a stage to see how a client gets there and what happens next.</p>
+    <div class="callout"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>The one question for Alice:</b> for each stage, what has to be true before a client moves on? Her answers become the rules the automations follow.</div></div>
+  </div></div>
+  <div class="wrap"><div class="lanes" id="lanes"></div></div>
+</section>
+
+<!-- ================= AUTOMATIONS ================= -->
+<section class="view" id="v-automations" role="tabpanel">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow">Automations</div>
+    <h1 class="h-display">The work that runs itself.</h1>
+    <p>Fifteen automations in four folders, named the same way in your account. Open any one to see what starts it and every step after, then tap a message to read it as your client would.</p>
+    <div class="callout"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>Nothing reaches a client yet.</b> Folder 1 is built as drafts and switched off. The rest are planned. We switch each folder on only after you and Alice have seen it on a test contact.</div></div>
+  </div></div>
+  <div class="wrap"><div class="folders" id="folders"></div></div>
+</section>
+
+<!-- ================= FORMS ================= -->
+<section class="view" id="v-forms" role="tabpanel">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow">Forms &amp; links</div>
+    <h1 class="h-display">Where your clients start.</h1>
+    <p>The two forms in your client journey, plus the places in your account you'll use most.</p>
+  </div></div>
+  <div class="wrap">
+    <div class="forms">
+      <div class="card form-card reveal">
+        <div class="form-vis"><div class="phone"><div class="bar2"></div><div class="prog"><i class="on"></i><i></i><i></i></div><div class="q s"></div><div class="f"></div><div class="q"></div><div class="f"></div><div class="q s"></div><div class="f"></div><div class="btn g"></div></div></div>
+        <div class="form-txt"><span class="pill build"><i></i>Built · payment step next</span><h3>START NOW</h3><p>A short sign-up: contact details and four quick questions about the trademark, then the package and payment. Answers save to the client's record.</p><a class="btn-l" href="https://link.smartfunnelspro.com/widget/survey/K2y4RlSEieUp5uSP8IvJ" target="_blank" rel="noopener">Open the form ↗</a></div>
+      </div>
+      <div class="card form-card reveal">
+        <div class="form-vis"><div class="phone"><div class="bar2"></div><div class="prog"><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="q"></div><div class="f"></div><div class="q s"></div><div class="f"></div><div class="q"></div><div class="f" style="height:44px;border-style:dashed"></div><div class="btn"></div></div></div>
+        <div class="form-txt"><span class="pill build"><i></i>Built · in review with Alice</span><h3>Trademark Registration Worksheet</h3><p>The full details your attorneys need, in four steps: business location, the trademark, the owner, and supporting documents. It goes out from the pipeline after payment.</p><a class="btn-l" href="https://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP" target="_blank" rel="noopener">Open the worksheet ↗</a></div>
+      </div>
+    </div>
+    <div class="links">
+      <a class="card lk reveal" href="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list" target="_top"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></div><div><h4>Opportunities</h4><p>Your Services pipeline board</p></div></a>
+      <a class="card lk reveal" href="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/automation/workflows" target="_top"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><div><h4>Automations</h4><p>The four Services folders</p></div></a>
+      <a class="card lk reveal" href="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/payments/products" target="_top"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></div><div><h4>Products</h4><p>Where your Stripe products import</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEXT ================= -->
+<section class="view" id="v-next" role="tabpanel">
+  <div class="page-head"><div class="wrap">
+    <div class="eyebrow">Next steps</div>
+    <h1 class="h-display">Who's doing what.</h1>
+    <p>Updated after every session, so you always know where things stand.</p>
+  </div></div>
+  <div class="wrap">
+    <div class="two">
+      <div class="card col reveal"><div class="col-h"><div class="av us">TS</div><div><h3>Brands In Purpose</h3><p>What Trey is working on</p></div></div><ul class="todo" id="todoUs"></ul></div>
+      <div class="card col reveal"><div class="col-h"><div class="av them">SR</div><div><h3>Solid Rep</h3><p>What we need from your team</p></div></div><ul class="todo" id="todoThem"></ul></div>
+    </div>
+    <div class="card decided reveal"><h3>Decided together</h3><p>Settled, so nobody has to remember.</p><div class="dl" id="decided"></div></div>
+  </div>
+</section>
+</main>
+<footer>Built and kept current by <b>Brands In Purpose</b> · Last updated <span id="upd"></span></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Stage details">
+  <div class="drawer-top"><button class="x" data-close aria-label="Close">✕</button><small id="dPhase"></small><h3 id="dName"></h3></div>
+  <div class="drawer-body"><h4>How a client gets here</h4><p id="dHow"></p><h4>What we've planned to happen next</h4><ul class="flow" id="dAuto"></ul><p style="font-size:13px;color:var(--muted)">This is the plan to confirm with Alice. Nothing runs until she's happy with it.</p></div>
+</aside>
+<div class="msg" id="msg" role="dialog" aria-label="Message preview"><div class="mail"><div class="mail-h"><button class="x" data-close aria-label="Close">✕</button><small id="mTo"></small><h3 id="mSubj"></h3></div><div class="mail-b" id="mBody"></div></div></div>
+
+<script>
+const UPDATED="Wednesday, November 11, 2026";
+const PHASES = [
+ {id:"p", name:"Prospect", sub:"Before they hire you"},
+ {id:"h", name:"Hired", sub:"The trademark work, start to finish"},
+ {id:"w", name:"On hold", sub:"Paused, waiting on someone"},
+ {id:"e", name:"Ending", sub:"Every card lands in one of these"}
+];
+// st: built = in place now; today = we map it together today; ask = needs your answer
+const STAGES = [
+ {p:"p", n:"New Prospect", how:"Someone reaches out: the contact form, a call, a chat, or a booking.", auto:["Your team gets an alert with their details","They get a short welcome email"], st:"today"},
+ {p:"p", n:"Preliminary Factual Information", how:"They fill in the START NOW sheet on your site.", auto:["Their answers save to their client record","If they stop before paying, a friendly reminder goes out"], st:"built", note:"The START NOW sheet is built with your wording."},
+ {p:"p", n:"Orientation", how:"They book the 15-minute orientation call.", auto:["Confirmation and reminder emails","The call shows on your shared Google Calendar"], st:"ask", note:"Needs the orientation calendar (Alice's Google login)."},
+ {p:"p", n:"Engagement Letter w/ Bill or Retainer", how:"Your team sends the engagement letter with the bill or retainer.", auto:["They sign online","The signed copy saves under Documents in their client file, and a copy goes to them and to your team"], st:"ask", note:"Waiting on the final letter text."},
+ {p:"p", n:"Legal Consult", how:"They book the 45-minute legal consult.", auto:["Confirmation and reminder emails","A task for the attorney before the call"], st:"ask", note:"Needs the consultation calendar."},
+ {p:"h", n:"New Service", how:"Automatic when they pay for a package plus the filing fee.", auto:["Receipt and welcome email","Your team gets a 'new client' alert"], st:"ask", note:"Needs each package price and its filing fee."},
+ {p:"h", n:"Trademark Registration Worksheet", how:"Automatic right after New Service.", auto:["The worksheet link goes to them by email","A reminder if it isn't done in a few days"], st:"built", note:"The worksheet is built: 4 steps, your wording, same look as START NOW."},
+ {p:"h", n:"Worksheet Review", how:"Automatic when they submit the worksheet.", auto:["A review task for your team","Their answers and uploads are in their client file"], st:"today"},
+ {p:"h", n:"Initial Legal Assessment", how:"Your team moves the card when the review is done.", auto:["A task for the attorney"], st:"today"},
+ {p:"h", n:"Conflict Search Report Draft", how:"Your team moves the card.", auto:["A task with a due date"], st:"today"},
+ {p:"h", n:"Conflict Search Report Approval by Attorney", how:"Your team moves the card when the draft is ready.", auto:["An approval task for the attorney"], st:"today"},
+ {p:"h", n:"Application Draft", how:"Your team moves the card once the report is approved.", auto:["A task with a due date"], st:"today"},
+ {p:"h", n:"Application Draft Approval by Attorney", how:"Your team moves the card.", auto:["An approval task for the attorney"], st:"today"},
+ {p:"h", n:"Application Draft Approval by Client", how:"Your team moves the card.", auto:["The client gets the draft to review and approve","A reminder if they haven't answered"], st:"today"},
+ {p:"h", n:"Application Filing", how:"Your team moves the card when it's filed.", auto:["The client gets a 'we've filed' update"], st:"today"},
+ {p:"h", n:"Published for Opposition", how:"Your team moves the card.", auto:["The client gets a plain-English update on what this means"], st:"today"},
+ {p:"h", n:"Filing Statement of First Use", how:"Your team moves the card.", auto:["A task with the deadline","The client is asked for anything you need"], st:"today"},
+ {p:"h", n:"Response to Office Action", how:"Your team moves the card.", auto:["A task with the deadline","The client gets an update"], st:"today"},
+ {p:"h", n:"Share Registration Certificate", how:"Your team moves the card when it's registered.", auto:["The client gets their certificate","A request for a Google review"], st:"today"},
+ {p:"w", n:"Waiting for Client", how:"Your team moves the card.", auto:["Friendly reminders to the client","An alert if nothing happens for a few days"], st:"today"},
+ {p:"w", n:"Extension of Time", how:"Your team moves the card.", auto:["A deadline task so nothing slips"], st:"today"},
+ {p:"w", n:"Grace Period", how:"Your team moves the card.", auto:["A deadline task so nothing slips"], st:"today"},
+ {p:"w", n:"Waiting for Third Party", how:"Your team moves the card.", auto:["A check-in task for your team"], st:"today"},
+ {p:"e", n:"Abandoned", how:"Your team moves the card.", auto:["A closing note on their record"], st:"today"},
+ {p:"e", n:"Closed", how:"Your team moves the card when the work is done.", auto:["A thank-you email","A chance to offer trademark watch later"], st:"today"},
+ {p:"e", n:"Not Hired", how:"Your team moves the card and picks the reason.", auto:["The reason is saved for your reports (rejected client, hired other attorney, cost concerns, conflict issue, unresponsive, other)"], st:"today"}
+];
+
+const WS_LINK="https://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP";
+const FOLDERS=[
+ {id:"f1",code:"S1",name:"Services · 1 Sign-up & Worksheet",sub:"From payment to a returned worksheet. Runs on its own."},
+ {id:"f2",code:"S2",name:"Services · 2 Prospects & Engagement",sub:"For people who reach out or book a call first."},
+ {id:"f3",code:"S3",name:"Services · 3 Team Work",sub:"Tasks and alerts for your team while the trademark is in progress."},
+ {id:"f4",code:"S4",name:"Services · 4 Client Updates & Close",sub:"What the client hears from you, and the finish line."}
+];
+const SIG="\n\nWarmly,\nThe Solid Rep Team";
+const NOTE_TO="Specific user: Fiarah Carrau";
+const WF=[
+{id:"S1.1",f:"f1",name:"S1.1 · Paid sign-up → Make them a client",merged:"Combines START NOW paid and bill or retainer paid: same steps, two ways in.",why:"Whoever pays, through START NOW or a bill, becomes a client card in New Service, and your team hears about it.",stages:["New Service"],
+ trigs:[{t:"Survey submitted",d:"Filter: Survey is START NOW"},{t:"Payment received",d:"Filter: the bill or retainer payment",c:"Only if billing moves into SmartFunnels Pro (Alice to confirm)."}],
+ steps:[
+  {k:"tag",t:"Add contact tag",d:"client-paid"},
+  {k:"opp",t:"Create/update opportunity",d:"Pipeline: Services · Stage: New Service · Status: Open · Name: {{contact.name}} · Value: payment total"},
+  {k:"notify",t:"Send internal notification",d:"Email to your team",m:{to:NOTE_TO,subj:"New client paid: {{contact.name}}",body:"{{contact.name}} just paid and is now in New Service.\n\nEmail: {{contact.email}}\nPhone: {{contact.phone}}\nTrademark: {{contact.mark_to_register}}\n\nThe Trademark Registration Worksheet goes to them automatically."}},
+  {k:"email",t:"Send email",d:"Welcome email to the client",m:{subj:"Welcome to Solid Rep, {{contact.first_name}}",body:"Hi {{contact.first_name}},\n\nThank you for choosing Solid Rep to protect {{contact.mark_to_register}}. Your payment went through, and our team is getting started.\n\nIn a moment you'll receive one more email: your Trademark Registration Worksheet. It gives our attorneys the details we need to prepare your application. Please complete it as soon as you can, since we begin as soon as it's back.\n\nIf you have any questions, just reply to this email."+SIG}}
+ ]},
+{id:"S1.2",f:"f1",name:"S1.2 · New Service → Send worksheet + reminders",why:"Every new client gets the worksheet right away, with reminders until it's back.",stages:["New Service","Trademark Registration Worksheet"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is New Service"}],
+ steps:[
+  {k:"opp",t:"Update opportunity",d:"Stage: Trademark Registration Worksheet"},
+  {k:"email",t:"Send email",d:"Worksheet link to the client",m:{subj:"Your Trademark Registration Worksheet",body:"Hi {{contact.first_name}},\n\nHere is your Trademark Registration Worksheet:\n"+WS_LINK+"\n\nIt takes about 15 minutes. Have handy your business details, how and where you use your trademark, and any image showing it in use (a label, packaging, a website screenshot).\n\nOnce it's back, our team reviews it and starts the next steps."+SIG},c:"Is 15 minutes about right?"},
+  {k:"wait",t:"Wait",d:"2 days",c:"How long before the first reminder?"},
+  {k:"if",t:"If / else",d:"Condition: Opportunity stage is still Trademark Registration Worksheet",
+   yes:[
+    {k:"email",t:"Send email",d:"Reminder",m:{subj:"Reminder: your trademark worksheet",body:"Hi {{contact.first_name}},\n\nA quick reminder that we're waiting on your Trademark Registration Worksheet before we can move forward:\n"+WS_LINK+"\n\nIf anything is unclear, just reply and we'll help."+SIG}},
+    {k:"wait",t:"Wait",d:"3 days"},
+    {k:"task",t:"Add task",d:"Call the client",m:{title:"Call {{contact.name}} about their worksheet",desc:"Their Trademark Registration Worksheet is still not back after two emails. Call {{contact.phone}} and offer to help them finish it.",assign:"Fiarah Carrau",due:"Today"},c:"Who makes this call?"}],
+   no:[{k:"end",t:"End",d:"Worksheet is back. S1.3 takes over."}]}
+ ]},
+{id:"S1.3",f:"f1",name:"S1.3 · Worksheet returned → Review task",why:"When the worksheet comes back, the card moves and someone is told to review it.",stages:["Worksheet Review"],
+ trigs:[{t:"Survey submitted",d:"Filter: Survey is Solid Rep - Trademark Registration Worksheet"}],
+ steps:[
+  {k:"opp",t:"Update opportunity",d:"Pipeline: Services · Stage: Worksheet Review"},
+  {k:"task",t:"Add task",d:"Review task",m:{title:"Review worksheet: {{contact.name}}",desc:"{{contact.name}} returned their Trademark Registration Worksheet. Open their contact record to see the answers and uploads, then move the card to Initial Legal Assessment.",assign:"Fiarah Carrau",due:"In 2 days"},c:"Who reviews worksheets?"},
+  {k:"notify",t:"Send internal notification",d:"Email to the reviewer",m:{to:NOTE_TO,subj:"Worksheet back: {{contact.name}}",body:"{{contact.name}} returned their Trademark Registration Worksheet. A review task is waiting for you."}},
+  {k:"email",t:"Send email",d:"Confirmation to the client",m:{subj:"We've received your worksheet",body:"Hi {{contact.first_name}},\n\nThank you, we've received your Trademark Registration Worksheet. Our team is reviewing it now, and we'll be in touch if we need anything else."+SIG}}
+ ]}
+];
+WF.push(
+{id:"S2.1",f:"f2",name:"S2.1 · Contact form → New prospect",why:"Anyone who reaches out on your site becomes a card, and your team hears about it right away.",stages:["New Prospect"],
+ trigs:[{t:"Form submitted",d:"Filter: Form is your site's contact form",c:"Which forms count as a new prospect?"}],
+ steps:[
+  {k:"opp",t:"Create/update opportunity",d:"Pipeline: Services · Stage: New Prospect · Status: Open"},
+  {k:"notify",t:"Send internal notification",d:"Email to your team",m:{to:NOTE_TO,subj:"New prospect: {{contact.name}}",body:"{{contact.name}} reached out through the website.\n\nEmail: {{contact.email}}\nPhone: {{contact.phone}}\n\nTheir card is in New Prospect."}},
+  {k:"email",t:"Send email",d:"Thank-you to the prospect",m:{subj:"Thanks for reaching out to Solid Rep",body:"Hi {{contact.first_name}},\n\nThank you for contacting Solid Rep. We've received your message, and a member of our team will be in touch shortly.\n\nIf you'd like to talk sooner, you can book a free 15-minute orientation call here:\n[Orientation booking link]"+SIG},c:"Is orientation free? Booking link comes once the calendar exists"}
+ ]},
+{id:"S2.2",f:"f2",name:"S2.2 · Call booked → Move card + alert",merged:"Combines Orientation booked and Legal Consult booked: same pattern, one fork.",why:"Booking either call moves the card to the right stage and tells the right person.",stages:["Orientation","Legal Consult"],
+ trigs:[{t:"Customer booked appointment",d:"Filter: Calendar is Orientation",c:"Needs the Orientation calendar"},{t:"Customer booked appointment",d:"Filter: Calendar is Legal Consult",c:"Needs the Legal Consult calendar"}],
+ steps:[
+  {k:"if",t:"If / else",d:"Condition: Appointment calendar is Orientation",branches:[
+   {l:"Orientation",s:[
+    {k:"opp",t:"Create/update opportunity",d:"Pipeline: Services · Stage: Orientation"},
+    {k:"notify",t:"Send internal notification",d:"Orientation booked",m:{to:NOTE_TO,subj:"Orientation booked: {{contact.name}}",body:"{{contact.name}} booked an orientation call. Check the calendar for the time.\n\nEmail: {{contact.email}}\nPhone: {{contact.phone}}"}}]},
+   {l:"Legal Consult",s:[
+    {k:"opp",t:"Create/update opportunity",d:"Pipeline: Services · Stage: Legal Consult"},
+    {k:"task",t:"Add task",d:"Prep for the consult",m:{title:"Prep for consult: {{contact.name}}",desc:"{{contact.name}} booked a legal consult. Review their record before the call.",assign:"Alice Cabrera",due:"Day before the appointment"}},
+    {k:"notify",t:"Send internal notification",d:"Consult booked",m:{to:"Specific user: Alice Cabrera",subj:"Legal consult booked: {{contact.name}}",body:"{{contact.name}} booked a legal consult. Check the calendar for the time. A prep task is waiting for you."}}]}]},
+  {k:"note",t:"Confirmations and reminders",d:"Set in each calendar's own notification settings, not here"}
+ ]},
+{id:"S2.3",f:"f2",name:"S2.3 · Engagement Letter stage → Send letter",why:"Moving a card to this stage sends the letter for e-signature, so nobody emails it by hand.",stages:["Engagement Letter w/ Bill or Retainer"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Engagement Letter w/ Bill or Retainer"}],
+ steps:[
+  {k:"doc",t:"Send documents & contracts",d:"Template: Engagement Letter · to the contact",c:"Needs the final letter text"},
+  {k:"notify",t:"Send internal notification",d:"Letter sent",m:{to:NOTE_TO,subj:"Engagement letter sent: {{contact.name}}",body:"The engagement letter went to {{contact.name}} for signature. You'll get another alert when it's signed."}}
+ ]},
+{id:"S2.4",f:"f2",name:"S2.4 · Letter signed → Alert + next stage",why:"When the client signs, the signed copy saves under Documents in their file and your team is told.",stages:["Engagement Letter w/ Bill or Retainer"],
+ trigs:[{t:"Documents & contracts",d:"Filters: Status is Signed/Accepted · Template is Engagement Letter"}],
+ steps:[
+  {k:"notify",t:"Send internal notification",d:"Letter signed",m:{to:NOTE_TO,subj:"Engagement letter signed: {{contact.name}}",body:"{{contact.name}} signed the engagement letter. The signed copy is under Documents in their contact record."}},
+  {k:"opp",t:"Update opportunity",d:"Stage: Legal Consult",c:"After signing, does the card go to Legal Consult, or wait for payment?"}
+ ]},
+{id:"S3.1",f:"f3",name:"S3.1 · Work stages → Task for the owner",merged:"Combines the 6 work stages and the 3 deadline stages: same steps, one list.",why:"Each working stage creates a task for whoever owns the card, so the work never sits unnoticed.",stages:["Initial Legal Assessment","Conflict Search Report Draft","Application Draft","Application Filing","Filing Statement of First Use","Response to Office Action","Extension of Time","Grace Period","Waiting for Third Party"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is any of the 9 stages listed"}],
+ steps:[
+  {k:"task",t:"Add task",d:"Task for the opportunity owner",m:{title:"{{contact.name}}: next step on their trademark",desc:"{{contact.name}}'s card just moved to a new stage. Open the card to see the stage and do the work for it. For Extension of Time, Grace Period and Response to Office Action, change this task's due date to the real legal deadline.",assign:"Opportunity owner",due:"In 3 days"},c:"Who owns each stage, and is 3 days right?"},
+  {k:"notify",t:"Send internal notification",d:"Email to the owner",m:{to:"Opportunity owner",subj:"New task: {{contact.name}}",body:"{{contact.name}}'s card moved to a new stage and a task is waiting for you."}}
+ ]},
+{id:"S3.2",f:"f3",name:"S3.2 · Attorney approval → Task for Alice",why:"Both attorney approval stages go straight to Alice with a task and an alert.",stages:["Conflict Search Report Approval by Attorney","Application Draft Approval by Attorney"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is either approval stage"}],
+ steps:[
+  {k:"task",t:"Add task",d:"Approval task",m:{title:"Approval needed: {{contact.name}}",desc:"{{contact.name}}'s file is waiting for attorney approval. Open the card to see which approval, review, then move the card to the next stage.",assign:"Alice Cabrera",due:"In 2 days"},c:"Is Alice the only approver?"},
+  {k:"notify",t:"Send internal notification",d:"Email to Alice",m:{to:"Specific user: Alice Cabrera",subj:"Approval needed: {{contact.name}}",body:"A file is waiting for your approval: {{contact.name}}. A task is in your list."}}
+ ]},
+{id:"S3.3",f:"f3",name:"S3.3 · Card stuck 5 days → Alert the owner",why:"Any card that sits for 5 days without activity gets flagged.",stages:["Every stage"],
+ trigs:[{t:"Stale opportunities",d:"Filters: In pipeline is Services · Duration: 5 days",c:"Is 5 days right?"}],
+ steps:[
+  {k:"notify",t:"Send internal notification",d:"Email to the owner",m:{to:"Opportunity owner",subj:"Stuck for 5 days: {{contact.name}}",body:"{{contact.name}}'s card hasn't moved in 5 days. Take a look and move it forward, or add a note on what you're waiting for."}}
+ ]}
+);
+WF.push(
+{id:"S4.1",f:"f4",name:"S4.1 · Draft ready → Client approval + reminder",why:"The client gets the application draft to approve, with a reminder if they don't answer.",stages:["Application Draft Approval by Client"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Application Draft Approval by Client"}],
+ steps:[
+  {k:"email",t:"Send email",d:"Approval request",m:{subj:"Your trademark application is ready for your review",body:"Hi {{contact.first_name}},\n\nGood news: the draft of your trademark application for {{contact.mark_to_register}} is ready. Please review it and reply to this email to approve it, or tell us what you'd like changed.\n\nWe file as soon as we have your approval."+SIG},c:"How does the client receive the draft: attached by your team, or a link?"},
+  {k:"wait",t:"Wait",d:"3 days"},
+  {k:"if",t:"If / else",d:"Condition: Opportunity stage is still Application Draft Approval by Client",
+   yes:[
+    {k:"email",t:"Send email",d:"Reminder",m:{subj:"Reminder: your application is waiting for your approval",body:"Hi {{contact.first_name}},\n\nA quick reminder that your trademark application is ready and waiting for your approval. Reply to this email to approve it or ask for changes, and we'll take it from there."+SIG}},
+    {k:"task",t:"Add task",d:"Follow up",m:{title:"Follow up on draft approval: {{contact.name}}",desc:"No approval yet after a reminder. Call {{contact.phone}}.",assign:"Opportunity owner",due:"Today"}}],
+   no:[{k:"end",t:"End",d:"They approved. Your team moves the card on."}]}
+ ]},
+{id:"S4.2",f:"f4",name:"S4.2 · Milestones → Update the client",why:"The client hears from you at each milestone without anyone writing an email.",stages:["Application Filing","Published for Opposition","Response to Office Action"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is any of the 3 stages listed"}],
+ steps:[
+  {k:"if",t:"If / else",d:"Condition: Opportunity stage is…",branches:[
+   {l:"Application Filing",s:[{k:"email",t:"Send email",d:"Filed",m:{subj:"We've filed your trademark application",body:"Hi {{contact.first_name}},\n\nYour trademark application for {{contact.mark_to_register}} has been filed. From here, the trademark office reviews it. We'll keep an eye on it and let you know as soon as there's news."+SIG}}]},
+   {l:"Published for Opposition",s:[{k:"email",t:"Send email",d:"Published",m:{subj:"Your trademark has been published",body:"Hi {{contact.first_name}},\n\nAn update on {{contact.mark_to_register}}: your trademark has been published for opposition. This is a normal step, when others have a set window to review it. We're watching it and will let you know if anything needs your attention."+SIG}}]},
+   {l:"Response to Office Action",s:[{k:"email",t:"Send email",d:"Office action",m:{subj:"An update on your trademark application",body:"Hi {{contact.first_name}},\n\nThe trademark office has sent us a question about your application for {{contact.mark_to_register}}. Our team is preparing the response now. If we need anything from you, we'll reach out."+SIG}}]}]}
+ ],c:"Approve the wording of each email"},
+{id:"S4.3",f:"f4",name:"S4.3 · Waiting for Client → Nudges",why:"When you're waiting on the client, they get polite nudges and your team gets a call task.",stages:["Waiting for Client"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Waiting for Client"}],
+ steps:[
+  {k:"wait",t:"Wait",d:"3 days"},
+  {k:"if",t:"If / else",d:"Condition: Opportunity stage is still Waiting for Client",
+   yes:[
+    {k:"email",t:"Send email",d:"Nudge",m:{subj:"We're waiting on a few details from you",body:"Hi {{contact.first_name}},\n\nTo keep your trademark moving, we need a few details from you. Please check our last message, or just reply here and we'll walk you through it."+SIG}},
+    {k:"wait",t:"Wait",d:"4 days"},
+    {k:"task",t:"Add task",d:"Call",m:{title:"Call {{contact.name}}: still waiting on them",desc:"Still no response after a reminder. Call {{contact.phone}}.",assign:"Opportunity owner",due:"Today"}}],
+   no:[{k:"end",t:"End",d:"They responded"}]}
+ ]},
+{id:"S4.4",f:"f4",name:"S4.4 · Registered → Certificate + review",why:"Registration day: the client gets the good news, then a request for a Google review.",stages:["Share Registration Certificate"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Share Registration Certificate"}],
+ steps:[
+  {k:"email",t:"Send email",d:"Registered",m:{subj:"Congratulations, {{contact.mark_to_register}} is registered",body:"Hi {{contact.first_name}},\n\nCongratulations! Your trademark {{contact.mark_to_register}} is officially registered. Your registration certificate is attached.\n\nIt was a pleasure working with you. If you ever need help protecting another name or logo, we're here."+SIG},c:"Your team attaches the certificate, or sends it separately?"},
+  {k:"wait",t:"Wait",d:"2 days"},
+  {k:"review",t:"Send review request",d:"Google review request",c:"Needs the Google reviews listing linked first"}
+ ]},
+{id:"S4.5",f:"f4",name:"S4.5 · Ending stages → Set status",why:"Ending stages set the right status, so your reports show won, lost and abandoned correctly.",stages:["Closed","Abandoned","Not Hired"],
+ trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Closed, Abandoned or Not Hired"}],
+ steps:[
+  {k:"if",t:"If / else",d:"Condition: Opportunity stage is…",branches:[
+   {l:"Closed",s:[{k:"opp",t:"Update opportunity",d:"Status: Won"},{k:"email",t:"Send email",d:"Thank you",m:{subj:"Thank you from Solid Rep",body:"Hi {{contact.first_name}},\n\nYour file with us is now complete. Thank you for trusting Solid Rep with your brand. If anything comes up, or you'd like help with another trademark, just reply to this email."+SIG}}]},
+   {l:"Abandoned",s:[{k:"opp",t:"Update opportunity",d:"Status: Abandoned"}]},
+   {l:"Not Hired",s:[{k:"opp",t:"Update opportunity",d:"Status: Lost · your team picks the reason"}]}]}
+ ],c:"Your six not-hired reasons: set them up as lost reasons (check this when we build)"}
+);
+
+const JOURNEY=[
+ {n:"Foundation",st:"live",ic:"home",d:"Your SmartFunnels Pro account is set up: your Stripe is connected, Google is connected, and your business details are in.",items:["Your own Stripe account connected (Nov 6)","Google and Google Calendar connected (Nov 5)","Business Profile filled in, with a few details to finish"]},
+ {n:"Your pipeline",st:"live",ic:"pipe",d:"Fiarah built all 26 stages of your Services pipeline. Your first 10 clients are already in as a test group.",items:["26 stages, from New Prospect to Closed","10 beta clients imported (Nov 10)","Alice's review of the stages is in progress"]},
+ {n:"Automations",st:"build",ic:"bolt",d:"Fifteen automations are mapped, with every email written. The first folder is built as drafts and switched off until you give the go-ahead.",items:["Folder 1, Sign-up & Worksheet: drafted","Folders 2 to 4: planned","Switched on one folder at a time, tested first"]},
+ {n:"Billing",st:"next",ic:"card",d:"Estimates, invoices and payment links made right inside SmartFunnels Pro, so a payment can move a client forward on its own. Only Stripe's fees apply.",items:["Import your Stripe products","Confirm the setup with Alice","Package prices and filing fees for START NOW"]},
+ {n:"Move from Clio",st:"next",ic:"move",d:"New clients start in SmartFunnels Pro. Your existing matters come over once the pipeline and automations are settled, so everyone lands in the right place.",items:["New clients start here","Full Clio export, with the fields we'll list for you","Your team sorts imported clients before anything switches on"]},
+ {n:"Website launch",st:"next",ic:"globe",d:"Your new site is built and waiting. Like you said, operations come first, then you fine-tune the copy and colors, then we launch.",items:["Site built","Your final touches","Launch, once you're 100% comfortable"]}
+];
+const US=[
+ ["A step-by-step plan for the whole move","To walk through together on Tuesday"],
+ ["The list of fields for your Clio export","So your client history maps cleanly into SmartFunnels Pro"],
+ ["Build the automations Alice approves","Folder by folder, tested on a test contact first"],
+ ["The START NOW payment step","As soon as package prices and filing fees are set"]
+];
+const THEM=[
+ ["Alice's thoughts on the pipeline","What has to be true before a client moves to the next stage"],
+ ["Import your Stripe products","Payments > Products > Import from Stripe"],
+ ["Add your paralegal and Alice as test contacts","So they can see exactly what a client receives"],
+ ["Any changes to the two forms","From Alice's review"],
+ ["The new USPTO + PRTO package, with fees","Needed for the START NOW payment step"],
+ ["The engagement letter","So it can be signed online"],
+ ["SiteGround access and your logo files","For the website launch"]
+];
+const DECIDED=[
+ ["Operations first","Then funnels and workflows, then the website (Nov 10)"],
+ ["New clients start in SmartFunnels Pro","Existing matters move over later (Nov 10)"],
+ ["Few client emails at first","Each one approved before it goes live (Nov 10)"],
+ ["Tasks come later","Get comfortable with the board first (Nov 10)"],
+ ["One system, both languages","Spanish built in, not a separate copy (Oct 28)"],
+ ["Weekly check-ins on Tuesdays","Same time each week"]
+];
+const ICON={
+ home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>',
+ pipe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg>',
+ bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>',
+ card:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>',
+ move:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h12l-3-3M20 17H8l3 3"/></svg>',
+ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg>',
+ chev:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
+};
+const PILL={live:['live','Live'],build:['build','Being built'],next:['next','Next']};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* journey */
+function selStep(i){
+  $$('.step').forEach((s,k)=>s.classList.toggle('sel',k===i));
+  const j=JOURNEY[i],p=PILL[j.st];
+  $('#stepDetail').innerHTML=`<div class="big">${i+1}</div><div><span class="pill ${p[0]}"><i></i>${p[1]}</span><h3 class="h-ui" style="margin-top:8px">${j.n}</h3><p>${j.d}</p><ul>${j.items.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+}
+$('#steps').innerHTML=JOURNEY.map((j,i)=>{const p=PILL[j.st];return `<button class="step ${j.st}" data-i="${i}"><div class="dot">${ICON[j.ic]}</div><h4>${j.n}</h4><span class="pill ${p[0]}"><i></i>${p[1]}</span></button>`}).join('');
+$$('.step').forEach(b=>b.onclick=()=>selStep(+b.dataset.i));
+selStep(2);
+
+/* pipeline */
+let num=0;
+$('#lanes').innerHTML=PHASES.map(ph=>{const list=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''} reveal"><div class="lane-h"><h3>${ph.name}</h3><small>${list.length} stages</small></div><div class="cards">${list.map(s=>{num++;return `<button class="st" data-n="${esc(s.n)}"><span class="n">${num}</span>${esc(s.n)}</button>`}).join('')}</div></div>`}).join('');
+function openDrawer(n){
+  const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);
+  $$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.n===n));
+  $('#dPhase').textContent=ph.name+' · '+ph.sub; $('#dName').textContent=s.n; $('#dHow').textContent=s.how;
+  $('#dAuto').innerHTML=s.auto.map(a=>`<li>${esc(a)}</li>`).join('');
+  $('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on');
+}
+$$('.st').forEach(b=>b.onclick=()=>openDrawer(b.dataset.n));
+
+/* automations */
+const KIND={email:'Email to the client',notify:'Alert to your team',task:'Task for your team',opp:'Moves the card',tag:'Adds a tag',wait:'Waits',if:'Checks',end:'Stops',doc:'Sends for e-signature',review:'Review request',note:'Note'};
+const MSGS=[];
+function clean(t){return String(t).replace(/^Specific user: /,'')}
+function stepBox(s){
+  let peek='';
+  if(s.m&&(s.m.body||s.m.desc)){MSGS.push(s.m);peek=`<button class="peek" data-m="${MSGS.length-1}" data-k="${s.k}">Read it</button>`}
+  let label=s.d;
+  if(s.k==='opp')label=s.d.replace(/^Pipeline: Services · /,'').replace(/ · Status: Open.*$/,'').replace(/^Stage: /,'Card moves to ').replace(/^Status: /,'Marked ');
+  if(s.k==='tag')label='Tag: '+s.d;
+  return `<div class="node"><div class="box"><small>${KIND[s.k]||''}</small><span>${esc(label)}</span>${s.c?`<em>To confirm: ${esc(s.c)}</em>`:''}${peek}</div><div class="arr"></div></div>`;
+}
+function branchBox(s){
+  let rows='';
+  if(s.branches){rows=s.branches.map(b=>`<div class="row"><b>${esc(b.l)}</b>${b.s.map(x=>chip(x)).join('')}</div>`).join('')}
+  else{rows=`<div class="row"><b>Still waiting</b>${(s.yes||[]).map(x=>chip(x)).join('')}</div><div class="row"><b>Done</b>${(s.no||[]).map(x=>chip(x)).join('')}</div>`}
+  return `<div class="node"><div class="branch"><small>${esc(s.d.replace(/^Condition: /,'Checks: '))}</small>${rows}</div><div class="arr"></div></div>`;
+}
+function chip(x){
+  let peek='';if(x.m&&(x.m.body||x.m.desc)){MSGS.push(x.m);peek=` <button class="peek" style="font:700 11.5px 'Plus Jakarta Sans';color:#0A3D75;text-decoration:underline" data-m="${MSGS.length-1}" data-k="${x.k}">read</button>`}
+  let t=x.k==='wait'?'Wait '+x.d:x.k==='end'?x.d:(KIND[x.k]||x.t)+(x.k==='opp'?': '+x.d.replace(/^Stage: |^Status: /,''):'');
+  return `<span class="chip">${esc(t)}${peek}</span>`;
+}
+const FSTATE={f1:['build','Drafted · off'],f2:['next','Planned'],f3:['next','Planned'],f4:['next','Planned']};
+$('#folders').innerHTML=FOLDERS.map((f,fi)=>{const list=WF.filter(w=>w.f===f.id),st=FSTATE[f.id];return `<div class="card folder reveal"><div class="folder-h"><div class="fn">${fi+1}</div><div><h3>${esc(f.name)}</h3><p>${esc(f.sub)}</p></div><span class="pill ${st[0]}"><i></i>${st[1]}</span></div><div class="autos">${list.map(w=>{
+  const trig=w.trigs.map(t=>`<div class="node"><div class="box trig"><small>Starts when</small><span>${esc(t.t)}</span>${t.c?`<em>${esc(t.c)}</em>`:''}</div><div class="arr"></div></div>`).join('');
+  const steps=w.steps.filter(s=>s.k!=='note').map(s=>(s.k==='if')?branchBox(s):stepBox(s)).join('');
+  return `<div class="auto"><button class="auto-b" aria-expanded="false"><div><h4>${esc(w.name)}</h4><p>${esc(w.why)}</p></div><span class="chev">${ICON.chev}</span></button><div class="auto-d"><div><div class="chain">${trig}${steps}</div></div></div></div>`}).join('')}</div></div>`}).join('');
+$$('.auto-b').forEach(b=>b.onclick=()=>{const a=b.parentElement,o=!a.classList.contains('open');a.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+document.addEventListener('click',e=>{
+  const p=e.target.closest('.peek');if(!p)return;e.stopPropagation();
+  const m=MSGS[+p.dataset.m],k=p.dataset.k;
+  const hl=t=>esc(t).replace(/\{\{[^}]+\}\}/g,x=>`<span class="mf">${x.includes('first_name')?'First name':x.includes('mark_to_register')?'Their trademark':x.includes('.name')?'Client name':x.includes('email')?'Email':x.includes('phone')?'Phone':'Detail'}</span>`);
+  $('#mTo').textContent=k==='email'?'Email to the client':k==='notify'?'Alert to '+clean(m.to||'your team'):'Task'+(m.assign?' for '+m.assign:'')+(m.due?' · due '+m.due.toLowerCase():'');
+  $('#mSubj').innerHTML=hl(m.subj||m.title||'');
+  $('#mBody').innerHTML=hl(m.body||m.desc||'');
+  $('#msg').classList.add('on');$('#scrim').classList.add('on');
+});
+
+/* next */
+const todo=a=>a.map(([b,s])=>`<li><span class="bx"></span><div><b>${b}</b><span>${s}</span></div></li>`).join('');
+$('#todoUs').innerHTML=todo(US);$('#todoThem').innerHTML=todo(THEM);
+$('#decided').innerHTML=DECIDED.map(([b,s])=>`<div>${ICON.check}<div><b>${b}</b><span>${s}</span></div></div>`).join('');
+$('#doorOpen').textContent=US.length+THEM.length;
+$('#upd').textContent=UPDATED;
+
+/* close */
+function closeAll(){$('#drawer').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');$('#msg').classList.remove('on');$('#scrim').classList.remove('on');$$('.st').forEach(b=>b.classList.remove('sel'))}
+$('#scrim').onclick=closeAll;$$('[data-close]').forEach(b=>b.onclick=closeAll);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+function arm(){$$('.view.on .reveal:not(.in)').forEach(el=>io.observe(el))}
+
+/* routing */
+function go(v){
+  if(!document.getElementById('v-'+v))v='home';
+  $$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.go===v));
+  window.scrollTo({top:0,behavior:'instant'});
+  if(v==='home'){setTimeout(()=>{$('#ringArc').style.strokeDashoffset=314.16*(1-2/6);$('#railFill').style.width=(2/5*100)+'%'},250)}
+  try{history.replaceState(null,'','#'+v)}catch(e){}
+  setTimeout(arm,30);
+}
+$$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(b.dataset.go)}));
+go((location.hash||'#home').slice(1));
+window.addEventListener('hashchange',()=>go((location.hash||'#home').slice(1)));
+</script>
+</body>
+</html>
