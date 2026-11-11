@@ -26,7 +26,6 @@ a{color:inherit}
 .ph .eyebrow{color:var(--navy2)}
 .pad{padding-top:28px}
 .live-pill{margin-top:16px!important;display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 14px;font:600 13.5px var(--ui);color:#fff!important}
-@media (min-width:761px){.live-pill{white-space:nowrap}}
 .live-pill span{flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--green)}
 .eyebrow{font:700 12px var(--ui);letter-spacing:.18em;text-transform:uppercase}
 .disp{font-family:var(--disp);font-weight:700;letter-spacing:-.01em}
@@ -59,7 +58,7 @@ a{color:inherit}
 .pc{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
 .pc .ic{width:44px;height:44px;border-radius:12px;background:var(--pale);display:grid;place-items:center;color:var(--navy);flex-shrink:0}
 .pc .ic svg{width:22px;height:22px}
-.pc.you{background:var(--navy2);border-color:var(--navy2)}.pc.you .ic{background:var(--green)}.pc.you small{color:var(--green)}.pc.you b{color:#fff}.pc.you span{color:rgba(255,255,255,.75)}
+.pc.you{background:var(--navy2);border-color:var(--navy2)}.pc.you .ic{background:var(--green)}.pc.you small{color:var(--green)}.pc.you b{color:#fff}.pc.you span{color:rgba(255,255,255,.75)}.pc.you .plist{color:#fff}
 .pc small{display:block;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .pc b{display:block;font:700 16px/1.35 var(--ui);color:var(--navy);margin:3px 0 2px}
 .pc span{font-size:13.5px;color:var(--muted)}
@@ -113,7 +112,7 @@ a{color:inherit}
 .abtn .bolt{flex-shrink:0;width:30px;height:30px;border-radius:9px;background:var(--navy);color:var(--green);display:grid;place-items:center}
 .abtn .bolt svg{width:16px;height:16px}
 .abtn b{display:block;font:700 14px/1.3 var(--ui);color:var(--navy)}
-.abtn span{font-size:13px;color:var(--muted)}
+.abtn span{font-size:13px;color:var(--muted)}.abtn>span:nth-child(2){flex:1;min-width:0;text-align:left}
 .abtn em{margin-left:auto;align-self:center;font:700 12px var(--ui);color:var(--navy2);font-style:normal;white-space:nowrap}
 
 /* workspace */
@@ -220,6 +219,13 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 .dbody{padding:22px 24px;overflow:auto}
 .dbody h4{margin:0 0 6px;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .dbody p{margin:0 0 20px}
+.stnote{border-radius:12px;padding:10px 12px;margin:0 0 18px;background:var(--soft);border:1px solid var(--line);font-size:13px}.stnote b{display:block;font:700 12px var(--ui);color:var(--navy)}.stnote.a{background:#FFF6DD;border-color:#F3D27A}.stnote.b{background:#EEF9DA;border-color:#C9E89A}
+.plist{margin:6px 0 8px;padding-left:18px;font-size:13.5px;line-height:1.5}.plist li{margin:2px 0}
+.card.later,.chip.later{opacity:.62;background:var(--soft)}
+.wst{display:inline-block;margin-bottom:8px;font:700 11px var(--ui);padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--muted);border:1px solid var(--line)}.wst.b{background:#EEF9DA;color:#3C6A00;border-color:#C9E89A}
+.stag{display:table;margin-top:4px;font:700 10.5px var(--ui);padding:2px 7px;border-radius:999px}.stag.a{background:#FFF0C2;color:#7A5200}.stag.b{background:#E4F5C8;color:#3C6A00}
+.phnote{margin-top:10px!important;font-weight:600;color:var(--navy)!important}
+.go2{display:inline-block;margin-top:14px;background:var(--green);color:var(--navy);font:700 13px var(--ui);padding:9px 16px;border-radius:999px;text-decoration:none}
 .flow{list-style:none;margin:0 0 18px;padding:0}
 .flow li{position:relative;padding:0 0 12px 26px}
 .flow li::before{content:"";position:absolute;left:4px;top:7px;width:10px;height:10px;border-radius:50%;border:2px solid var(--navy);background:#fff}
@@ -249,13 +255,14 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
   .node{flex-direction:row;align-items:center;text-align:left;gap:14px;padding:8px 0}
   .node .num{display:none}.node .txt{flex:1}.node h3{margin:0 0 4px}.tags{justify-content:flex-start}
   .node .peek{margin:0;width:56px;height:46px}
-  .detail{grid-template-columns:1fr}
+  .detail,.detail.two{grid-template-columns:1fr}
   .lanes{grid-template-columns:1fr}.lane.hired .cards{grid-template-columns:1fr}
   .dl{grid-template-columns:1fr;padding:4px 18px}.dl>div:nth-last-child(2){border-bottom:1px solid var(--line)}
   .node .d{width:46px;height:46px}.node .d svg{width:20px;height:20px}.path .rail{left:23px;top:23px;bottom:23px}
   .pc.you{order:-1}
   .brand span{display:none}
-  .nav{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent);padding-right:24px}
+  .nav{gap:0;margin-left:auto}.nav a{padding:7px 6px;font-size:12.5px}.brand img{height:26px}
+  .mail .b{max-height:none}
   .map{padding:22px 18px}
   .wc{padding:22px 18px}
 }
@@ -265,7 +272,7 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 <body>
 <header class="bar"><div class="bar-in">
   <a class="brand" href="#overview" onclick="event.preventDefault();go('overview')"><img src="assets/logo.png" alt="Solid Rep"><span>Blueprint</span></a>
-  <nav class="nav" role="tablist" aria-label="Sections"><a href="#overview" data-s="overview" role="tab">Overview</a><a href="#automations" data-s="automations" role="tab">Automations</a><a href="#stages" data-s="stages" role="tab">Pipeline stages</a><a href="#decided" data-s="decided" role="tab">Decisions</a></nav>
+  <nav class="nav" role="tablist" aria-label="Sections"><a href="#overview" data-s="overview" role="tab">Overview</a><a href="#automations" data-s="automations" role="tab">Automations</a><a href="#stages" data-s="stages" role="tab">Stages</a><a href="#decided" data-s="decided" role="tab">Decisions</a></nav>
 </div></header>
 
 <main id="top">
@@ -273,14 +280,14 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 <section class="hero">
   <svg class="grid" aria-hidden="true"><defs><pattern id="g" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#fff"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>
   <div class="wrap hero-in">
-    <div><div class="eyebrow">Solid Rep Blueprint</div><h1 class="disp">How Solid Rep's client system is set up</h1><p>Your pipeline stages, forms and automations in SmartFunnels Pro, shown on the step of the client process where each one is used.</p><p class="live-pill"><span></span>Nothing is switched on yet. Folder 1 is drafted in your account and turned off.</p></div>
+    <div><div class="eyebrow">Solid Rep Blueprint</div><h1 class="disp">How Solid Rep's client system is set up</h1><p>Your pipeline stages, forms and automations in SmartFunnels Pro, shown on the step of the client process where each one is used.</p><p class="live-pill"><span></span>Nothing is switched on yet. 3 automations are set up and turned off; 12 are proposals for you to review.</p></div>
     <img class="hero-mark" src="assets/logo-white.png" alt="">
   </div>
 </section>
 <div class="wrap">
   <div class="pulse" id="pulse"></div>
   <section class="sec" id="map">
-    <div class="sh"><div><div class="eyebrow">Client process</div><h2 class="disp">The 8 steps a client goes through</h2><p>Select a step to see its pipeline stages, the form the client fills in, and the automations used at that step.</p></div></div>
+    <div class="sh"><div><div class="eyebrow">Client process</div><h2 class="disp">The 8 steps a client goes through</h2><p>Select a step to see its pipeline stages, the form the client fills in, and the automations used at that step. Stage numbers match the Stages tab.</p></div></div>
     <div class="map">
       <div class="path" id="path"><div class="rail"><i id="railFill"></i></div></div>
       <div class="detail" id="detail" aria-live="polite"></div>
@@ -290,16 +297,16 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 </div>
 
 <div class="view" id="v-automations">
-  <div class="ph"><div class="wrap"><div class="eyebrow">Automations</div><h1 class="disp">Proposed automations (15)</h1><p>Organized in 4 folders, named the same way in your account. Select one to see what starts it, each step in order, and the exact message it sends.</p></div></div>
+  <div class="ph"><div class="wrap"><div class="eyebrow">Automations</div><h1 class="disp">Automations (15)</h1><p>Grouped by part of the client process. Select one to see what starts it, each step in order, and the exact message it sends.</p></div></div>
   <div class="wrap pad">
-    <div class="callout reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>These are proposals.</b> Nothing reaches a client until you and Alice approve it and we test it on a test contact first. The yellow notes are the questions to settle together.<div style="margin-top:8px;font-size:13px;color:var(--muted)"><b>Words you'll see:</b> a <b>card</b> is one client on your pipeline board · a <b>tag</b> is a label on their record · the <b>opportunity owner</b> is the team member responsible for that card · <b>stale</b> means no activity for a while.</div></div></div>
+    <div class="callout reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>Nothing here reaches a client until you and Alice approve it</b> and we test it with practice messages first. Yellow notes are questions to settle together. Grey steps are tasks for your team; those stay off at first, as decided Nov 10. To pick the first ones to switch on or answer a question, reply to Trey's email with the automation name, or bring it to Tuesday's session.<div style="margin-top:8px;font-size:13px;color:var(--muted)">A <b>card</b> is one client on your pipeline board. The <b>card owner</b> is the team member responsible for it.</div></div></div>
     <div class="ftabs" id="ftabs" role="tablist"></div>
     <div class="ws"><div class="wl" id="wl"></div><div class="wc" id="wc"></div><div class="wp" id="wp"></div></div>
   </div>
 </div>
 
 <div class="view" id="v-stages">
-  <div class="ph"><div class="wrap"><div class="eyebrow">Pipeline</div><h1 class="disp">Your Services pipeline: 26 stages</h1><p>Select a stage to see how a client reaches it and what is proposed next. A ⚡ means a proposed automation runs at that stage.</p></div></div>
+  <div class="ph"><div class="wrap"><div class="eyebrow">Pipeline</div><h1 class="disp">Your Services pipeline: 26 stages</h1><p>Select a stage to see what moves a card there and which proposed automations run at it. One automation is proposed for every stage: if a card sits for 5 days, its owner gets an alert.</p><p class="phnote">Your first 10 clients are already cards on this board. Until automations are switched on, your team moves cards and sends client emails by hand.</p><a class="go2" href="${BOARD}" id="boardLink" target="_blank" rel="noopener">Open the pipeline board in your account ↗</a></div></div>
   <div class="wrap pad"><div class="lanes" id="lanes"></div></div>
 </div>
 
@@ -311,18 +318,19 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 <footer><div class="wrap foot"><div>Built and kept current by <b>Brands In Purpose</b></div><div id="upd"></div></div></footer>
 
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Stage details"><div class="dtop"><button class="x" data-close aria-label="Close">✕</button><small id="dPh"></small><h3 id="dN"></h3></div><div class="dbody"><h4>How a client gets here</h4><p id="dHow"></p><h4>What we've proposed next</h4><ul class="flow" id="dAuto"></ul><p class="hint">To confirm with Alice before anything is switched on.</p></div></aside>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Stage details"><div class="dtop"><button class="x" data-close aria-label="Close">✕</button><small id="dPh"></small><h3 id="dN"></h3></div><div class="dbody"><div id="dSt"></div><h4>What moves the card here</h4><p id="dHow"></p><h4>Proposed automations at this stage</h4><div class="alist" id="dAuto"></div><p class="hint" style="margin-top:14px">Nothing here is switched on until Alice approves it.</p></div></aside>
 <div class="lb" id="lb" role="dialog" aria-label="Screenshot"><figure><img id="lbImg" alt=""><figcaption><span id="lbCap"></span><button class="x" data-close aria-label="Close">✕</button></figcaption></figure></div>
 
 <script>
 /* ============ CONTENT (update at every harvest) ============ */
 const UPDATED={date:"Wednesday, November 11, 2026",what:"Your Blueprint, version 2"};
 const PULSE=[
- {k:"last",label:"Last session · Nov 10",b:"Your 10 beta clients are imported",s:"The automation plan went to you for Alice's review"},
- {k:"next",label:"Next session · Tue Nov 17",b:"Alice's answer on the stages",s:"12:30 PM Central · 2:30 PM Puerto Rico"},
- {k:"you",label:"Waiting on your team",b:"Alice's review · Stripe products · test contacts",s:"Before Tue Nov 17: Alice looks over the stages and the yellow questions in Automations. Reply to Trey anytime."}
+ {k:"last",label:"Last session · Nov 10",b:"Your first 10 clients are in the system",s:"The automation plan went to you for Alice's review"},
+ {k:"next",label:"Next session · Tue Nov 17",b:"We go through your answers together",s:"12:30 PM Central · 2:30 PM Puerto Rico"},
+ {k:"you",label:"Waiting on your team · before Tue Nov 17",b:"5 things to send or answer",list:["The price of each package and its filing fee","The final engagement letter text","Set up the orientation and legal consult calendars with Trey","Answer the yellow questions in Automations","A test email and phone number for practice messages"],s:"Reply to Trey's email anytime, or bring it to Tuesday's session."}
 ];
 const ACCOUNT="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos";
+const BOARD=ACCOUNT+"/opportunities/list";
 const SHOTS={
  startnow:{src:"shots/start-now.jpg",cap:"START NOW, step 1 of 3",href:"https://link.smartfunnelspro.com/widget/survey/K2y4RlSEieUp5uSP8IvJ",cta:"Open the form"},
  worksheet:{src:"shots/worksheet.jpg",cap:"Trademark Registration Worksheet, step 1 of 4",href:"https://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP",cta:"Open the worksheet"},
@@ -340,13 +348,13 @@ const STEPS=[
  {n:"Registration and closing",ic:"award",d:"The client receives the registration certificate and a request for a Google review, and the card is closed with the right status.",stages:["Share Registration Certificate","Closed","Abandoned","Not Hired"],autos:["S4.4","S4.5"]}
 ];
 const DECIDED=[
- ["Operations first","Then funnels and workflows, then the website (Nov 10)"],
+ ["Your client process first","Then your sign-up pages, then the website (Nov 10)"],
  ["New clients start in SmartFunnels Pro","Existing matters move over later (Nov 10)"],
- ["Few client emails at first","You and Alice pick the first wave from the proposals below (Nov 10)"],
- ["Tasks come later","Get comfortable with the board first; the task steps below wait until you're ready (Nov 10)"],
- ["One system, both languages","Spanish built in, not a separate copy (Oct 28)"],
+ ["Few client emails at first","You and Alice pick the first wave from the proposals in Automations (Nov 10)"],
+ ["Tasks come later","Get comfortable with the board first; the task steps inside the proposals stay off at first (Nov 10)"],
+ ["Check-ins on Tuesdays","Next one Tuesday, November 17 (Nov 10)"],
  ["Payments through your own Stripe","Connected (Nov 6)"],
- ["Check-ins on Tuesdays","Next one Tuesday, November 17 (Nov 10)"]
+ ["One system, both languages","Spanish built in, not a separate copy (Oct 28)"]
 ];
 const PHASES = [
  {id:"p", name:"Prospect", sub:"Before they hire you"},
@@ -358,7 +366,7 @@ const PHASES = [
 const STAGES = [
  {p:"p", n:"New Prospect", how:"Someone reaches out: the contact form, a call, a chat, or a booking.", auto:["Your team gets an alert with their details","They get a short welcome email"], st:"today"},
  {p:"p", n:"Preliminary Factual Information", how:"They fill in the START NOW form on your site.", auto:["Their answers save to their client record","If they stop before paying, a friendly reminder goes out"], st:"built", note:"The START NOW form is built with your wording."},
- {p:"p", n:"Orientation", how:"They book the 15-minute orientation call.", auto:["Confirmation and reminder emails","The call shows on your shared Google Calendar"], st:"ask", note:"Needs the orientation calendar (Alice's Google login)."},
+ {p:"p", n:"Orientation", how:"They book the 15-minute orientation call.", auto:["Confirmation and reminder emails","The call shows on your shared Google Calendar"], st:"ask", note:"Needs the orientation calendar."},
  {p:"p", n:"Engagement Letter w/ Bill or Retainer", how:"Your team sends the engagement letter with the bill or retainer.", auto:["They sign online","The signed copy saves under Documents in their client file, and a copy goes to them and to your team"], st:"ask", note:"Waiting on the final letter text."},
  {p:"p", n:"Legal Consult", how:"They book the 45-minute legal consult.", auto:["Confirmation and reminder emails","A task for the attorney before the call"], st:"ask", note:"Needs the consultation calendar."},
  {p:"h", n:"New Service", how:"Automatic when they pay for a package plus the filing fee.", auto:["Receipt and welcome email","Your team gets a 'new client' alert"], st:"ask", note:"Needs each package price and its filing fee."},
@@ -430,7 +438,7 @@ WF.push(
  steps:[
   {k:"opp",t:"Create/update opportunity",d:"Pipeline: Services · Stage: New Prospect · Status: Open"},
   {k:"notify",t:"Send internal notification",d:"Email to your team",m:{to:NOTE_TO,subj:"New prospect: {{contact.name}}",body:"{{contact.name}} reached out through the website.\n\nEmail: {{contact.email}}\nPhone: {{contact.phone}}\n\nTheir card is in New Prospect."}},
-  {k:"email",t:"Send email",d:"Thank-you to the prospect",m:{subj:"Thanks for reaching out to Solid Rep",body:"Hi {{contact.first_name}},\n\nThank you for contacting Solid Rep. We've received your message, and a member of our team will be in touch shortly.\n\nIf you'd like to talk sooner, you can book a free 15-minute orientation call here:\n[Orientation booking link]"+SIG},c:"Is orientation free? Booking link comes once the calendar exists"}
+  {k:"email",t:"Send email",d:"Thank-you to the prospect",m:{subj:"Thanks for reaching out to Solid Rep",body:"Hi {{contact.first_name}},\n\nThank you for contacting Solid Rep. We've received your message, and a member of our team will be in touch shortly.\n\nIf you'd like to talk sooner, you can book a 15-minute orientation call here:\n[Orientation booking link]"+SIG},c:"Is orientation free? Booking link comes once the calendar exists"}
  ]},
 {id:"S2.2",f:"f2",name:"S2.2 · Call booked → Move card + alert",merged:"Combines Orientation booked and Legal Consult booked: same pattern, one fork.",why:"Booking either call moves the card to the right stage and notifies the right person.",stages:["Orientation","Legal Consult"],
  trigs:[{t:"Customer booked appointment",d:"Filter: Calendar is Orientation",c:"Needs the Orientation calendar"},{t:"Customer booked appointment",d:"Filter: Calendar is Legal Consult",c:"Needs the Legal Consult calendar"}],
@@ -460,8 +468,8 @@ WF.push(
 {id:"S3.1",f:"f3",name:"S3.1 · Work stages → Task for the owner",merged:"Combines the 6 work stages and the 3 deadline stages: same steps, one list.",why:"Each working stage creates a task for whoever owns the card, so open work is visible.",stages:["Initial Legal Assessment","Conflict Search Report Draft","Application Draft","Application Filing","Filing Statement of First Use","Response to Office Action","Extension of Time","Grace Period","Waiting for Third Party"],
  trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is any of the 9 stages listed"}],
  steps:[
-  {k:"task",t:"Add task",d:"Task for the opportunity owner",m:{title:"{{contact.name}}: next step on their trademark",desc:"{{contact.name}}'s card just moved to a new stage. Open the card to see the stage and do the work for it. For Extension of Time, Grace Period and Response to Office Action, change this task's due date to the real legal deadline.",assign:"Opportunity owner",due:"In 3 days"},c:"Who owns each stage, and is 3 days right?"},
-  {k:"notify",t:"Send internal notification",d:"Email to the owner",m:{to:"Opportunity owner",subj:"New task: {{contact.name}}",body:"{{contact.name}}'s card moved to a new stage and a task is waiting for you."}}
+  {k:"task",t:"Add task",d:"Task for the card owner",m:{title:"{{contact.name}}: next step on their trademark",desc:"{{contact.name}}'s card just moved to a new stage. Open the card to see the stage and do the work for it. For Extension of Time, Grace Period and Response to Office Action, change this task's due date to the real legal deadline.",assign:"card owner",due:"In 3 days"},c:"Who owns each stage, and is 3 days right?"},
+  {k:"notify",t:"Send internal notification",d:"Email to the owner",m:{to:"card owner",subj:"New task: {{contact.name}}",body:"{{contact.name}}'s card moved to a new stage and a task is waiting for you."}}
  ]},
 {id:"S3.2",f:"f3",name:"S3.2 · Attorney approval → Task for Alice",why:"Both attorney approval stages go straight to Alice with a task and an alert.",stages:["Conflict Search Report Approval by Attorney","Application Draft Approval by Attorney"],
  trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is either approval stage"}],
@@ -472,7 +480,7 @@ WF.push(
 {id:"S3.3",f:"f3",name:"S3.3 · Card stuck 5 days → Alert the owner",why:"Any card that sits for 5 days without activity gets flagged.",stages:["Every stage"],
  trigs:[{t:"Stale opportunities",d:"Filters: In pipeline is Services · Duration: 5 days",c:"Is 5 days right?"}],
  steps:[
-  {k:"notify",t:"Send internal notification",d:"Email to the owner",m:{to:"Opportunity owner",subj:"Stuck for 5 days: {{contact.name}}",body:"{{contact.name}}'s card hasn't moved in 5 days. Take a look and move it forward, or add a note on what you're waiting for."}}
+  {k:"notify",t:"Send internal notification",d:"Email to the owner",m:{to:"card owner",subj:"Stuck for 5 days: {{contact.name}}",body:"{{contact.name}}'s card hasn't moved in 5 days. Take a look and move it forward, or add a note on what you're waiting for."}}
  ]}
 );
 WF.push(
@@ -484,7 +492,7 @@ WF.push(
   {k:"if",t:"If / else",d:"Condition: Opportunity stage is still Application Draft Approval by Client",
    yes:[
     {k:"email",t:"Send email",d:"Reminder",m:{subj:"Reminder: your application is waiting for your approval",body:"Hi {{contact.first_name}},\n\nA quick reminder that your trademark application is ready and waiting for your approval. Reply to this email to approve it or ask for changes, and we'll take it from there."+SIG}},
-    {k:"task",t:"Add task",d:"Follow up",m:{title:"Follow up on draft approval: {{contact.name}}",desc:"No approval yet after a reminder. Call {{contact.phone}}.",assign:"Opportunity owner",due:"Today"}}],
+    {k:"task",t:"Add task",d:"Follow up",m:{title:"Follow up on draft approval: {{contact.name}}",desc:"No approval yet after a reminder. Call {{contact.phone}}.",assign:"card owner",due:"Today"}}],
    no:[{k:"end",t:"End",d:"They approved. Your team moves the card on."}]}
  ]},
 {id:"S4.2",f:"f4",name:"S4.2 · Milestones → Update the client",why:"The client hears from you at each milestone by email.",stages:["Application Filing","Published for Opposition","Response to Office Action"],
@@ -503,7 +511,7 @@ WF.push(
    yes:[
     {k:"email",t:"Send email",d:"Nudge",m:{subj:"We're waiting on a few details from you",body:"Hi {{contact.first_name}},\n\nTo keep your trademark moving, we need a few details from you. Please check our last message, or just reply here and we'll walk you through it."+SIG}},
     {k:"wait",t:"Wait",d:"4 days"},
-    {k:"task",t:"Add task",d:"Call",m:{title:"Call {{contact.name}}: still waiting on them",desc:"Still no response after a reminder. Call {{contact.phone}}.",assign:"Opportunity owner",due:"Today"}}],
+    {k:"task",t:"Add task",d:"Call",m:{title:"Call {{contact.name}}: still waiting on them",desc:"Still no response after a reminder. Call {{contact.phone}}.",assign:"card owner",due:"Today"}}],
    no:[{k:"end",t:"End",d:"They responded"}]}
  ]},
 {id:"S4.4",f:"f4",name:"S4.4 · Registered → Certificate + review",why:"When the trademark is registered, the client receives the certificate, then a request for a Google review.",stages:["Share Registration Certificate"],
@@ -545,15 +553,15 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const WFmap=Object.fromEntries(WF.map(w=>[w.id,w]));
 const stageNo=Object.fromEntries(STAGES.map((s,i)=>[s.n,i+1]));
 const plain=t=>String(t).replace(/^S\d\.\d · /,'');
-const mf=t=>esc(t).replace(/\{\{[^}]+\}\}/g,x=>`<span class="mf">${x.includes('first_name')?'First name':x.includes('mark_to_register')?'Their trademark':x.includes('.name')?'Client name':x.includes('email')?'Email':x.includes('phone')?'Phone':'Detail'}</span>`);
+const mf=t=>esc(t).replace(/https?:\/\/\S+/g,'<span class="mf">Worksheet button</span>').replace(/\{\{[^}]+\}\}/g,x=>`<span class="mf">${x.includes('first_name')?'First name':x.includes('mark_to_register')?'Their trademark':x.includes('.name')?'Client name':x.includes('email')?'Email':x.includes('phone')?'Phone':'Detail'}</span>`);
 
 /* pulse */
 const PIC={last:IC.back,next:IC.cal,you:IC.hand};
-$('#pulse').innerHTML=PULSE.map(p=>`<div class="pc ${p.k==='you'?'you':''} reveal"><div class="ic">${PIC[p.k]}</div><div><small>${esc(p.label)}</small><b>${esc(p.b)}</b><span>${esc(p.s)}</span></div></div>`).join('');
+$('#pulse').innerHTML=PULSE.map(p=>`<div class="pc ${p.k==='you'?'you':''} reveal"><div class="ic">${PIC[p.k]}</div><div><small>${esc(p.label)}</small><b>${esc(p.b)}</b>${p.list?`<ol class="plist">${p.list.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`:''}<span>${esc(p.s)}</span></div></div>`).join('');
 
 /* map */
 let cur=-1;
-$('#path').insertAdjacentHTML('beforeend',STEPS.map((s,i)=>`<button class="node" data-i="${i}" aria-label="Step ${i+1}: ${esc(s.n)}"><span class="d">${IC[s.ic]}</span><span class="txt"><span class="num">STEP ${i+1}</span><h3>${esc(s.n)}</h3><span class="tags"><span class="tag">${s.stages.length} stage${s.stages.length>1?'s':''}</span>${s.autos.length?`<span class="tag">⚡ ${s.autos.length}</span>`:''}</span></span>${s.shot?`<span class="tags" style="margin-top:4px"><span class="tag z">form</span></span>`:''}</button>`).join(''));
+$('#path').insertAdjacentHTML('beforeend',STEPS.map((s,i)=>`<button class="node" data-i="${i}" aria-label="Step ${i+1}: ${esc(s.n)}"><span class="d">${IC[s.ic]}</span><span class="txt"><span class="num">STEP ${i+1}</span><h3>${esc(s.n)}</h3><span class="tags"><span class="tag">${s.stages.length} stage${s.stages.length>1?'s':''}</span>${s.autos.length?`<span class="tag">${s.autos.length} automation${s.autos.length>1?'s':''}</span>`:''}</span></span>${s.shot?`<span class="tags" style="margin-top:4px"><span class="tag z">form</span></span>`:''}</button>`).join(''));
 function pick(i){
   cur=i;const s=STEPS[i];
   $$('.node').forEach((n,k)=>n.classList.toggle('sel',k===i));
@@ -562,21 +570,30 @@ function pick(i){
   const mid=sh?`<button class="shot" data-zoom="${s.shot}"><img src="${sh.src}" alt="${esc(sh.cap)}"><span class="cap">${esc(sh.cap)}<span>⤢</span></span></button>${sh.href?`<a class="btn" style="margin-top:12px" href="${sh.href}" target="_blank" rel="noopener">${esc(sh.cta)} ↗</a>`:''}`:`<div class="ghost"><b>No form at this step</b>${s.autos.length?'The client receives emails and your team receives alerts and tasks. Open an automation to read them.':'Your team moves the card.'}</div>`;
   const autos=s.autos.length?s.autos.map(id=>{const w=WFmap[id];return `<button class="abtn" data-wf="${id}"><span class="bolt">${IC.bolt}</span><span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span></span><em>Open →</em></button>`}).join(''):`<div class="ghost"><b>No automation at this step yet</b>${esc(s.note||'')}</div>`;
   $('#detail').classList.toggle('two',!sh);
-  $('#detail').innerHTML=`<div class="dt"><h4>Step ${i+1} of ${STEPS.length}</h4><h3>${esc(s.n)}</h3><p>${esc(s.d)}</p><h4>Pipeline stages in this step</h4><div class="slist">${s.stages.map(n=>`<button class="sbtn" data-stage="${esc(n)}"><i>${stageNo[n]}</i>${esc(n)}</button>`).join('')}</div>${s.note&&s.autos.length?`<p class="hint" style="margin-top:12px">${esc(s.note)}</p>`:''}</div>${sh?`<div><h4>Form the client fills in</h4>${mid}</div>`:''}<div><h4>Automations at this step</h4><div class="alist">${autos}</div></div>`;
+  $('#detail').innerHTML=`<div class="dt"><h4>Step ${i+1} of ${STEPS.length}</h4><h3>${esc(s.n)}</h3><p>${esc(s.d)}</p><h4>Pipeline stages in this step <span style="text-transform:none;letter-spacing:0;font-weight:600">· numbers match the Stages tab</span></h4><div class="slist">${s.stages.map(n=>`<button class="sbtn" data-stage="${esc(n)}"><i>${stageNo[n]}</i>${esc(n)}</button>`).join('')}</div>${s.note&&s.autos.length?`<p class="hint" style="margin-top:12px">${esc(s.note)}</p>`:''}</div>${sh?`<div><h4>Form the client fills in</h4>${mid}</div>`:''}<div><h4>Automations at this step</h4><div class="alist">${autos}</div></div>`;
 }
 $$('.node').forEach(n=>n.onclick=()=>{pick(+n.dataset.i);if(innerWidth<760)$('#detail').scrollIntoView({behavior:'smooth',block:'start'})});
 pick(3);
 
 /* workspace */
 let curF='f1',curW='S1.1',curM=null;const MS=[];
+function trigPlain(s){const d=s.d||'',t=s.t;let m;
+ if(t==='Survey submitted')return /START NOW/.test(d)?'A client finishes the START NOW form':'A client sends back the Registration Worksheet';
+ if(t==='Payment received')return 'A client pays a bill or retainer';
+ if(t==='Form submitted')return "Someone sends your website's contact form";
+ if(t==='Customer booked appointment')return /Orientation/.test(d)?'Someone books an orientation call':'Someone books a legal consult';
+ if(t==='Documents & contracts')return 'The client signs the engagement letter';
+ if(t==='Stale opportunities')return "A card hasn't moved in 5 days";
+ if(t==='Pipeline stage changed'){if(/9 stages/.test(d))return 'A card is moved to one of the 9 work stages listed above';if(/either approval/.test(d))return 'A card is moved to an attorney approval stage';if(/3 stages/.test(d))return 'A card is moved to one of the 3 milestone stages';if(m=d.match(/Pipeline stage is (.+)$/))return 'A card is moved to '+m[1];}
+ return t}
 function card(s,isTrig){
-  if(isTrig) return `<li class="t"><span class="dot">${IC.bolt}</span><div class="card"><small>Starts when</small><b>${esc(s.t)}</b><span class="sub">${esc(s.d.replace(/^Filters?: /,""))}</span>${s.c?`<span class="q">${esc(s.c)}</span>`:''}</div></li>`;
+  if(isTrig) return `<li class="t"><span class="dot">${IC.bolt}</span><div class="card"><small>Starts when</small><b>${esc(trigPlain(s))}</b>${s.c?`<span class="q">${esc(s.c)}</span>`:''}</div></li>`;
   return `<li><span class="dot">${s._n}</span>${body(s)}</li>`;
 }
-const KIND={email:'Email to the client',notify:'Alert to your team',task:'Task for your team',opp:'Pipeline',tag:'Tag',wait:'Wait',doc:'E-signature',review:'Review request',end:'Ends'};
+const KIND={email:'Email to the client',notify:'Alert to your team',task:'Task for your team',opp:'Card moves',tag:'Their record',wait:'Wait',doc:'E-signature',review:'Review request',end:'Ends'};
 function label(s){
-  if(s.k==='opp')return s.d.replace(/^Pipeline: Services · /,'').replace(/ · Status: Open.*$/,'').replace(/ · Value.*$/,'').replace(/^Stage: /,'Card moves to ').replace(/^Status: /,'Marked ');
-  if(s.k==='tag')return 'Tagged '+s.d;
+  if(s.k==='opp')return s.d.replace(/^Pipeline: Services · /,'').replace(/ · Status: Open.*$/,'').replace(/ · Value.*$/,'').replace(/^Stage: /,'Card moves to ').replace(/^Status: Won.*$/,'Marked as a completed matter').replace(/^Status: Lost.*$/,'Marked as not hired, with the reason your team picks').replace(/^Status: /,'Marked ');
+  if(s.k==='tag')return s.d==='client-paid'?'Marked as paid on their record':'Labeled '+s.d;
   if(s.k==='wait')return 'Waits '+s.d;
   if(s.k==='email'||s.k==='notify'||s.k==='task')return s.m&&(s.m.subj||s.m.title)?'“'+(s.m.subj||s.m.title).replace(/\{\{[^}]+\}\}/g,'…')+'”':s.d;
   return s.d;
@@ -584,25 +601,25 @@ function label(s){
 function body(s){
   if(s.k==='if'){
     const rows=s.branches?s.branches.map(b=>[b.l,b.s]):[["Still waiting",s.yes||[]],["Done",s.no||[]]];
-    return `<div class="fork"><small>${esc(s.d.replace(/^Condition: /,'Checks: '))}</small>${rows.map(([l,list])=>`<div class="row"><b>${esc(l)}</b><div class="chips">${list.map(c=>chip(c)).join('')}</div></div>`).join('')}</div>`;
+    return `<div class="fork"><small>${esc((/calendar is/i.test(s.d)?'Which call did they book?':/stage is still/i.test(s.d)?'Checks: is the card still at this stage?':/stage is/i.test(s.d)?'Which stage?':s.d.replace(/^Condition: /,'Checks: ')))}</small>${rows.map(([l,list])=>`<div class="row"><b>${esc(l)}</b><div class="chips">${list.map(c=>chip(c)).join('')}</div></div>`).join('')}</div>`;
   }
   const m=s.m&&(s.m.body||s.m.desc);let id='';
   if(m){MS.push(s);id=MS.length-1}
-  return `<div class="card ${m?'msg':''}" ${m?`data-m="${id}" role="button" tabindex="0"`:''}>${m?'<span class="go">Read →</span>':''}<small>${KIND[s.k]||''}</small><b>${esc(label(s))}</b>${s.c?`<span class="q">To confirm: ${esc(s.c)}</span>`:''}</div>`;
+  return `<div class="card ${m?'msg':''} ${s.k==='task'?'later':''}" ${m?`data-m="${id}" role="button" tabindex="0"`:''}>${m?'<span class="go">Read →</span>':''}<small>${KIND[s.k]||''}${s.k==='task'?' · later':''}</small><b>${esc(label(s))}</b>${s.c?`<span class="q">To confirm: ${esc(s.c)}</span>`:''}</div>`;
 }
 function chip(c){
   const m=c.m&&(c.m.body||c.m.desc);let id='';if(m){MS.push(c);id=MS.length-1}
-  return `<div class="chip ${m?'msg':''}" ${m?`data-m="${id}" role="button" tabindex="0"`:''}><small>${KIND[c.k]||''}</small>${esc(c.k==='end'?c.d:label(c))}</div>`;
+  return `<div class="chip ${m?'msg':''} ${c.k==='task'?'later':''}" ${m?`data-m="${id}" role="button" tabindex="0"`:''}><small>${KIND[c.k]||''}${c.k==='task'?' · later':''}</small>${esc(c.k==='end'?c.d:label(c))}</div>`;
 }
-function renderTabs(){$('#ftabs').innerHTML=FOLDERS.map((f,i)=>`<button class="ftab ${f.id===curF?'on':''}" data-f="${f.id}" role="tab" aria-selected="${f.id===curF}"><b>${i+1}</b><span>${esc(f.name.replace(/^Services · \d /,''))}<small>${WF.filter(w=>w.f===f.id).length} proposed</small></span></button>`).join('');$$('.ftab').forEach(b=>b.onclick=()=>{curF=b.dataset.f;curW=WF.find(w=>w.f===curF).id;renderWS()})}
+function renderTabs(){$('#ftabs').innerHTML=FOLDERS.map((f,i)=>`<button class="ftab ${f.id===curF?'on':''}" data-f="${f.id}" role="tab" aria-selected="${f.id===curF}"><b>${i+1}</b><span>${esc(f.name.replace(/^Services · \d /,''))}<small>${WF.filter(w=>w.f===f.id).length} automations</small></span></button>`).join('');$$('.ftab').forEach(b=>b.onclick=()=>{curF=b.dataset.f;curW=WF.find(w=>w.f===curF).id;renderWS()})}
 function renderWS(){
   renderTabs();MS.length=0;
   const list=WF.filter(w=>w.f===curF);
-  $('#wl').innerHTML=list.map(w=>{const msgs=w.steps.reduce((a,s)=>a+(s.m?1:0)+(s.yes||[]).concat(s.no||[]).concat((s.branches||[]).flatMap(b=>b.s)).filter(x=>x.m).length,0);return `<button class="wi ${w.id===curW?'on':''}" data-w="${w.id}"><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span><em>${msgs} message${msgs===1?'':'s'}</em></button>`}).join('');
+  $('#wl').innerHTML=list.map(w=>{const all=w.steps.flatMap(s=>[s].concat(s.yes||[],s.no||[],(s.branches||[]).flatMap(b=>b.s)));const ce=all.filter(x=>x.k==='email'||x.k==='review'||x.k==='doc').length,tt=all.filter(x=>x.k==='task'||x.k==='notify').length;const msgs=[ce?`${ce} to the client`:'',tt?`${tt} for your team`:''].filter(Boolean).join(' · ')||'Behind the scenes';return `<button class="wi ${w.id===curW?'on':''}" data-w="${w.id}"><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span><em>${msgs}</em></button>`}).join('');
   $$('.wi').forEach(b=>b.onclick=()=>{curW=b.dataset.w;renderWS()});
   const w=WFmap[curW];let n=0;
   const steps=w.steps.filter(s=>s.k!=='note').map(s=>{s._n=++n;return card(s,false)}).join('');
-  $('#wc').innerHTML=`<h3>${esc(plain(w.name))}</h3><p>${esc(w.why)}</p><ol class="tl">${w.trigs.map(t=>card(t,true)).join('')}${steps}</ol>`;
+  $('#wc').innerHTML=`<span class="wst ${w.f==='f1'?'b':''}">${w.f==='f1'?'Set up in your account, turned off':'Proposal, not built yet'}</span><h3>${esc(plain(w.name))}</h3><p>${esc(w.why)}</p><ol class="tl">${w.trigs.map(t=>card(t,true)).join('')}${steps}</ol>`;
   $$('[data-m]').forEach(el=>{el.onclick=()=>showMsg(+el.dataset.m);el.onkeydown=e=>{if(e.key==='Enter')showMsg(+el.dataset.m)}});
   curM=MS.findIndex(s=>s.k==='email');if(curM<0)curM=MS.length?0:null;
   showMsg(curM);
@@ -614,16 +631,18 @@ function showMsg(i){
   if(i!==null&&MS[i]){const s=MS[i],m=s.m;const to=s.k==='email'?'To the client':s.k==='notify'?'Alert to '+String(m.to||'your team').replace(/^Specific user: /,''):'Task'+(m.assign?' for '+m.assign:'')+(m.due?' · due '+m.due.toLowerCase():'');
     mail=`<div class="mail"><div class="h"><small>${esc(to)}</small><b>${mf(m.subj||m.title||'')}</b></div><div class="b">${mf(m.body||m.desc||'')}</div></div>`}
   const shot=sh?`<h4>In your account</h4><button class="shot" data-zoom="${curW}"><img src="${sh.src}" alt="${esc(sh.cap)}"><span class="cap">${esc(sh.cap)}<span>⤢</span></span></button>`:'';
-  $('#wp').innerHTML=`<h4>${i!==null&&MS[i]?(MS[i].k==='email'?'The email':MS[i].k==='notify'?'The alert':'The task'):'Messages'}</h4>${mail}${shot}${link?`<a class="btn" href="${link}" target="_blank" rel="noopener">Open in your account ↗</a>`:`<p class="hint">Built in your account once you give the go-ahead.</p>`}`;
+  $('#wp').innerHTML=`<h4>${i!==null&&MS[i]?(MS[i].k==='email'?'The email':MS[i].k==='notify'?'The alert':'The task'):'Messages'}</h4>${mail}${shot}${link?`<a class="btn" href="${link}" target="_blank" rel="noopener">See it in your account ↗</a>`:`<p class="hint">Built in your account once you give the go-ahead.</p>`}`;
 }
 renderWS();
 function openWF(id){curW=id;curF=WFmap[id].f;renderWS();go('automations')}
 
 /* stages */
 let k=0;
-$('#lanes').innerHTML=PHASES.map(ph=>{const l=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''}"><div class="lane-h"><h3>${ph.name}</h3><small>${l.length} stages</small></div><div class="cards">${l.map(s=>`<button class="st" data-stage="${esc(s.n)}"><i>${++k}</i><span style="flex:1">${esc(s.n)}</span>${WF.some(w=>w.stages.includes(s.n))?'<span class="sb" title="Has a proposed automation">⚡</span>':''}</button>`).join('')}</div></div>`}).join('');
-function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);$$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.stage===n));$('#dPh').textContent=`Stage ${stageNo[n]} · ${ph.name}`;$('#dN').textContent=n;$('#dHow').textContent=s.how;$('#dAuto').innerHTML=s.auto.map(a=>`<li>${esc(a)}</li>`).join('');$('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on')}
+$('#lanes').innerHTML=PHASES.map(ph=>{const l=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''}"><div class="lane-h"><h3>${ph.name}</h3><small>${l.length} stages</small></div><div class="cards">${l.map(s=>`<button class="st" data-stage="${esc(s.n)}"><i>${++k}</i><span style="flex:1;min-width:0">${esc(s.n)}${s.st==='ask'?'<span class="stag a">Needs your answer</span>':s.st==='built'?'<span class="stag b">Built</span>':''}</span></button>`).join('')}</div></div>`}).join('');
+const STLBL={built:["Built, switched off","b"],ask:["Waiting on an answer from you","a"]};
+function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);$$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.stage===n));$('#dPh').textContent=`Stage ${stageNo[n]} · ${ph.name}`;$('#dN').textContent=n;const L=STLBL[s.st];$('#dSt').innerHTML=(L||s.note)?`<div class="stnote ${L?L[1]:''}">${L?`<b>${L[0]}</b>`:''}${s.note?`<span>${esc(s.note)}</span>`:''}</div>`:'';$('#dHow').textContent=s.how;const ws=WF.filter(w=>w.stages.includes(n));$('#dAuto').innerHTML=ws.length?ws.map(w=>`<button class="abtn" data-wf="${w.id}"><span class="bolt">${IC.bolt}</span><span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span></span><em>Open →</em></button>`).join(''):`<div class="ghost"><b>No automation proposed here yet</b>Your team handles this stage by hand.</div>`;$('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on')}
 
+$('#boardLink').href=BOARD;
 /* decided + footer */
 $('#dl').innerHTML=DECIDED.map(([b,s])=>{const m=s.match(/\(([^)]+)\)\s*$/);return `<div>${IC.check}<div><b>${esc(b)}</b><span>${esc(m?s.replace(m[0],'').trim():s)}</span></div><time>${m?esc(m[1]):''}</time></div>`}).join('');
 $('#upd').innerHTML=`Updated <b>${esc(UPDATED.date)}</b> · ${esc(UPDATED.what)}`;
@@ -641,7 +660,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
 /* reveal + nav highlight */
 const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.08});
 $$('.reveal').forEach(el=>io.observe(el));
-function go(v){if(!document.getElementById('v-'+v))v='overview';$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));$$('.nav a').forEach(a=>{const on=a.dataset.s===v;a.classList.toggle('on',on);a.setAttribute('aria-selected',on)});window.scrollTo({top:0});try{history.replaceState(null,'','#'+v)}catch(e){}}
+function go(v){closeAll();if(!document.getElementById('v-'+v))v='overview';$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));$$('.nav a').forEach(a=>{const on=a.dataset.s===v;a.classList.toggle('on',on);a.setAttribute('aria-selected',on)});window.scrollTo({top:0});try{history.replaceState(null,'','#'+v)}catch(e){}}
 $$('.nav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.s)}));
 window.addEventListener('hashchange',()=>go(location.hash.slice(1)));
 go((location.hash||'#overview').slice(1));
