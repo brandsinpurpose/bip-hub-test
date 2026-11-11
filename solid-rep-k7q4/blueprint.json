@@ -8,11 +8,11 @@
   "board": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list"
  },
  "updated": "Wednesday, November 11, 2026",
- "status": "Nothing is switched on yet. 3 automations are set up and turned off; 12 are proposals for you to review.",
+ "status": "Nothing is switched on yet: 3 automations are set up and turned off, and 12 are proposals for you to review.",
  "pulse": [
   {
    "k": "last",
-   "label": "Last session · Nov 10",
+   "label": "Last meeting · Nov 10",
    "b": "Your first 10 clients are in the system",
    "s": "The automation plan went to Fiarah to review with Alice"
   },
@@ -27,7 +27,7 @@
     "Answer the questions marked on each automation",
     "A test email and phone number for practice messages"
    ],
-   "s": "Reply to Trey's email anytime, or bring it to your next session.",
+   "s": "Reply to Trey's email anytime, or bring it to your next meeting.",
    "short": [
     "Package prices",
     "Engagement letter",
@@ -39,7 +39,7 @@
     null,
     null,
     {
-     "b": "Book a session",
+     "b": "Book a meeting",
      "href": "https://go.brandsinpurpose.com/session"
     },
     {
@@ -54,14 +54,14 @@
   {
    "ic": "video",
    "b": "Join our Zoom room",
-   "s": "For our booked sessions",
+   "s": "For our booked meetings",
    "href": "https://brandsinpurpose.com/zoom",
    "main": true
   },
   {
    "ic": "cal",
-   "b": "Book a session with Trey",
-   "s": "60-minute strategy session, included in your plan",
+   "b": "Book a meeting with Trey",
+   "s": "60 minutes on Zoom, included in your plan",
    "href": "https://go.brandsinpurpose.com/session"
   },
   {
@@ -97,7 +97,7 @@
   {
    "d": "Tue Nov 10, 2026",
    "t": "Working session 2",
-   "who": "Fiarah and Trey; Alice joined at the end",
+   "who": "Fiarah and Trey",
    "cov": [
     "The order of work: your client system first, then sign-up pages and automations, then the website",
     "Your first 10 clients from Clio, imported live during the call",
@@ -1449,10 +1449,10 @@
  "together": [
   {
    "ic": "cal",
-   "h": "Sessions",
-   "p": "Sessions are 60 minutes on Zoom and included in your plan. Book one whenever you want to work through something together.",
+   "h": "Meetings",
+   "p": "Meetings are 60 minutes on Zoom and included in your plan. Book one whenever you want to work through something together.",
    "cta": {
-    "b": "Book a session",
+    "b": "Book a meeting",
     "href": "https://go.brandsinpurpose.com/session"
    }
   },
@@ -1486,5 +1486,24 @@
   "view": "In your account this is one board: 26 stages, left to right, in exactly this order. The four groups are only here to make it easier to read. Prospect and Hired are Fiarah's own headings from her stage list; On hold and Ending pull out the pause and end stages, so Hired shows the working path from New Service to Share Registration Certificate.",
   "intro": "Select a stage to see what moves a card there and which proposed automations run at it. One automation is proposed for every stage: if a card sits for 5 days, its owner gets an alert.",
   "now": "Your first 10 clients are already cards on this board. Until automations are switched on, your team moves cards and sends client emails by hand."
- }
+ },
+ "now": {
+  "phases": [
+   "Your client system",
+   "Sign-up pages and automations",
+   "Website"
+  ],
+  "current": 0,
+  "line": "Your pipeline is set up and your first 10 clients are in. Nothing is switched on yet: 3 automations are set up and turned off, and 12 are proposals waiting on your review."
+ },
+ "meetingLinks": [
+  {
+   "b": "Book your next meeting",
+   "href": "https://go.brandsinpurpose.com/session"
+  },
+  {
+   "b": "Join on Zoom",
+   "href": "https://brandsinpurpose.com/zoom"
+  }
+ ]
 }
