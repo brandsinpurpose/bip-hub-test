@@ -2,11 +2,6 @@
  "schema": "blueprint/1",
  "client": {
   "name": "Solid Rep",
-  "preparedFor": [
-   "Alice Cabrera",
-   "Fiarah Carrau"
-  ],
-  "photo": "assets/founder.webp",
   "logoLight": "brand/solid-rep-logo-full-color.png",
   "logoDark": "assets/logo-white.png",
   "account": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos",
