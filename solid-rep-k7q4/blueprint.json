@@ -1459,7 +1459,7 @@
   {
    "ic": "video",
    "h": "Joining a call",
-   "p": "Every session uses the same Zoom room, so the link never changes.",
+   "p": "Every meeting uses the same Zoom room, so the link never changes.",
    "cta": {
     "b": "Open the Zoom room",
     "href": "https://brandsinpurpose.com/zoom"
@@ -1505,5 +1505,9 @@
    "b": "Join on Zoom",
    "href": "https://brandsinpurpose.com/zoom"
   }
- ]
+ ],
+ "zoom": {
+  "link": "https://brandsinpurpose.com/zoom",
+  "passcode": "Victory!"
+ }
 }

@@ -330,6 +330,7 @@ body.at-brand footer{display:none}
 .l-now small{font:700 12px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .nowbar{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:6px;margin:10px 0 10px}.nowbar span{font:700 14px var(--ui);color:var(--muted);border-top:4px solid var(--line);padding-top:7px}.nowbar span.done{color:var(--navy);border-color:var(--navy)}.nowbar span.cur{color:var(--navy);border-color:var(--green)}
 .l-now p{margin:0;font-size:15px;color:var(--ink)}
+.zp{margin-top:6px!important;font:600 15px var(--ui);color:var(--navy)}
 /* drawer + lightbox */
 .scrim{position:fixed;inset:0;background:rgba(5,46,92,.38);z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
 .scrim.on{opacity:1;pointer-events:auto}
@@ -631,7 +632,7 @@ $$('.app').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const k=
   requestAnimationFrame(()=>{z.classList.add('go')});setTimeout(()=>{go(k);z.classList.add('out');setTimeout(()=>z.remove(),380)},360);
 }));
 const NW=D.now;if(NW){$('#lnow').innerHTML=`<small>Where we are now</small><div class="nowbar" style="--n:${NW.phases.length}">${NW.phases.map((p,i)=>`<span class="${i<NW.current?'done':i===NW.current?'cur':''}">${esc(p)}</span>`).join('')}</div><p>${esc(NW.line)}</p>`}else $('#lnow').remove();
-const MT=D.meetingLinks||[];$('#mtop').innerHTML=MT.map((m,i)=>`<a class="${i===0?'p':''}" href="${m.href}" target="_blank" rel="noopener">${esc(m.b)} ↗</a>`).join('')+(D.meetingNote?`<small>${esc(D.meetingNote)}</small>`:'');
+const MT=D.meetingLinks||[];$('#mtop').innerHTML=MT.map((m,i)=>`<a class="${i===0?'p':''}" href="${m.href}" target="_blank" rel="noopener">${esc(m.b)} ↗</a>`).join('')+(D.zoom&&D.zoom.passcode?`<small>Zoom passcode: <b>${esc(D.zoom.passcode)}</b></small>`:'');
 try{if(sessionStorage.getItem('bp-intro'))document.documentElement.classList.add('seen');sessionStorage.setItem('bp-intro','1')}catch(e){}
 
 /* sessions */
@@ -642,7 +643,7 @@ $$('.rh').forEach(b=>b.onclick=()=>{const a=b.parentElement;a.classList.toggle('
 /* brand */
 /* brand: the brand book is its own page (brand/index.html), the one home for brand facts */
 /* working with us */
-$('#togetherBody').innerHTML=`<div class="tg">${TOGETHER.map(x=>`<div class="tgi"><span class="ti">${IC[x.ic]}</span><div><h3>${esc(x.h)}</h3><p>${esc(x.p)}</p>${x.cta?`<a class="go2" href="${x.cta.href}" target="_blank" rel="noopener">${esc(x.cta.b)} ↗</a>`:''}</div></div>`).join('')}</div><div class="bip"><p><b>Brands In Purpose</b> builds and looks after your SmartFunnels Pro account: we decide with you what to build next, set it up, make it look right, and keep this Blueprint current after every session.</p></div>`;
+$('#togetherBody').innerHTML=`<div class="tg">${TOGETHER.map(x=>`<div class="tgi"><span class="ti">${IC[x.ic]}</span><div><h3>${esc(x.h)}</h3><p>${esc(x.p)}</p>${x.ic==='video'&&D.zoom&&D.zoom.passcode?`<p class="zp">Passcode: <b>${esc(D.zoom.passcode)}</b></p>`:''}${x.cta?`<a class="go2" href="${x.cta.href}" target="_blank" rel="noopener">${esc(x.cta.b)} ↗</a>`:''}</div></div>`).join('')}</div><div class="bip"><p><b>Brands In Purpose</b> builds and looks after your SmartFunnels Pro account: we decide with you what to build next, set it up, make it look right, and keep this Blueprint current after every session.</p></div>`;
 
 /* decided + footer */
 $('#dl').innerHTML=DECIDED.map(([b,s])=>{const m=s.match(/\(([^)]+)\)\s*$/);return `<div>${IC.check}<div><b>${esc(b)}</b><span>${esc(m?s.replace(m[0],'').trim():s)}</span></div><time>${m?esc(m[1]):''}</time></div>`}).join('');
