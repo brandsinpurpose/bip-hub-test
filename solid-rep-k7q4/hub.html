@@ -321,6 +321,8 @@ html.seen .app .ai{animation:none}
 
 .bookf{display:block;width:100%;height:calc(100vh - 59px);border:0;background:#dde2e7}
 body.at-brand footer{display:none}
+.pview{margin:14px 0 12px;max-width:760px;padding:12px 16px;background:var(--pale);border-left:3px solid var(--navy);border-radius:3px;font-size:15px;color:var(--ink)}.pview b{color:var(--navy);font-family:var(--ui)}
+.lane-h .lsub{display:block;font-size:14px;color:var(--muted);margin-top:2px}.lane-h{align-items:flex-start}.lane-h small{white-space:nowrap;flex-shrink:0}
 /* drawer + lightbox */
 .scrim{position:fixed;inset:0;background:rgba(5,46,92,.38);z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
 .scrim.on{opacity:1;pointer-events:auto}
@@ -438,7 +440,7 @@ body.at-brand footer{display:none}
 </div>
 
 <div class="view" id="v-stages">
-  <div class="ph"><div class="wrap"><div class="eyebrow">Pipeline</div><h1 class="disp">Your Services pipeline: 26 stages</h1><p>Select a stage to see what moves a card there and which proposed automations run at it. One automation is proposed for every stage: if a card sits for 5 days, its owner gets an alert.</p><p class="phnote">Your first 10 clients are already cards on this board. Until automations are switched on, your team moves cards and sends client emails by hand.</p><a class="go2" href="${BOARD}" id="boardLink" target="_blank" rel="noopener">Open the pipeline board in your account ↗</a></div></div>
+  <div class="ph"><div class="wrap"><div class="eyebrow">Pipeline</div><h1 class="disp" id="pipeH"></h1><div class="pview" id="pipeView"></div><p id="pipeIntro"></p><p class="phnote" id="pipeNow"></p><a class="go2" href="${BOARD}" id="boardLink" target="_blank" rel="noopener">Open the pipeline board in your account ↗</a></div></div>
   <div class="wrap pad"><div class="lanes" id="lanes"></div></div>
 </div>
 
@@ -586,7 +588,8 @@ function openWF(id){curW=id;curF=WFmap[id].f;renderWS();go('automations')}
 
 /* stages */
 let k=0;
-$('#lanes').innerHTML=PHASES.map(ph=>{const l=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''}"><div class="lane-h"><h3>${ph.name}</h3><small>${l.length} stages</small></div><div class="cards">${l.map(s=>`<button class="st" data-stage="${esc(s.n)}"><i>${++k}</i><span style="flex:1;min-width:0">${esc(s.n)}${s.st==='ask'?'<span class="stag a">Needs your answer</span>':s.st==='built'?'<span class="stag b">Form ready</span>':''}</span></button>`).join('')}</div></div>`}).join('');
+const PL=D.pipeline||{};$('#pipeH').textContent=`Your ${PL.name||''} pipeline: ${STAGES.length} stages`;$('#pipeView').innerHTML=PL.view?`<b>How this page groups it.</b> ${esc(PL.view)}`:'';$('#pipeIntro').textContent=PL.intro||'';$('#pipeNow').textContent=PL.now||'';
+$('#lanes').innerHTML=PHASES.map(ph=>{const l=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''}"><div class="lane-h"><div><h3>${ph.name}</h3><span class="lsub">${esc(ph.sub||'')}</span></div><small>${l.length} stages</small></div><div class="cards">${l.map(s=>`<button class="st" data-stage="${esc(s.n)}"><i>${++k}</i><span style="flex:1;min-width:0">${esc(s.n)}${s.st==='ask'?'<span class="stag a">Needs your answer</span>':s.st==='built'?'<span class="stag b">Form ready</span>':''}</span></button>`).join('')}</div></div>`}).join('');
 const STLBL={built:["Form ready","b"],ask:["Waiting on an answer from you","a"]};
 function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);$$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.stage===n));$('#dPh').textContent=`Stage ${stageNo[n]} · ${ph.name}`;$('#dN').textContent=n;const L=STLBL[s.st];$('#dSt').innerHTML=(L||s.note)?`<div class="stnote ${L?L[1]:''}">${L?`<b>${L[0]}</b>`:''}${s.note?`<span>${esc(s.note)}</span>`:''}</div>`:'';$('#dHow').textContent=s.how;const ws=WF.filter(w=>w.stages.includes(n)||w.stages.includes('Every stage'));$('#dAuto').innerHTML=ws.length?ws.map(w=>`<button class="abtn" data-wf="${w.id}"><span class="bolt">${IC.bolt}</span><span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span></span><em>Open →</em></button>`).join(''):`<div class="ghost"><b>No automation proposed here yet</b>Your team handles this stage by hand.</div>`;$('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on')}
 
