@@ -4,442 +4,334 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Solid Rep HQ</title>
+<title>Solid Rep Blueprint</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --navy:#052E5C; --navy2:#0A3D75; --ink:#2A3B50; --muted:#5B6B80; --soft:#F4F7FB; --pale:#EEF3F9;
-  --line:#DCE5F0; --white:#fff; --green:#B6ED5E; --green2:#A3DB45;
-  --r:18px; --shadow:0 1px 2px rgba(5,46,92,.06),0 12px 32px -12px rgba(5,46,92,.18);
-}
+:root{--navy:#052E5C;--navy2:#0A3D75;--ink:#2A3B50;--muted:#5B6B80;--soft:#F4F7FB;--pale:#EEF3F9;--line:#DCE5F0;--green:#B6ED5E;--green2:#A3DB45;--r:20px;
+--sh:0 1px 2px rgba(5,46,92,.06),0 14px 34px -14px rgba(5,46,92,.22);--ui:"Plus Jakarta Sans",system-ui,sans-serif;--disp:Caladea,Georgia,serif}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--pale);color:var(--ink);font:400 15.5px/1.6 "Open Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--pale);color:var(--ink);font:400 15.5px/1.6 "Open Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
 a{color:inherit}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.h-display{font-family:Caladea,Georgia,serif;font-weight:700;letter-spacing:-.01em}
-.h-ui{font-family:"Plus Jakarta Sans",system-ui,sans-serif}
 :focus-visible{outline:3px solid var(--green2);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.eyebrow{font:700 12px var(--ui);letter-spacing:.18em;text-transform:uppercase}
+.disp{font-family:var(--disp);font-weight:700;letter-spacing:-.01em}
 
-/* ---------- top bar ---------- */
-.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
-.bar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 20px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.brand img{height:40px;width:auto}
-.brand span{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:800;color:var(--navy);font-size:15px;letter-spacing:.01em}
-.tabs{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{position:relative;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:600;font-size:14px;color:var(--muted);padding:9px 14px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
-.tab:hover{color:var(--navy);background:var(--soft)}
-.tab[aria-selected=true]{color:var(--navy);background:var(--pale)}
-.tab[aria-selected=true]::after{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:3px;border-radius:3px;background:var(--green)}
+/* bar */
+.bar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:9px 22px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.brand img{height:40px}
+.brand span{font:700 13px var(--ui);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;border-left:1px solid var(--line);padding-left:12px}
+.nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font:600 14px var(--ui);color:var(--muted);padding:9px 14px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:color .2s,background .2s}
+.nav a:hover{color:var(--navy);background:var(--soft)}
+.nav a.on{color:var(--navy);background:var(--pale);box-shadow:inset 0 -3px 0 var(--green)}
 
-/* ---------- views ---------- */
-.view{display:none}
-.view.on{display:block;animation:viewIn .5s cubic-bezier(.2,.7,.2,1)}
-@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+/* hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:52px 0 112px}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 420px at 88% -20%,rgba(182,237,94,.14),transparent 60%),radial-gradient(700px 500px at -10% 130%,rgba(255,255,255,.07),transparent 60%)}
+.hero svg.grid{position:absolute;inset:0;width:100%;height:100%;opacity:.06}
+.hero-in{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+.hero .eyebrow{color:var(--green)}
+.hero h1{font-size:clamp(34px,5vw,56px);line-height:1.04;margin:14px 0 12px;max-width:760px}
+.hero p{margin:0;color:rgba(255,255,255,.8);font-size:17px;max-width:560px}
+.hero-mark{width:200px;opacity:.9;flex-shrink:0}
 
-/* ---------- home hero ---------- */
-.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:56px 0 120px}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(900px 420px at 85% -10%,rgba(182,237,94,.16),transparent 60%),
-  radial-gradient(700px 500px at -10% 120%,rgba(255,255,255,.08),transparent 60%)}
-.hero svg.grid{position:absolute;inset:0;width:100%;height:100%;opacity:.07}
-.hero-in{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-.eyebrow{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
-.hero h1{font-size:clamp(34px,5vw,56px);line-height:1.05;margin:14px 0 14px}
-.hero p.lede{font-size:17px;color:rgba(255,255,255,.82);max-width:520px;margin:0}
-.hero-mark{justify-self:end;width:min(300px,100%);opacity:.95;filter:drop-shadow(0 20px 40px rgba(0,0,0,.25));animation:float 7s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-8px)}}
-
-/* cockpit overlaps hero */
-.cockpit{position:relative;margin-top:-84px;display:grid;grid-template-columns:1.35fr 1fr;gap:18px}
-.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
-.now{padding:26px 28px;display:flex;gap:22px;align-items:center}
-.ring{flex-shrink:0;width:112px;height:112px;position:relative}
-.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
-.ring .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
-.ring .num b{font-family:Caladea;font-size:34px;color:var(--navy);line-height:1}
-.ring .num small{display:block;font-size:11px;color:var(--muted);font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:600;margin-top:2px}
-.now h2{margin:0 0 6px;font-size:22px;color:var(--navy)}
-.now p{margin:0;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:7px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--pale);color:var(--navy)}
-.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:block}
-.pill.live{background:#EEF9DA;color:#3C6A00}
-.pill.build{background:#E6EEF8;color:var(--navy2)}
-.pill.next{background:#F3F5F8;color:var(--muted)}
-.pill.you{background:#FFF4DE;color:#8A5A00}
-.meet{padding:24px 26px;display:flex;flex-direction:column;justify-content:flex-start;gap:18px;background:linear-gradient(160deg,#fff 0%,var(--soft) 100%)}
-.meet .when{display:flex;gap:16px;align-items:center}
-.cal{width:62px;flex-shrink:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);text-align:center;background:#fff}
-.cal span{display:block;background:var(--navy);color:#fff;font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.12em;padding:4px 0}
-.cal b{display:block;font:700 28px Caladea,Georgia,serif;color:var(--navy);padding:4px 0 6px}
-.meet h3{margin:0;font-size:17px;color:var(--navy)}
-.meet .t{color:var(--muted);font-size:14px}
-.meet ul{margin:0;padding-left:18px;color:var(--ink);font-size:14.5px}
+/* pulse */
+.pulse{position:relative;margin-top:-72px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;z-index:2}
+.pc{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+.pc .ic{width:44px;height:44px;border-radius:12px;background:var(--pale);display:grid;place-items:center;color:var(--navy);flex-shrink:0}
+.pc .ic svg{width:22px;height:22px}
+.pc.you .ic{background:var(--green)}
+.pc small{display:block;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pc b{display:block;font:700 16px/1.35 var(--ui);color:var(--navy);margin:3px 0 2px}
+.pc span{font-size:13.5px;color:var(--muted)}
 
 /* section heads */
-.sec{padding:56px 0 8px}
-.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px;flex-wrap:wrap}
-.sec-head h2{margin:0;font-size:clamp(26px,3.2vw,36px);color:var(--navy);line-height:1.1}
-.sec-head p{margin:6px 0 0;color:var(--muted);max-width:560px}
+.sec{padding:72px 0 0}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:26px;flex-wrap:wrap}
+.sh .eyebrow{color:var(--navy2)}
+.sh h2{margin:8px 0 0;font-size:clamp(28px,3.4vw,40px);line-height:1.08;color:var(--navy)}
+.sh p{margin:8px 0 0;color:var(--muted);max-width:580px}
 
-/* journey track */
-.track{position:relative;padding:34px 28px 26px;overflow:hidden}
-.track .rail{position:absolute;left:58px;right:58px;top:68px;height:4px;background:var(--line);border-radius:4px}
-.track .rail i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--navy),var(--navy2));transition:width 1.6s cubic-bezier(.3,.7,.2,1)}
-.steps{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-.step{text-align:center;cursor:pointer;padding:0 4px;border-radius:14px}
-.dot{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--line);color:var(--muted);transition:transform .3s,box-shadow .3s;position:relative}
-.dot svg{width:26px;height:26px}
-.step.live .dot{background:var(--navy);border-color:var(--navy);color:#fff}
-.step.build .dot{border-color:var(--navy);color:var(--navy)}
-.step.build .dot::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid rgba(5,46,92,.18);animation:pulse 2.2s ease-out infinite}
-@keyframes pulse{from{transform:scale(.85);opacity:1}to{transform:scale(1.25);opacity:0}}
-.step:hover .dot,.step.sel .dot{transform:translateY(-3px);box-shadow:0 10px 20px -8px rgba(5,46,92,.35)}
-.step h4{margin:0 0 6px;font:700 14px/1.3 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.step .pill{font-size:10px;padding:4px 8px}
-.step-detail{margin-top:22px;border-top:1px solid var(--line);padding-top:20px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;min-height:96px}
-.step-detail .big{font:700 46px/1 Caladea,Georgia,serif;color:var(--pale);-webkit-text-stroke:1.5px var(--navy);width:56px}
-.step-detail h3{margin:0 0 4px;color:var(--navy);font-size:19px}
-.step-detail p{margin:0 0 8px}
-.step-detail ul{margin:0;padding-left:18px}
+/* map */
+.map{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh);padding:34px 30px 30px;position:relative;overflow:hidden}
+.path{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.path .rail{position:absolute;left:6.25%;right:6.25%;top:31px;height:4px;border-radius:4px;background:var(--line)}
+.path .rail i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--navy);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.node{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 2px;border-radius:16px}
+.node .d{width:66px;height:66px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:transform .25s,background .25s,border-color .25s,color .25s,box-shadow .25s;position:relative;z-index:1}
+.node .d svg{width:26px;height:26px}
+.node:hover .d{transform:translateY(-3px);border-color:var(--navy);color:var(--navy)}
+.node.done .d{border-color:var(--navy);color:var(--navy)}
+.node.sel .d{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 0 0 7px rgba(182,237,94,.5)}
+.node .num{font:700 11px var(--ui);color:var(--muted);letter-spacing:.12em;margin-top:12px}
+.node h3{margin:2px 0 6px;font:700 14px/1.25 var(--ui);color:var(--navy)}
+.tags{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.tag{font:700 11px var(--ui);color:var(--navy2);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap}
+.tag.z{background:transparent;border-style:dashed;color:var(--muted)}
+.node.sel .tag{border-color:var(--navy)}
+.peek{margin-top:12px;width:78px;height:62px;border-radius:10px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 18px -12px rgba(5,46,92,.6);background:var(--soft)}
+.peek img{width:100%;height:100%;object-fit:cover;object-position:top}
 
-/* doors */
-.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 64px}
-.door{padding:24px;text-align:left;display:flex;flex-direction:column;gap:12px;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
-.door:hover{transform:translateY(-4px);box-shadow:0 18px 40px -16px rgba(5,46,92,.35)}
-.door .ico{width:46px;height:46px;border-radius:12px;background:var(--pale);display:grid;place-items:center;color:var(--navy)}
-.door .ico svg{width:24px;height:24px}
-.door b{font:700 40px/1 Caladea,Georgia,serif;color:var(--navy)}
-.door h3{margin:0;font:700 17px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.door p{margin:0;color:var(--muted);font-size:14.5px}
-.door .go{margin-top:auto;font:700 13px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);display:flex;align-items:center;gap:6px}
-.door .go::after{content:"→";transition:transform .2s}
-.door:hover .go::after{transform:translateX(4px)}
-.door .mini{position:absolute;right:-10px;top:-10px;opacity:.5}
+/* step detail */
+.detail{margin-top:26px;border-top:1px solid var(--line);padding-top:26px;display:grid;grid-template-columns:1.05fr 1fr 1.1fr;gap:28px;min-height:250px}
+.detail h4{margin:0 0 10px;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dt h3{margin:0 0 6px;font:700 28px/1.1 var(--disp);color:var(--navy)}
+.dt p{margin:0 0 16px}
+.slist{display:flex;flex-direction:column;gap:6px}
+.sbtn{display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:12px;background:#fff;font:600 13.5px/1.3 var(--ui);color:var(--navy);transition:border-color .2s,box-shadow .2s}
+.sbtn:hover{border-color:var(--navy);box-shadow:0 6px 14px -10px rgba(5,46,92,.5)}
+.sbtn i{font-style:normal;flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font:700 11px var(--ui);color:var(--navy2)}
+.shot{display:block;width:100%;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--soft);box-shadow:0 12px 26px -16px rgba(5,46,92,.45);transition:transform .25s,box-shadow .25s;position:relative;cursor:zoom-in}
+.shot:hover{transform:translateY(-3px);box-shadow:0 20px 36px -18px rgba(5,46,92,.55)}
+.shot img{display:block;width:100%;height:auto}
+.shot .cap{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font:600 12.5px var(--ui);color:var(--muted);background:#fff;border-top:1px solid var(--line)}
+.ghost{border:1.5px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--muted);font-size:14px;background:var(--soft)}
+.ghost b{display:block;font:700 14px var(--ui);color:var(--navy);margin-bottom:4px}
+.alist{display:flex;flex-direction:column;gap:8px}
+.abtn{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:border-color .2s,box-shadow .2s,transform .2s}
+.abtn:hover{border-color:var(--navy);transform:translateY(-1px);box-shadow:0 10px 20px -14px rgba(5,46,92,.55)}
+.abtn .bolt{flex-shrink:0;width:30px;height:30px;border-radius:9px;background:var(--navy);color:var(--green);display:grid;place-items:center}
+.abtn .bolt svg{width:16px;height:16px}
+.abtn b{display:block;font:700 14px/1.3 var(--ui);color:var(--navy)}
+.abtn span{font-size:13px;color:var(--muted)}
+.abtn em{margin-left:auto;align-self:center;font:700 12px var(--ui);color:var(--navy2);font-style:normal;white-space:nowrap}
 
-/* ---------- pipeline ---------- */
-.page-head{background:#fff;border-bottom:1px solid var(--line);padding:40px 0 30px}
-.page-head h1{margin:8px 0 8px;font-size:clamp(30px,4vw,44px);color:var(--navy);line-height:1.08}
-.page-head p{margin:0;color:var(--muted);max-width:640px}
-.page-head .eyebrow{color:var(--navy2)}
-.callout{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:16px 18px;margin:24px 0 0}
-.callout b{color:var(--navy);font-family:"Plus Jakarta Sans",system-ui,sans-serif}
-.lanes{display:grid;grid-template-columns:1fr 2.1fr 1fr 1fr;gap:16px;margin:26px 0 40px;align-items:start}
+/* workspace */
+.callout{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:14px 16px;margin:0 0 18px;font-size:14.5px}
+.callout b{font-family:var(--ui);color:var(--navy)}
+.ftabs{display:flex;gap:10px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.ftab{flex-shrink:0;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 16px 10px 12px;transition:border-color .2s,background .2s}
+.ftab b{font:700 26px/1 var(--disp);color:var(--navy);width:22px;text-align:center}
+.ftab span{font:700 14px/1.25 var(--ui);color:var(--navy)}
+.ftab small{display:block;font:600 12px var(--ui);color:var(--muted)}
+.ftab:hover{border-color:var(--navy)}
+.ftab.on{background:var(--navy);border-color:var(--navy)}
+.ftab.on b,.ftab.on span{color:#fff}.ftab.on small{color:var(--green)}
+.ws{display:grid;grid-template-columns:300px 1fr 340px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh);overflow:hidden;min-height:620px}
+.wl{border-right:1px solid var(--line);padding:10px;background:#fff}
+.wi{display:block;width:100%;padding:13px 14px;border-radius:14px;margin-bottom:4px;transition:background .2s}
+.wi:hover{background:var(--soft)}
+.wi.on{background:var(--pale);box-shadow:inset 3px 0 0 var(--navy)}
+.wi b{display:block;font:700 14px/1.3 var(--ui);color:var(--navy)}
+.wi span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.wi em{display:inline-block;margin-top:7px;font:700 10.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);background:#E6EEF8;padding:3px 8px;border-radius:999px;font-style:normal}
+.wc{padding:26px 30px 30px;background:radial-gradient(circle at 1px 1px,#E3EAF3 1px,transparent 1.5px) 0 0/22px 22px}
+.wc h3{margin:0;font:700 26px/1.15 var(--disp);color:var(--navy)}
+.wc>p{margin:6px 0 22px;color:var(--muted);max-width:520px}
+.tl{list-style:none;margin:0;padding:0}
+.tl>li{position:relative;padding:0 0 14px 40px}
+.tl>li::before{content:"";position:absolute;left:13px;top:30px;bottom:-2px;width:2px;background:var(--line)}
+.tl>li:last-child::before{display:none}
+.tl .dot{position:absolute;left:0;top:6px;width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--navy);display:grid;place-items:center;font:700 12px var(--ui);color:var(--navy)}
+.tl .dot svg{width:14px;height:14px}
+.tl .t .dot{background:var(--navy);color:var(--green)}
+.card{display:block;width:100%;max-width:470px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 15px;transition:border-color .2s,box-shadow .2s}
+.card small{display:block;font:700 10.5px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card b{display:block;font:700 14.5px/1.35 var(--ui);color:var(--navy)}
+.card .q{display:block;margin-top:6px;font-size:12.5px;color:#7A5300;background:#FFF6E4;border-radius:8px;padding:5px 9px}
+.card.msg{cursor:pointer}
+.card.msg:hover{border-color:var(--navy);box-shadow:0 10px 22px -14px rgba(5,46,92,.55)}
+.card.msg.sel{border-color:var(--navy);box-shadow:0 0 0 3px rgba(182,237,94,.6)}
+.card .go{float:right;font:700 12px var(--ui);color:var(--navy2)}
+.tl .t .card{background:var(--navy);border-color:var(--navy)}
+.tl .t .card small{color:var(--green)}.tl .t .card b{color:#fff}
+.card .sub{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.tl .t .card .sub{color:rgba(255,255,255,.72)}
+.tl .t .card .q{background:rgba(255,255,255,.1);color:#E9F7CF}
+.fork{max-width:470px;border:1.5px dashed var(--line);border-radius:14px;background:var(--soft);padding:10px}
+.fork>small{display:block;font:700 10.5px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:2px 4px 8px}
+.fork .row{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start;padding:8px 4px;border-top:1px solid var(--line)}
+.fork .row:first-of-type{border-top:0}
+.fork .row>b{font:700 12px/1.3 var(--ui);color:var(--navy2);padding-top:6px}
+.fork .chips{display:flex;flex-direction:column;gap:6px}
+.chip{display:block;width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:600 13px/1.3 var(--ui);color:var(--navy)}
+.chip.msg{cursor:pointer}.chip.msg:hover{border-color:var(--navy)}
+.chip.msg.sel{border-color:var(--navy);box-shadow:0 0 0 3px rgba(182,237,94,.6)}
+.chip small{display:block;font:700 10px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wp{border-left:1px solid var(--line);background:var(--soft);padding:22px;display:flex;flex-direction:column;gap:12px}
+.wp h4{margin:0;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mail{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.mail .h{padding:11px 14px;border-bottom:1px solid var(--line)}
+.mail .h small{display:block;font:600 12px var(--ui);color:var(--muted)}
+.mail .h b{display:block;font:700 14px/1.35 var(--ui);color:var(--navy);margin-top:2px}
+.mail .b{padding:12px 14px;font-size:13.5px;line-height:1.6;white-space:pre-wrap;max-height:300px;overflow:auto}
+.mf{background:#EEF9DA;color:#3C6A00;border-radius:4px;padding:0 4px;font-weight:600;white-space:nowrap}
+.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font:700 13.5px var(--ui);color:var(--navy);background:var(--green);padding:10px 16px;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s}
+.btn:hover{background:var(--green2);transform:translateY(-1px)}
+.hint{font-size:13px;color:var(--muted)}
+
+/* stages */
+.lanes{display:grid;grid-template-columns:1fr 2.1fr 1fr 1fr;gap:16px;align-items:start}
 .lane{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:14px}
 .lane-h{display:flex;justify-content:space-between;align-items:baseline;padding:4px 6px 12px}
-.lane-h h3{margin:0;font:700 14px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);text-transform:uppercase;letter-spacing:.08em}
+.lane-h h3{margin:0;font:700 13px var(--ui);color:var(--navy);text-transform:uppercase;letter-spacing:.1em}
 .lane-h small{color:var(--muted);font-size:12.5px}
+.lane .cards{display:flex;flex-direction:column;gap:8px}
 .lane.hired .cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.cards{display:flex;flex-direction:column;gap:8px}
-.st{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:left;font:600 13.5px/1.35 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);display:flex;gap:10px;align-items:center;transition:border-color .2s,transform .2s,box-shadow .2s}
-.st:hover,.st.sel{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(5,46,92,.4)}
-.st .n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy2)}
-.st.sel .n{background:var(--navy);color:#fff}
-.drawer{position:fixed;right:0;top:0;bottom:0;width:min(420px,100%);background:#fff;z-index:40;visibility:hidden;transform:translateX(105%);transition:transform .4s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
-.drawer.on{transform:none;visibility:visible;box-shadow:-20px 0 60px -20px rgba(5,46,92,.35)}
-.drawer-top{background:var(--navy);color:#fff;padding:22px 24px}
-.drawer-top small{font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
-.drawer-top h3{margin:6px 0 0;font:700 24px/1.15 Caladea,Georgia,serif}
-.drawer-body{padding:22px 24px;overflow:auto}
-.drawer-body h4{margin:0 0 6px;font:700 12px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.drawer-body p{margin:0 0 20px}
-.flow{list-style:none;margin:0 0 20px;padding:0;position:relative}
-.flow li{position:relative;padding:0 0 14px 30px}
-.flow li::before{content:"";position:absolute;left:8px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--navy);background:#fff}
-.flow li::after{content:"";position:absolute;left:13px;top:18px;bottom:0;width:2px;background:var(--line)}
-.flow li:last-child::after{display:none}
-.x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;color:#fff;display:grid;place-items:center;background:rgba(255,255,255,.12)}
-.x:hover{background:rgba(255,255,255,.22)}
-.scrim{position:fixed;inset:0;background:rgba(5,46,92,.28);z-index:39;opacity:0;pointer-events:none;transition:opacity .3s}
-.scrim.on{opacity:1;pointer-events:auto}
+.st{display:flex;gap:10px;align-items:center;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:600 13.5px/1.35 var(--ui);color:var(--navy);transition:border-color .2s,box-shadow .2s}
+.st:hover,.st.sel{border-color:var(--navy);box-shadow:0 8px 18px -12px rgba(5,46,92,.5)}
+.st i{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font:700 11px var(--ui);color:var(--navy2);font-style:normal}
+.st.sel i{background:var(--navy);color:#fff}
 
-/* ---------- automations ---------- */
-.folders{display:flex;flex-direction:column;gap:22px;margin:28px 0 48px}
-.folder{overflow:hidden}
-.folder-h{display:flex;gap:16px;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#fff,var(--soft))}
-.folder-h .fn{font:700 34px/1 Caladea,Georgia,serif;color:var(--navy);width:44px}
-.folder-h h3{margin:0;font:700 18px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.folder-h p{margin:2px 0 0;color:var(--muted);font-size:14px}
-.folder-h .pill{margin-left:auto;flex-shrink:0}
-.autos{display:flex;flex-direction:column}
-.auto{border-bottom:1px solid var(--line)}
-.auto:last-child{border-bottom:0}
-.auto-b{width:100%;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:16px 24px;text-align:left}
-.auto-b:hover{background:var(--soft)}
-.auto-b h4{margin:0;font:700 15px/1.35 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.auto-b p{margin:3px 0 0;color:var(--muted);font-size:14px}
-.chev{width:30px;height:30px;border-radius:50%;background:var(--pale);display:grid;place-items:center;color:var(--navy);transition:transform .3s}
-.auto.open .chev{transform:rotate(180deg)}
-.auto-d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
-.auto.open .auto-d{grid-template-rows:1fr}
-.auto-d>div{overflow:hidden}
-.chain{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;padding:4px 24px 22px}
-.node{display:flex;align-items:center}
-.node .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:150px;max-width:220px}
-.node .box small{display:block;font:700 10.5px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-.node .box span{font:600 13.5px/1.35 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.node .box.trig{background:var(--navy);border-color:var(--navy)}
-.node .box.trig small{color:var(--green)}
-.node .box.trig span{color:#fff}
-.node .box em{display:block;margin-top:6px;font:italic 400 12px/1.35 'Open Sans',sans-serif;color:#8A5A00}
-.node .box.trig em{color:var(--green)}
-.node .box button.peek{display:block;margin-top:6px;font:700 12px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy2);text-decoration:underline;text-underline-offset:3px}
-.node .arr{width:26px;height:2px;background:var(--line);position:relative;margin:0 4px}
-.node .arr::after{content:"";position:absolute;right:-1px;top:-4px;border-left:7px solid var(--line);border-top:5px solid transparent;border-bottom:5px solid transparent}
-.node:last-child .arr{display:none}
-.branch{border:1px dashed var(--line);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px;background:var(--soft)}
-.branch small{font:700 10.5px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:2px 4px}
-.branch .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.branch .row b{font:700 12px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy2);min-width:70px}
-.branch .chip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 9px;font:600 12.5px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.msg{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.98);opacity:0;pointer-events:none;width:min(560px,calc(100% - 32px));max-height:80vh;overflow:auto;z-index:41;transition:all .3s}
-.msg.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-.mail{background:#fff;border-radius:18px;box-shadow:0 30px 80px -20px rgba(5,46,92,.5);overflow:hidden}
-.mail-h{background:var(--soft);border-bottom:1px solid var(--line);padding:16px 20px;position:relative}
-.mail-h small{font:700 11px "Plus Jakarta Sans",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.mail-h h3{margin:4px 0 0;font:700 17px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);padding-right:40px}
-.mail-h .x{color:var(--navy);background:#fff;border:1px solid var(--line)}
-.mail-b{padding:20px;white-space:pre-wrap;font-size:15px}
-.mail-b .mf{background:#EEF9DA;color:#3C6A00;border-radius:5px;padding:0 4px;font-weight:600}
-
-/* ---------- forms & links ---------- */
-.forms{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0 22px}
-.form-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
-.form-vis{background:var(--soft);padding:24px;border-bottom:1px solid var(--line);display:flex;justify-content:center}
-.phone{width:190px;background:#fff;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 14px 18px}
-.phone .bar2{height:5px;width:46px;border-radius:5px;background:var(--line);margin:0 auto 12px}
-.phone .prog{display:flex;gap:4px;margin-bottom:12px}
-.phone .prog i{flex:1;height:4px;border-radius:4px;background:var(--line)}
-.phone .prog i.on{background:var(--navy)}
-.phone .q{height:8px;border-radius:4px;background:var(--pale);margin:7px 0}
-.phone .q.s{width:60%}
-.phone .f{height:24px;border-radius:7px;border:1px solid var(--line);margin:6px 0 10px}
-.phone .btn{height:26px;border-radius:999px;background:var(--navy);margin-top:12px}
-.phone .btn.g{background:var(--green)}
-.form-txt{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.form-txt h3{margin:0;font:700 19px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.form-txt p{margin:0;color:var(--muted);font-size:14.5px}
-.btn-l{align-self:flex-start;margin-top:auto;display:inline-flex;align-items:center;gap:8px;font:700 14px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy);background:var(--green);padding:10px 16px;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s}
-.btn-l:hover{background:var(--green2);transform:translateY(-1px)}
-.links{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 56px}
-.lk{padding:18px 20px;display:flex;gap:14px;align-items:center;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.lk:hover{transform:translateY(-3px);box-shadow:0 14px 30px -14px rgba(5,46,92,.35)}
-.lk .ico{width:42px;height:42px;border-radius:12px;background:var(--pale);display:grid;place-items:center;color:var(--navy);flex-shrink:0}
-.lk .ico svg{width:22px;height:22px}
-.lk h4{margin:0;font:700 14.5px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.lk p{margin:2px 0 0;color:var(--muted);font-size:13px}
-
-/* ---------- next steps ---------- */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0 22px}
-.col{padding:24px}
-.col-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.col-h .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:700 15px "Plus Jakarta Sans",system-ui,sans-serif}
-.col-h .av.us{background:var(--navy);color:#fff}
-.col-h .av.them{background:var(--green);color:var(--navy)}
-.col-h h3{margin:0;font:700 18px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.col-h p{margin:0;color:var(--muted);font-size:13.5px}
-.todo{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.todo li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--soft)}
-.todo li .bx{flex-shrink:0;width:20px;height:20px;border-radius:6px;border:2px solid var(--navy);margin-top:2px}
-.todo li b{display:block;font:700 14.5px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.todo li span{font-size:13.5px;color:var(--muted)}
-.decided{padding:24px;margin:0 0 56px}
-.decided h3{margin:0 0 4px;font:700 18px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
-.decided>p{margin:0 0 16px;color:var(--muted);font-size:14px}
-.dl{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.dl div{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:12px}
-.dl svg{flex-shrink:0;width:20px;height:20px;color:#3C6A00;margin-top:2px}
-.dl b{display:block;font:700 14px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+/* decided */
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dl>div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;gap:12px}
+.dl svg{flex-shrink:0;width:22px;height:22px;color:#3C6A00;margin-top:1px}
+.dl b{display:block;font:700 14.5px/1.3 var(--ui);color:var(--navy)}
 .dl span{font-size:13px;color:var(--muted)}
 
-footer{text-align:center;color:var(--muted);font-size:12.5px;padding:0 0 30px}
-footer b{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--navy)}
+footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:22px 0}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.foot b{font-family:var(--ui);color:var(--navy)}
 
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+/* drawer + lightbox */
+.scrim{position:fixed;inset:0;background:rgba(5,46,92,.38);z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;right:0;top:0;bottom:0;width:min(420px,100%);background:#fff;z-index:41;visibility:hidden;transform:translateX(105%);transition:transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s .4s;display:flex;flex-direction:column}
+.drawer.on{visibility:visible;transform:none;transition:transform .4s cubic-bezier(.2,.7,.2,1);box-shadow:-20px 0 60px -20px rgba(5,46,92,.4)}
+.dtop{background:var(--navy);color:#fff;padding:22px 24px;position:relative}
+.dtop small{font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.dtop h3{margin:6px 40px 0 0;font:700 24px/1.15 var(--disp)}
+.x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);color:#fff;font-size:15px}
+.dbody{padding:22px 24px;overflow:auto}
+.dbody h4{margin:0 0 6px;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dbody p{margin:0 0 20px}
+.flow{list-style:none;margin:0 0 18px;padding:0}
+.flow li{position:relative;padding:0 0 12px 26px}
+.flow li::before{content:"";position:absolute;left:4px;top:7px;width:10px;height:10px;border-radius:50%;border:2px solid var(--navy);background:#fff}
+.lb{position:fixed;inset:0;z-index:42;display:grid;place-items:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.on{opacity:1;pointer-events:auto}
+.lb figure{margin:0;max-width:min(1100px,100%);max-height:100%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);transform:scale(.97);transition:transform .3s}
+.lb.on figure{transform:none}
+.lb img{display:block;max-width:100%;max-height:calc(100vh - 140px);width:auto;margin:0 auto}
+.lb figcaption{padding:12px 18px;font:600 14px var(--ui);color:var(--navy);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.lb .x{position:static;background:var(--pale);color:var(--navy)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
-@media (max-width:900px){
-  .hero-in{grid-template-columns:1fr}.hero-mark{display:none}
-  .cockpit,.doors,.forms,.two,.links,.dl{grid-template-columns:1fr}
-  .lanes{grid-template-columns:1fr}
-  .steps{grid-template-columns:repeat(3,1fr);row-gap:22px}
-  .track .rail{display:none}
-  .now{flex-direction:column;align-items:flex-start}
+@media (max-width:1000px){
+  .ws{grid-template-columns:1fr}.wl{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:10px}
+  .wi{flex:0 0 240px;margin:0}.wp{border-left:0;border-top:1px solid var(--line)}
+  .detail{grid-template-columns:1fr 1fr}.detail .dt{grid-column:1/-1}
+  .lanes{grid-template-columns:1fr 1fr}.lane.hired{grid-column:1/-1}
+  .dl{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .hero{padding:40px 0 96px}.hero-mark{display:none}
+  .pulse{grid-template-columns:1fr}
+  .path{grid-template-columns:1fr;gap:0}
+  .path .rail{left:32px;right:auto;top:30px;bottom:30px;width:4px;height:auto}
+  .path .rail i{width:100%!important;height:var(--h,0)}
+  .node{flex-direction:row;align-items:center;text-align:left;gap:14px;padding:8px 0}
+  .node .num{display:none}.node .txt{flex:1}.node h3{margin:0 0 4px}.tags{justify-content:flex-start}
+  .node .peek{margin:0;width:56px;height:46px}
+  .detail{grid-template-columns:1fr}
+  .lanes{grid-template-columns:1fr}.lane.hired .cards{grid-template-columns:1fr}
+  .dl{grid-template-columns:1fr}
   .brand span{display:none}
-  .tabs{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent);padding-right:28px}
+  .nav{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent);padding-right:24px}
+  .map{padding:22px 18px}
+  .wc{padding:22px 18px}
 }
-@media (max-width:520px){
-  .steps{grid-template-columns:repeat(2,1fr)}
-  .lane.hired .cards{grid-template-columns:1fr}
-  .chain{flex-direction:column;align-items:stretch}
-  .node{flex-direction:column;align-items:stretch}
-  .node .box{max-width:none}
-  .node .arr{width:2px;height:16px;margin:4px auto}
-  .node .arr::after{right:-4px;top:auto;bottom:-1px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--line);border-bottom:0}
-  .step-detail{grid-template-columns:1fr}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<header class="bar">
-  <div class="bar-in">
-    <a class="brand" href="#home" data-go="home"><img src="assets/logo.png" alt="Solid Rep"><span>HQ</span></a>
-    <nav class="tabs" role="tablist" aria-label="Sections">
-      <button class="tab" role="tab" data-go="home">Home</button>
-      <button class="tab" role="tab" data-go="pipeline">Your pipeline</button>
-      <button class="tab" role="tab" data-go="automations">Automations</button>
-      <button class="tab" role="tab" data-go="forms">Forms &amp; links</button>
-      <button class="tab" role="tab" data-go="next">Next steps</button>
-    </nav>
-  </div>
-</header>
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="#top"><img src="assets/logo.png" alt="Solid Rep"><span>Blueprint</span></a>
+  <nav class="nav" aria-label="Sections"><a href="#map" data-s="map">The map</a><a href="#automations" data-s="automations">Automations</a><a href="#stages" data-s="stages">Your 26 stages</a><a href="#decided" data-s="decided">Decided</a></nav>
+</div></header>
 
-<main>
-<!-- ================= HOME ================= -->
-<section class="view" id="v-home" role="tabpanel">
-  <div class="hero">
-    <svg class="grid" aria-hidden="true"><defs><pattern id="g" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#fff" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>
-    <div class="wrap hero-in">
-      <div>
-        <div class="eyebrow">Solid Rep HQ</div>
-        <h1 class="h-display">Your whole client journey, in one place.</h1>
-        <p class="lede">From the first "hello" to the registration certificate. Here's what's running, what's being built, and what comes next.</p>
-      </div>
-      <img class="hero-mark" src="assets/logo-white.png" alt="">
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="cockpit">
-      <div class="card now reveal">
-        <div class="ring" aria-label="2 of 6 steps live">
-          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#EEF3F9" stroke-width="12"/><circle id="ringArc" cx="60" cy="60" r="50" fill="none" stroke="#052E5C" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" style="transition:stroke-dashoffset 1.6s cubic-bezier(.3,.7,.2,1)"/></svg>
-          <div class="num"><div><b>2/6</b><small>steps live</small></div></div>
-        </div>
-        <div>
-          <span class="pill you"><i></i>Your move</span>
-          <h2 class="h-ui" style="margin-top:10px">Alice's review of your pipeline</h2>
-          <p>Your 26 stages and the plan for each automation are ready. Once Alice confirms what has to happen before a client moves to the next stage, we switch things on, one folder at a time.</p>
-        </div>
-      </div>
-      <div class="card meet reveal">
-        <div class="when">
-          <div class="cal"><span>NOV</span><b>17</b></div>
-          <div><h3 class="h-ui">Weekly check-in</h3><div class="t">Tuesday · 12:30 PM Central · 2:30 PM Puerto Rico</div></div>
-        </div>
-        <ul>
-          <li>Alice's thoughts on the pipeline</li>
-          <li>A step-by-step plan for the move from Clio</li>
-          <li>Billing in SmartFunnels Pro</li>
-        </ul>
-        <div class="t" style="font-size:13px">Your Zoom link is in the calendar invite.</div>
-      </div>
-    </div>
-
-    <div class="sec">
-      <div class="sec-head reveal">
-        <div><h2 class="h-display">The journey</h2><p>Six steps from where you started to fully running in SmartFunnels Pro. Tap any step.</p></div>
-      </div>
-      <div class="card track reveal">
-        <div class="rail"><i id="railFill"></i></div>
-        <div class="steps" id="steps"></div>
-        <div class="step-detail" id="stepDetail" aria-live="polite"></div>
-      </div>
-    </div>
-
-    <div class="doors">
-      <button class="card door reveal" data-go="pipeline">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></div><b>26</b><h3>Pipeline stages</h3><p>Every step a client takes with you, from first contact to closed.</p><span class="go">See your pipeline</span>
-      </button>
-      <button class="card door reveal" data-go="automations">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><b>15</b><h3>Automations planned</h3><p>The emails, alerts and tasks that run on their own, in four folders.</p><span class="go">See how they work</span>
-      </button>
-      <button class="card door reveal" data-go="next">
-        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></div><b id="doorOpen">0</b><h3>Open items</h3><p>What we're working on, and the few things we need from you.</p><span class="go">See next steps</span>
-      </button>
-    </div>
+<main id="top">
+<section class="hero">
+  <svg class="grid" aria-hidden="true"><defs><pattern id="g" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#fff"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>
+  <div class="wrap hero-in">
+    <div><div class="eyebrow">Solid Rep Blueprint</div><h1 class="disp">How your firm runs, from first hello to registered.</h1><p>Every form, automation and stage we're building, placed on the step of the client's path where it does its job.</p></div>
+    <img class="hero-mark" src="assets/logo-white.png" alt="">
   </div>
 </section>
 
-<!-- ================= PIPELINE ================= -->
-<section class="view" id="v-pipeline" role="tabpanel">
-  <div class="page-head"><div class="wrap">
-    <div class="eyebrow">Your pipeline · Services</div>
-    <h1 class="h-display">Every client, one board.</h1>
-    <p>These are the 26 stages you built. Each client is a card that moves from left to right. Tap a stage to see how a client gets there and what happens next.</p>
-    <div class="callout"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>The one question for Alice:</b> for each stage, what has to be true before a client moves on? Her answers become the rules the automations follow.</div></div>
-  </div></div>
-  <div class="wrap"><div class="lanes" id="lanes"></div></div>
-</section>
+<div class="wrap">
+  <div class="pulse" id="pulse"></div>
 
-<!-- ================= AUTOMATIONS ================= -->
-<section class="view" id="v-automations" role="tabpanel">
-  <div class="page-head"><div class="wrap">
-    <div class="eyebrow">Automations</div>
-    <h1 class="h-display">The work that runs itself.</h1>
-    <p>Fifteen automations in four folders, named the same way in your account. Open any one to see what starts it and every step after, then tap a message to read it as your client would.</p>
-    <div class="callout"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>Nothing reaches a client yet.</b> Folder 1 is built as drafts and switched off. The rest are planned. We switch each folder on only after you and Alice have seen it on a test contact.</div></div>
-  </div></div>
-  <div class="wrap"><div class="folders" id="folders"></div></div>
-</section>
+  <section class="sec" id="map">
+    <div class="sh reveal"><div><div class="eyebrow">The map</div><h2 class="disp">Follow one client through your system.</h2><p>Tap any step to see its stages, what the client sees, and what runs on its own.</p></div></div>
+    <div class="map reveal">
+      <div class="path" id="path"><div class="rail"><i id="railFill"></i></div></div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </section>
 
-<!-- ================= FORMS ================= -->
-<section class="view" id="v-forms" role="tabpanel">
-  <div class="page-head"><div class="wrap">
-    <div class="eyebrow">Forms &amp; links</div>
-    <h1 class="h-display">Where your clients start.</h1>
-    <p>The two forms in your client journey, plus the places in your account you'll use most.</p>
-  </div></div>
-  <div class="wrap">
-    <div class="forms">
-      <div class="card form-card reveal">
-        <div class="form-vis"><div class="phone"><div class="bar2"></div><div class="prog"><i class="on"></i><i></i><i></i></div><div class="q s"></div><div class="f"></div><div class="q"></div><div class="f"></div><div class="q s"></div><div class="f"></div><div class="btn g"></div></div></div>
-        <div class="form-txt"><span class="pill build"><i></i>Built · payment step next</span><h3>START NOW</h3><p>A short sign-up: contact details and four quick questions about the trademark, then the package and payment. Answers save to the client's record.</p><a class="btn-l" href="https://link.smartfunnelspro.com/widget/survey/K2y4RlSEieUp5uSP8IvJ" target="_blank" rel="noopener">Open the form ↗</a></div>
-      </div>
-      <div class="card form-card reveal">
-        <div class="form-vis"><div class="phone"><div class="bar2"></div><div class="prog"><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="q"></div><div class="f"></div><div class="q s"></div><div class="f"></div><div class="q"></div><div class="f" style="height:44px;border-style:dashed"></div><div class="btn"></div></div></div>
-        <div class="form-txt"><span class="pill build"><i></i>Built · in review with Alice</span><h3>Trademark Registration Worksheet</h3><p>The full details your attorneys need, in four steps: business location, the trademark, the owner, and supporting documents. It goes out from the pipeline after payment.</p><a class="btn-l" href="https://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP" target="_blank" rel="noopener">Open the worksheet ↗</a></div>
-      </div>
+  <section class="sec" id="automations">
+    <div class="sh reveal"><div><div class="eyebrow">Automations</div><h2 class="disp">The work that runs itself.</h2><p>Fifteen proposed automations in four folders. Pick one and follow it top to bottom. Tap any message to read it exactly as it's sent.</p></div></div>
+    <div class="callout reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>These are proposals.</b> Nothing reaches a client until you and Alice approve it and we test it on a test contact first. The yellow notes are the questions to settle together.</div></div>
+    <div class="ftabs" id="ftabs" role="tablist"></div>
+    <div class="ws reveal">
+      <div class="wl" id="wl"></div>
+      <div class="wc" id="wc"></div>
+      <div class="wp" id="wp"></div>
     </div>
-    <div class="links">
-      <a class="card lk reveal" href="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list" target="_blank" rel="noopener"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></div><div><h4>Opportunities</h4><p>Your Services pipeline board</p></div></a>
-      <a class="card lk reveal" href="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/automation/workflows" target="_blank" rel="noopener"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><div><h4>Automations</h4><p>The four Services folders</p></div></a>
-      <a class="card lk reveal" href="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/payments/products" target="_blank" rel="noopener"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></div><div><h4>Products</h4><p>Where your Stripe products import</p></div></a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= NEXT ================= -->
-<section class="view" id="v-next" role="tabpanel">
-  <div class="page-head"><div class="wrap">
-    <div class="eyebrow">Next steps</div>
-    <h1 class="h-display">Who's doing what.</h1>
-    <p>Updated after every session, so you always know where things stand.</p>
-  </div></div>
-  <div class="wrap">
-    <div class="two">
-      <div class="card col reveal"><div class="col-h"><div class="av us">TS</div><div><h3>Brands In Purpose</h3><p>What Trey is working on</p></div></div><ul class="todo" id="todoUs"></ul></div>
-      <div class="card col reveal"><div class="col-h"><div class="av them">SR</div><div><h3>Solid Rep</h3><p>What we need from your team</p></div></div><ul class="todo" id="todoThem"></ul></div>
-    </div>
-    <div class="card decided reveal"><h3>Decided together</h3><p>Settled, so nobody has to remember.</p><div class="dl" id="decided"></div></div>
-  </div>
-</section>
+  <section class="sec" id="stages">
+    <div class="sh reveal"><div><div class="eyebrow">Your 26 stages</div><h2 class="disp">Every client, one board.</h2><p>The Services pipeline you built. Tap a stage for how a client gets there and what's planned next.</p></div></div>
+    <div class="lanes reveal" id="lanes"></div>
+  </section>
+
+  <section class="sec" id="decided">
+    <div class="sh reveal"><div><div class="eyebrow">Decided together</div><h2 class="disp">Settled, so nobody has to remember.</h2></div></div>
+    <div class="dl reveal" id="dl"></div>
+  </section>
+</div>
 </main>
-<footer>Built and kept current by <b>Brands In Purpose</b> · Last updated <span id="upd"></span></footer>
+<footer><div class="wrap foot"><div>Built and kept current by <b>Brands In Purpose</b></div><div id="upd"></div></div></footer>
 
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Stage details">
-  <div class="drawer-top"><button class="x" data-close aria-label="Close">✕</button><small id="dPhase"></small><h3 id="dName"></h3></div>
-  <div class="drawer-body"><h4>How a client gets here</h4><p id="dHow"></p><h4>What we've planned to happen next</h4><ul class="flow" id="dAuto"></ul><p style="font-size:13px;color:var(--muted)">This is the plan to confirm with Alice. Nothing runs until she's happy with it.</p></div>
-</aside>
-<div class="msg" id="msg" role="dialog" aria-label="Message preview"><div class="mail"><div class="mail-h"><button class="x" data-close aria-label="Close">✕</button><small id="mTo"></small><h3 id="mSubj"></h3></div><div class="mail-b" id="mBody"></div></div></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Stage details"><div class="dtop"><button class="x" data-close aria-label="Close">✕</button><small id="dPh"></small><h3 id="dN"></h3></div><div class="dbody"><h4>How a client gets here</h4><p id="dHow"></p><h4>What we've proposed next</h4><ul class="flow" id="dAuto"></ul><p class="hint">To confirm with Alice before anything is switched on.</p></div></aside>
+<div class="lb" id="lb" role="dialog" aria-label="Screenshot"><figure><img id="lbImg" alt=""><figcaption><span id="lbCap"></span><button class="x" data-close aria-label="Close">✕</button></figcaption></figure></div>
 
 <script>
-const UPDATED="Wednesday, November 11, 2026";
+/* ============ CONTENT (update at every harvest) ============ */
+const UPDATED={date:"Wednesday, November 11, 2026",what:"First version of your Blueprint"};
+const PULSE=[
+ {k:"last",label:"Last session · Nov 10",b:"Your first 10 clients are in",s:"The automation plan went to you for Alice's review"},
+ {k:"next",label:"Next session · Tue Nov 17",b:"Alice's answer on the stages",s:"12:30 PM Central · 2:30 PM Puerto Rico"},
+ {k:"you",label:"Waiting on your team",b:"Alice's review · Stripe products · test contacts",s:"The three things that unlock the next step"}
+];
+const ACCOUNT="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos";
+const SHOTS={
+ startnow:{src:"shots/start-now.jpg",cap:"START NOW, step 1 of 3",href:"https://link.smartfunnelspro.com/widget/survey/K2y4RlSEieUp5uSP8IvJ",cta:"Open the form"},
+ worksheet:{src:"shots/worksheet.jpg",cap:"Trademark Registration Worksheet, step 1 of 4",href:"https://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP",cta:"Open the worksheet"},
+ "S1.1":{src:"shots/s1-1-workflow.jpg",cap:"Paid sign-up, as built in your account"}
+};
+const WFLINK={"S1.1":ACCOUNT+"/automation/workflow/c041a608-cceb-4bd9-bf21-f9183de9870b","S1.2":ACCOUNT+"/automation/workflows?folder=bc602d75-cb9c-4ad7-918c-6ed060f02552","S1.3":ACCOUNT+"/automation/workflows?folder=bc602d75-cb9c-4ad7-918c-6ed060f02552"};
+const STEPS=[
+ {n:"They reach out",ic:"wave",d:"Someone contacts you from the website, by phone or chat, or books a call.",stages:["New Prospect","Orientation","Legal Consult"],autos:["S2.1","S2.2"]},
+ {n:"START NOW",ic:"form",d:"They sign up on your site: contact details and four quick questions about their trademark, then the package and payment.",stages:["Preliminary Factual Information"],autos:[],shot:"startnow",note:"The payment step goes in once package prices and filing fees are set."},
+ {n:"Engagement letter",ic:"pen",d:"When a bill or retainer is needed, the engagement letter goes out to sign online.",stages:["Engagement Letter w/ Bill or Retainer"],autos:["S2.3","S2.4"]},
+ {n:"New client",ic:"star",d:"Payment makes them a client: their card lands in New Service, your team hears about it, and they get a warm welcome.",stages:["New Service"],autos:["S1.1","S1.2"]},
+ {n:"Worksheet",ic:"list",d:"The worksheet gathers everything your attorneys need to file, with friendly reminders until it's back.",stages:["Trademark Registration Worksheet","Worksheet Review"],autos:["S1.3"],shot:"worksheet"},
+ {n:"Legal work",ic:"scale",d:"Assessment, conflict search, drafting and approvals. Each step hands your team a task, and Alice's approvals come straight to her.",stages:["Initial Legal Assessment","Conflict Search Report Draft","Conflict Search Report Approval by Attorney","Application Draft","Application Draft Approval by Attorney","Application Draft Approval by Client","Waiting for Client","Extension of Time","Grace Period","Waiting for Third Party"],autos:["S3.1","S3.2","S4.1","S4.3","S3.3"]},
+ {n:"Filed",ic:"send",d:"The application is filed and the client hears about every milestone, without anyone writing an email.",stages:["Application Filing","Published for Opposition","Filing Statement of First Use","Response to Office Action"],autos:["S4.2"]},
+ {n:"Registered",ic:"award",d:"Registration day: their certificate, your thank-you, and a request for a Google review.",stages:["Share Registration Certificate","Closed","Abandoned","Not Hired"],autos:["S4.4","S4.5"]}
+];
+const DECIDED=[
+ ["Operations first","Then funnels and workflows, then the website (Nov 10)"],
+ ["New clients start in SmartFunnels Pro","Existing matters move over later (Nov 10)"],
+ ["Few client emails at first","Each one approved before it goes live (Nov 10)"],
+ ["Tasks come later","Get comfortable with the board first (Nov 10)"],
+ ["One system, both languages","Spanish built in, not a separate copy (Oct 28)"],
+ ["Weekly check-ins on Tuesdays","Same time each week (Nov 10)"]
+];
 const PHASES = [
  {id:"p", name:"Prospect", sub:"Before they hire you"},
  {id:"h", name:"Hired", sub:"The trademark work, start to finish"},
@@ -615,141 +507,125 @@ WF.push(
  ],c:"Your six not-hired reasons: set them up as lost reasons (check this when we build)"}
 );
 
-const JOURNEY=[
- {n:"Foundation",st:"live",ic:"home",d:"Your SmartFunnels Pro account is set up: your Stripe is connected, Google is connected, and your business details are in.",items:["Your own Stripe account connected (Nov 6)","Google and Google Calendar connected (Nov 5)","Business Profile filled in, with a few details to finish"]},
- {n:"Your pipeline",st:"live",ic:"pipe",d:"Fiarah built all 26 stages of your Services pipeline. Your first 10 clients are already in as a test group.",items:["26 stages, from New Prospect to Closed","10 beta clients imported (Nov 10)","Alice's review of the stages is in progress"]},
- {n:"Automations",st:"build",ic:"bolt",d:"Fifteen automations are mapped, with every email written. The first folder is built as drafts and switched off until you give the go-ahead.",items:["Folder 1, Sign-up & Worksheet: drafted","Folders 2 to 4: planned","Switched on one folder at a time, tested first"]},
- {n:"Billing",st:"next",ic:"card",d:"Estimates, invoices and payment links made right inside SmartFunnels Pro, so a payment can move a client forward on its own. Only Stripe's fees apply.",items:["Import your Stripe products","Confirm the setup with Alice","Package prices and filing fees for START NOW"]},
- {n:"Move from Clio",st:"next",ic:"move",d:"New clients start in SmartFunnels Pro. Your existing matters come over once the pipeline and automations are settled, so everyone lands in the right place.",items:["New clients start here","Full Clio export, with the fields we'll list for you","Your team sorts imported clients before anything switches on"]},
- {n:"Website launch",st:"next",ic:"globe",d:"Your new site is built and waiting. Like you said, operations come first, then you fine-tune the copy and colors, then we launch.",items:["Site built","Your final touches","Launch, once you're 100% comfortable"]}
-];
-const US=[
- ["A step-by-step plan for the whole move","To walk through together on Tuesday"],
- ["The list of fields for your Clio export","So your client history maps cleanly into SmartFunnels Pro"],
- ["Build the automations Alice approves","Folder by folder, tested on a test contact first"],
- ["The START NOW payment step","As soon as package prices and filing fees are set"]
-];
-const THEM=[
- ["Alice's thoughts on the pipeline","What has to be true before a client moves to the next stage"],
- ["Import your Stripe products","Payments > Products > Import from Stripe"],
- ["Add your paralegal and Alice as test contacts","So they can see exactly what a client receives"],
- ["Any changes to the two forms","From Alice's review"],
- ["The new USPTO + PRTO package, with fees","Needed for the START NOW payment step"],
- ["The engagement letter","So it can be signed online"],
- ["SiteGround access and your logo files","For the website launch"]
-];
-const DECIDED=[
- ["Operations first","Then funnels and workflows, then the website (Nov 10)"],
- ["New clients start in SmartFunnels Pro","Existing matters move over later (Nov 10)"],
- ["Few client emails at first","Each one approved before it goes live (Nov 10)"],
- ["Tasks come later","Get comfortable with the board first (Nov 10)"],
- ["One system, both languages","Spanish built in, not a separate copy (Oct 28)"],
- ["Weekly check-ins on Tuesdays","Same time each week"]
-];
-const ICON={
- home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>',
- pipe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg>',
- bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>',
- card:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>',
- move:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h12l-3-3M20 17H8l3 3"/></svg>',
- globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',
- check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg>',
- chev:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
+/* ============ END CONTENT ============ */
+
+const IC={
+ wave:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+ form:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>',
+ pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
+ star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>',
+ list:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>',
+ scale:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/></svg>',
+ send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>',
+ award:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>',
+ bolt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>',
+ cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+ back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg>',
+ hand:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5a2 2 0 0 1 4 0v6M13 10V4a2 2 0 0 1 4 0v8M9 11V8a2 2 0 0 0-4 0v6a8 8 0 0 0 16 0v-3a2 2 0 0 0-4 0"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>'
 };
-const PILL={live:['live','Live'],build:['build','Being built'],next:['next','Next']};
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const WFmap=Object.fromEntries(WF.map(w=>[w.id,w]));
+const stageNo=Object.fromEntries(STAGES.map((s,i)=>[s.n,i+1]));
+const plain=t=>String(t).replace(/^S\d\.\d · /,'');
+const mf=t=>esc(t).replace(/\{\{[^}]+\}\}/g,x=>`<span class="mf">${x.includes('first_name')?'First name':x.includes('mark_to_register')?'Their trademark':x.includes('.name')?'Client name':x.includes('email')?'Email':x.includes('phone')?'Phone':'Detail'}</span>`);
 
-/* journey */
-function selStep(i){
-  $$('.step').forEach((s,k)=>s.classList.toggle('sel',k===i));
-  const j=JOURNEY[i],p=PILL[j.st];
-  $('#stepDetail').innerHTML=`<div class="big">${i+1}</div><div><span class="pill ${p[0]}"><i></i>${p[1]}</span><h3 class="h-ui" style="margin-top:8px">${j.n}</h3><p>${j.d}</p><ul>${j.items.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
-}
-$('#steps').innerHTML=JOURNEY.map((j,i)=>{const p=PILL[j.st];return `<button class="step ${j.st}" data-i="${i}"><div class="dot">${ICON[j.ic]}</div><h4>${j.n}</h4><span class="pill ${p[0]}"><i></i>${p[1]}</span></button>`}).join('');
-$$('.step').forEach(b=>b.onclick=()=>selStep(+b.dataset.i));
-selStep(2);
+/* pulse */
+const PIC={last:IC.back,next:IC.cal,you:IC.hand};
+$('#pulse').innerHTML=PULSE.map(p=>`<div class="pc ${p.k==='you'?'you':''} reveal"><div class="ic">${PIC[p.k]}</div><div><small>${esc(p.label)}</small><b>${esc(p.b)}</b><span>${esc(p.s)}</span></div></div>`).join('');
 
-/* pipeline */
-let num=0;
-$('#lanes').innerHTML=PHASES.map(ph=>{const list=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''} reveal"><div class="lane-h"><h3>${ph.name}</h3><small>${list.length} stages</small></div><div class="cards">${list.map(s=>{num++;return `<button class="st" data-n="${esc(s.n)}"><span class="n">${num}</span>${esc(s.n)}</button>`}).join('')}</div></div>`}).join('');
-function openDrawer(n){
-  const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);
-  $$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.n===n));
-  $('#dPhase').textContent=ph.name+' · '+ph.sub; $('#dName').textContent=s.n; $('#dHow').textContent=s.how;
-  $('#dAuto').innerHTML=s.auto.map(a=>`<li>${esc(a)}</li>`).join('');
-  $('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on');
+/* map */
+let cur=-1;
+$('#path').insertAdjacentHTML('beforeend',STEPS.map((s,i)=>`<button class="node" data-i="${i}" aria-label="Step ${i+1}: ${esc(s.n)}"><span class="d">${IC[s.ic]}</span><span class="txt"><span class="num">STEP ${i+1}</span><h3>${esc(s.n)}</h3><span class="tags"><span class="tag">${s.stages.length} stage${s.stages.length>1?'s':''}</span>${s.autos.length?`<span class="tag">⚡ ${s.autos.length}</span>`:''}</span></span>${s.shot?`<span class="peek"><img src="${SHOTS[s.shot].src}" alt=""></span>`:''}</button>`).join(''));
+function pick(i){
+  cur=i;const s=STEPS[i];
+  $$('.node').forEach((n,k)=>{n.classList.toggle('sel',k===i);n.classList.toggle('done',k<i)});
+  const pct=i/(STEPS.length-1)*100;$('#railFill').style.width=pct+'%';$('#railFill').style.setProperty('--h',pct+'%');
+  const sh=s.shot?SHOTS[s.shot]:null;
+  const mid=sh?`<button class="shot" data-zoom="${s.shot}"><img src="${sh.src}" alt="${esc(sh.cap)}"><span class="cap">${esc(sh.cap)}<span>⤢</span></span></button>${sh.href?`<a class="btn" style="margin-top:12px" href="${sh.href}" target="_blank" rel="noopener">${esc(sh.cta)} ↗</a>`:''}`:`<div class="ghost"><b>${s.autos.length?'Runs behind the scenes':'Handled by your team'}</b>${s.autos.length?'Your client gets emails and your team gets alerts and tasks. Open an automation to read them.':'No form here. Your team moves the card.'}</div>`;
+  const autos=s.autos.length?s.autos.map(id=>{const w=WFmap[id];return `<button class="abtn" data-wf="${id}"><span class="bolt">${IC.bolt}</span><span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span></span><em>Open →</em></button>`}).join(''):`<div class="ghost"><b>Nothing automatic yet</b>${esc(s.note||'')}</div>`;
+  $('#detail').innerHTML=`<div class="dt"><h4>Step ${i+1} of ${STEPS.length}</h4><h3>${esc(s.n)}</h3><p>${esc(s.d)}</p><h4>Stages in this step</h4><div class="slist">${s.stages.map(n=>`<button class="sbtn" data-stage="${esc(n)}"><i>${stageNo[n]}</i>${esc(n)}</button>`).join('')}</div>${s.note&&s.autos.length?`<p class="hint" style="margin-top:12px">${esc(s.note)}</p>`:''}</div><div><h4>What the client sees</h4>${mid}</div><div><h4>What runs on its own</h4><div class="alist">${autos}</div></div>`;
 }
-$$('.st').forEach(b=>b.onclick=()=>openDrawer(b.dataset.n));
+$$('.node').forEach(n=>n.onclick=()=>{pick(+n.dataset.i);if(innerWidth<760)$('#detail').scrollIntoView({behavior:'smooth',block:'start'})});
+pick(3);
 
-/* automations */
-const KIND={email:'Email to the client',notify:'Alert to your team',task:'Task for your team',opp:'Moves the card',tag:'Adds a tag',wait:'Waits',if:'Checks',end:'Stops',doc:'Sends for e-signature',review:'Review request',note:'Note'};
-const MSGS=[];
-function clean(t){return String(t).replace(/^Specific user: /,'')}
-function stepBox(s){
-  let peek='';
-  if(s.m&&(s.m.body||s.m.desc)){MSGS.push(s.m);peek=`<button class="peek" data-m="${MSGS.length-1}" data-k="${s.k}">Read it</button>`}
-  let label=s.d;
-  if(s.k==='opp')label=s.d.replace(/^Pipeline: Services · /,'').replace(/ · Status: Open.*$/,'').replace(/^Stage: /,'Card moves to ').replace(/^Status: /,'Marked ');
-  if(s.k==='tag')label='Tag: '+s.d;
-  return `<div class="node"><div class="box"><small>${KIND[s.k]||''}</small><span>${esc(label)}</span>${s.c?`<em>To confirm: ${esc(s.c)}</em>`:''}${peek}</div><div class="arr"></div></div>`;
+/* workspace */
+let curF='f1',curW='S1.1',curM=null;const MS=[];
+function card(s,isTrig){
+  if(isTrig) return `<li class="t"><span class="dot">${IC.bolt}</span><div class="card"><small>Starts when</small><b>${esc(s.t)}</b><span class="sub">${esc(s.d.replace(/^Filters?: /,""))}</span>${s.c?`<span class="q">${esc(s.c)}</span>`:''}</div></li>`;
+  return `<li><span class="dot">${s._n}</span>${body(s)}</li>`;
 }
-function branchBox(s){
-  let rows='';
-  if(s.branches){rows=s.branches.map(b=>`<div class="row"><b>${esc(b.l)}</b>${b.s.map(x=>chip(x)).join('')}</div>`).join('')}
-  else{rows=`<div class="row"><b>Still waiting</b>${(s.yes||[]).map(x=>chip(x)).join('')}</div><div class="row"><b>Done</b>${(s.no||[]).map(x=>chip(x)).join('')}</div>`}
-  return `<div class="node"><div class="branch"><small>${esc(s.d.replace(/^Condition: /,'Checks: '))}</small>${rows}</div><div class="arr"></div></div>`;
+const KIND={email:'Email to the client',notify:'Alert to your team',task:'Task for your team',opp:'Pipeline',tag:'Tag',wait:'Wait',doc:'E-signature',review:'Review request',end:'Ends'};
+function label(s){
+  if(s.k==='opp')return s.d.replace(/^Pipeline: Services · /,'').replace(/ · Status: Open.*$/,'').replace(/ · Value.*$/,'').replace(/^Stage: /,'Card moves to ').replace(/^Status: /,'Marked ');
+  if(s.k==='tag')return 'Tagged '+s.d;
+  if(s.k==='wait')return 'Waits '+s.d;
+  if(s.k==='email'||s.k==='notify'||s.k==='task')return s.m&&(s.m.subj||s.m.title)?'“'+(s.m.subj||s.m.title).replace(/\{\{[^}]+\}\}/g,'…')+'”':s.d;
+  return s.d;
 }
-function chip(x){
-  let peek='';if(x.m&&(x.m.body||x.m.desc)){MSGS.push(x.m);peek=` <button class="peek" style="font:700 11.5px 'Plus Jakarta Sans';color:#0A3D75;text-decoration:underline" data-m="${MSGS.length-1}" data-k="${x.k}">read</button>`}
-  let t=x.k==='wait'?'Wait '+x.d:x.k==='end'?x.d:(KIND[x.k]||x.t)+(x.k==='opp'?': '+x.d.replace(/^Stage: |^Status: /,''):'');
-  return `<span class="chip">${esc(t)}${peek}</span>`;
+function body(s){
+  if(s.k==='if'){
+    const rows=s.branches?s.branches.map(b=>[b.l,b.s]):[["Still waiting",s.yes||[]],["Done",s.no||[]]];
+    return `<div class="fork"><small>${esc(s.d.replace(/^Condition: /,'Checks: '))}</small>${rows.map(([l,list])=>`<div class="row"><b>${esc(l)}</b><div class="chips">${list.map(c=>chip(c)).join('')}</div></div>`).join('')}</div>`;
+  }
+  const m=s.m&&(s.m.body||s.m.desc);let id='';
+  if(m){MS.push(s);id=MS.length-1}
+  return `<div class="card ${m?'msg':''}" ${m?`data-m="${id}" role="button" tabindex="0"`:''}>${m?'<span class="go">Read →</span>':''}<small>${KIND[s.k]||''}</small><b>${esc(label(s))}</b>${s.c?`<span class="q">To confirm: ${esc(s.c)}</span>`:''}</div>`;
 }
-const FSTATE={f1:['build','Drafted · off'],f2:['next','Planned'],f3:['next','Planned'],f4:['next','Planned']};
-$('#folders').innerHTML=FOLDERS.map((f,fi)=>{const list=WF.filter(w=>w.f===f.id),st=FSTATE[f.id];return `<div class="card folder reveal"><div class="folder-h"><div class="fn">${fi+1}</div><div><h3>${esc(f.name)}</h3><p>${esc(f.sub)}</p></div><span class="pill ${st[0]}"><i></i>${st[1]}</span></div><div class="autos">${list.map(w=>{
-  const trig=w.trigs.map(t=>`<div class="node"><div class="box trig"><small>Starts when</small><span>${esc(t.t)}</span>${t.c?`<em>${esc(t.c)}</em>`:''}</div><div class="arr"></div></div>`).join('');
-  const steps=w.steps.filter(s=>s.k!=='note').map(s=>(s.k==='if')?branchBox(s):stepBox(s)).join('');
-  return `<div class="auto"><button class="auto-b" aria-expanded="false"><div><h4>${esc(w.name)}</h4><p>${esc(w.why)}</p></div><span class="chev">${ICON.chev}</span></button><div class="auto-d"><div><div class="chain">${trig}${steps}</div></div></div></div>`}).join('')}</div></div>`}).join('');
-$$('.auto-b').forEach(b=>b.onclick=()=>{const a=b.parentElement,o=!a.classList.contains('open');a.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+function chip(c){
+  const m=c.m&&(c.m.body||c.m.desc);let id='';if(m){MS.push(c);id=MS.length-1}
+  return `<div class="chip ${m?'msg':''}" ${m?`data-m="${id}" role="button" tabindex="0"`:''}><small>${KIND[c.k]||''}</small>${esc(c.k==='end'?c.d:label(c))}</div>`;
+}
+function renderTabs(){$('#ftabs').innerHTML=FOLDERS.map((f,i)=>`<button class="ftab ${f.id===curF?'on':''}" data-f="${f.id}" role="tab" aria-selected="${f.id===curF}"><b>${i+1}</b><span>${esc(f.name.replace(/^Services · \d /,''))}<small>${WF.filter(w=>w.f===f.id).length} proposed</small></span></button>`).join('');$$('.ftab').forEach(b=>b.onclick=()=>{curF=b.dataset.f;curW=WF.find(w=>w.f===curF).id;renderWS()})}
+function renderWS(){
+  renderTabs();MS.length=0;
+  const list=WF.filter(w=>w.f===curF);
+  $('#wl').innerHTML=list.map(w=>{const msgs=w.steps.reduce((a,s)=>a+(s.m?1:0)+(s.yes||[]).concat(s.no||[]).concat((s.branches||[]).flatMap(b=>b.s)).filter(x=>x.m).length,0);return `<button class="wi ${w.id===curW?'on':''}" data-w="${w.id}"><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span><em>${msgs} message${msgs===1?'':'s'}</em></button>`}).join('');
+  $$('.wi').forEach(b=>b.onclick=()=>{curW=b.dataset.w;renderWS()});
+  const w=WFmap[curW];let n=0;
+  const steps=w.steps.filter(s=>s.k!=='note').map(s=>{s._n=++n;return card(s,false)}).join('');
+  $('#wc').innerHTML=`<h3>${esc(plain(w.name))}</h3><p>${esc(w.why)}</p><ol class="tl">${w.trigs.map(t=>card(t,true)).join('')}${steps}</ol>`;
+  $$('[data-m]').forEach(el=>{el.onclick=()=>showMsg(+el.dataset.m);el.onkeydown=e=>{if(e.key==='Enter')showMsg(+el.dataset.m)}});
+  curM=MS.findIndex(s=>s.k==='email');if(curM<0)curM=MS.length?0:null;
+  showMsg(curM);
+}
+function showMsg(i){
+  $$('[data-m]').forEach(el=>el.classList.toggle('sel',+el.dataset.m===i));
+  const w=WFmap[curW],sh=SHOTS[curW],link=WFLINK[curW];
+  let mail='<div class="ghost"><b>No messages in this one</b>It updates the card and your team\'s work behind the scenes.</div>';
+  if(i!==null&&MS[i]){const s=MS[i],m=s.m;const to=s.k==='email'?'To the client':s.k==='notify'?'Alert to '+String(m.to||'your team').replace(/^Specific user: /,''):'Task'+(m.assign?' for '+m.assign:'')+(m.due?' · due '+m.due.toLowerCase():'');
+    mail=`<div class="mail"><div class="h"><small>${esc(to)}</small><b>${mf(m.subj||m.title||'')}</b></div><div class="b">${mf(m.body||m.desc||'')}</div></div>`}
+  const shot=sh?`<h4>In your account</h4><button class="shot" data-zoom="${curW}"><img src="${sh.src}" alt="${esc(sh.cap)}"><span class="cap">${esc(sh.cap)}<span>⤢</span></span></button>`:'';
+  $('#wp').innerHTML=`<h4>${i!==null&&MS[i]?(MS[i].k==='email'?'The email':MS[i].k==='notify'?'The alert':'The task'):'Messages'}</h4>${mail}${shot}${link?`<a class="btn" href="${link}" target="_blank" rel="noopener">Open in your account ↗</a>`:`<p class="hint">Built in your account once you give the go-ahead.</p>`}`;
+}
+renderWS();
+function openWF(id){curW=id;curF=WFmap[id].f;renderWS();document.getElementById('automations').scrollIntoView({behavior:'smooth'})}
+
+/* stages */
+let k=0;
+$('#lanes').innerHTML=PHASES.map(ph=>{const l=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''}"><div class="lane-h"><h3>${ph.name}</h3><small>${l.length} stages</small></div><div class="cards">${l.map(s=>`<button class="st" data-stage="${esc(s.n)}"><i>${++k}</i>${esc(s.n)}</button>`).join('')}</div></div>`}).join('');
+function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);$$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.stage===n));$('#dPh').textContent=`Stage ${stageNo[n]} · ${ph.name}`;$('#dN').textContent=n;$('#dHow').textContent=s.how;$('#dAuto').innerHTML=s.auto.map(a=>`<li>${esc(a)}</li>`).join('');$('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on')}
+
+/* decided + footer */
+$('#dl').innerHTML=DECIDED.map(([b,s])=>`<div>${IC.check}<div><b>${esc(b)}</b><span>${esc(s)}</span></div></div>`).join('');
+$('#upd').innerHTML=`Updated <b>${esc(UPDATED.date)}</b> · ${esc(UPDATED.what)}`;
+
+/* delegated clicks */
 document.addEventListener('click',e=>{
-  const p=e.target.closest('.peek');if(!p)return;e.stopPropagation();
-  const m=MSGS[+p.dataset.m],k=p.dataset.k;
-  const hl=t=>esc(t).replace(/\{\{[^}]+\}\}/g,x=>`<span class="mf">${x.includes('first_name')?'First name':x.includes('mark_to_register')?'Their trademark':x.includes('.name')?'Client name':x.includes('email')?'Email':x.includes('phone')?'Phone':'Detail'}</span>`);
-  $('#mTo').textContent=k==='email'?'Email to the client':k==='notify'?'Alert to '+clean(m.to||'your team'):'Task'+(m.assign?' for '+m.assign:'')+(m.due?' · due '+m.due.toLowerCase():'');
-  $('#mSubj').innerHTML=hl(m.subj||m.title||'');
-  $('#mBody').innerHTML=hl(m.body||m.desc||'');
-  $('#msg').classList.add('on');$('#scrim').classList.add('on');
+  const z=e.target.closest('[data-zoom]');if(z){const s=SHOTS[z.dataset.zoom];$('#lbImg').src=s.src;$('#lbImg').alt=s.cap;$('#lbCap').textContent=s.cap;$('#lb').classList.add('on');$('#scrim').classList.add('on');return}
+  const a=e.target.closest('[data-wf]');if(a){openWF(a.dataset.wf);return}
+  const st=e.target.closest('[data-stage]');if(st){openStage(st.dataset.stage);return}
+  if(e.target.closest('[data-close]')||e.target===$('#scrim')||e.target===$('#lb'))closeAll();
 });
-
-/* next */
-const todo=a=>a.map(([b,s])=>`<li><span class="bx"></span><div><b>${b}</b><span>${s}</span></div></li>`).join('');
-$('#todoUs').innerHTML=todo(US);$('#todoThem').innerHTML=todo(THEM);
-$('#decided').innerHTML=DECIDED.map(([b,s])=>`<div>${ICON.check}<div><b>${b}</b><span>${s}</span></div></div>`).join('');
-$('#doorOpen').textContent=US.length+THEM.length;
-$('#upd').textContent=UPDATED;
-
-/* close */
-function closeAll(){$('#drawer').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');$('#msg').classList.remove('on');$('#scrim').classList.remove('on');$$('.st').forEach(b=>b.classList.remove('sel'))}
-$('#scrim').onclick=closeAll;$$('[data-close]').forEach(b=>b.onclick=closeAll);
+function closeAll(){$('#drawer').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');$('#lb').classList.remove('on');$('#scrim').classList.remove('on');$$('.st').forEach(b=>b.classList.remove('sel'))}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
 
-/* reveal */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-function arm(){$$('.view.on .reveal:not(.in)').forEach(el=>io.observe(el))}
-
-/* routing */
-function go(v){
-  if(!document.getElementById('v-'+v))v='home';
-  $$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
-  $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.go===v));
-  window.scrollTo({top:0,behavior:'instant'});
-  if(v==='home'){setTimeout(()=>{$('#ringArc').style.strokeDashoffset=314.16*(1-2/6);$('#railFill').style.width=(2/5*100)+'%'},250)}
-  try{history.replaceState(null,'','#'+v)}catch(e){}
-  setTimeout(arm,30);
-}
-$$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(b.dataset.go)}));
-go((location.hash||'#home').slice(1));
-window.addEventListener('hashchange',()=>go((location.hash||'#home').slice(1)));
+/* reveal + nav highlight */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.08});
+$$('.reveal').forEach(el=>io.observe(el));
+const so=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)$$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.s===x.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+['map','automations','stages','decided'].forEach(id=>so.observe(document.getElementById(id)));
 </script>
 </body>
 </html>
