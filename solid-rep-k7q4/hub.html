@@ -44,11 +44,11 @@ a{color:inherit}
 .hero-mark{width:200px;opacity:.9;flex-shrink:0}
 
 /* pulse */
-.pulse{position:relative;margin-top:-72px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;z-index:2}
+.pulse{position:relative;margin-top:-72px;display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:16px;z-index:2;align-items:stretch}
 .pc{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
 .pc .ic{width:44px;height:44px;border-radius:12px;background:var(--pale);display:grid;place-items:center;color:var(--navy);flex-shrink:0}
 .pc .ic svg{width:22px;height:22px}
-.pc.you .ic{background:var(--green)}
+.pc.you{background:var(--navy2);border-color:var(--navy2)}.pc.you .ic{background:var(--green)}.pc.you small{color:var(--green)}.pc.you b{color:#fff}.pc.you span{color:rgba(255,255,255,.75)}
 .pc small{display:block;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .pc b{display:block;font:700 16px/1.35 var(--ui);color:var(--navy);margin:3px 0 2px}
 .pc span{font-size:13.5px;color:var(--muted)}
@@ -64,7 +64,7 @@ a{color:inherit}
 .map{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh);padding:34px 30px 30px;position:relative;overflow:hidden}
 .path{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
 .path .rail{position:absolute;left:6.25%;right:6.25%;top:31px;height:4px;border-radius:4px;background:var(--line)}
-.path .rail i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--navy);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.path .rail i{display:none}
 .node{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 2px;border-radius:16px}
 .node .d{width:66px;height:66px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:transform .25s,background .25s,border-color .25s,color .25s,box-shadow .25s;position:relative;z-index:1}
 .node .d svg{width:26px;height:26px}
@@ -82,6 +82,7 @@ a{color:inherit}
 
 /* step detail */
 .detail{margin-top:26px;border-top:1px solid var(--line);padding-top:26px;display:grid;grid-template-columns:1.05fr 1fr 1.1fr;gap:28px;min-height:250px}
+.detail.two{grid-template-columns:1.05fr 1.2fr}
 .detail h4{margin:0 0 10px;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .dt h3{margin:0 0 6px;font:700 28px/1.1 var(--disp);color:var(--navy)}
 .dt p{margin:0 0 16px}
@@ -116,14 +117,14 @@ a{color:inherit}
 .ftab.on{background:var(--navy);border-color:var(--navy)}
 .ftab.on b,.ftab.on span{color:#fff}.ftab.on small{color:var(--green)}
 .ws{display:grid;grid-template-columns:300px 1fr 340px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh);overflow:hidden;min-height:620px}
-.wl{border-right:1px solid var(--line);padding:10px;background:#fff}
+.wl{border-right:1px solid var(--line);padding:10px;background:var(--soft)}
 .wi{display:block;width:100%;padding:13px 14px;border-radius:14px;margin-bottom:4px;transition:background .2s}
 .wi:hover{background:var(--soft)}
-.wi.on{background:var(--pale);box-shadow:inset 3px 0 0 var(--navy)}
+.wi.on{background:#fff;box-shadow:inset 3px 0 0 var(--navy),0 6px 16px -12px rgba(5,46,92,.5)}
 .wi b{display:block;font:700 14px/1.3 var(--ui);color:var(--navy)}
 .wi span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
 .wi em{display:inline-block;margin-top:7px;font:700 10.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);background:#E6EEF8;padding:3px 8px;border-radius:999px;font-style:normal}
-.wc{padding:26px 30px 30px;background:radial-gradient(circle at 1px 1px,#E3EAF3 1px,transparent 1.5px) 0 0/22px 22px}
+.wc{padding:26px 30px 30px;background:#fff}
 .wc h3{margin:0;font:700 26px/1.15 var(--disp);color:var(--navy)}
 .wc>p{margin:6px 0 22px;color:var(--muted);max-width:520px}
 .tl{list-style:none;margin:0;padding:0}
@@ -141,11 +142,11 @@ a{color:inherit}
 .card.msg:hover{border-color:var(--navy);box-shadow:0 10px 22px -14px rgba(5,46,92,.55)}
 .card.msg.sel{border-color:var(--navy);box-shadow:0 0 0 3px rgba(182,237,94,.6)}
 .card .go{float:right;font:700 12px var(--ui);color:var(--navy2)}
-.tl .t .card{background:var(--navy);border-color:var(--navy)}
-.tl .t .card small{color:var(--green)}.tl .t .card b{color:#fff}
+.tl .t .card{background:#fff;border-left:3px solid var(--navy)}
+.tl .t .card small{color:var(--navy2)}
 .card .sub{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
-.tl .t .card .sub{color:rgba(255,255,255,.72)}
-.tl .t .card .q{background:rgba(255,255,255,.1);color:#E9F7CF}
+
+
 .fork{max-width:470px;border:1.5px dashed var(--line);border-radius:14px;background:var(--soft);padding:10px}
 .fork>small{display:block;font:700 10.5px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:2px 4px 8px}
 .fork .row{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start;padding:8px 4px;border-top:1px solid var(--line)}
@@ -180,10 +181,14 @@ a{color:inherit}
 .st:hover,.st.sel{border-color:var(--navy);box-shadow:0 8px 18px -12px rgba(5,46,92,.5)}
 .st i{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font:700 11px var(--ui);color:var(--navy2);font-style:normal}
 .st.sel i{background:var(--navy);color:#fff}
+.st .sb{font-size:12px;opacity:.75}
+.lane-h{cursor:default}
 
 /* decided */
-.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.dl>div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;gap:12px}
+.dl{background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 26px;display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+.dl>div{display:grid;grid-template-columns:22px 1fr 64px;gap:12px;align-items:start;padding:16px 0;border-bottom:1px solid var(--line)}
+.dl>div:nth-last-child(-n+2){border-bottom:0}
+.dl time{font:700 12px var(--ui);color:var(--muted);text-align:right;padding-top:2px}
 .dl svg{flex-shrink:0;width:22px;height:22px;color:#3C6A00;margin-top:1px}
 .dl b{display:block;font:700 14.5px/1.3 var(--ui);color:var(--navy)}
 .dl span{font-size:13px;color:var(--muted)}
@@ -215,7 +220,7 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 .lb figcaption{padding:12px 18px;font:600 14px var(--ui);color:var(--navy);display:flex;justify-content:space-between;gap:12px;align-items:center}
 .lb .x{position:static;background:var(--pale);color:var(--navy)}
 
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal{}
 .reveal.in{opacity:1;transform:none}
 
 @media (max-width:1000px){
@@ -223,7 +228,6 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
   .wi{flex:0 0 240px;margin:0}.wp{border-left:0;border-top:1px solid var(--line)}
   .detail{grid-template-columns:1fr 1fr}.detail .dt{grid-column:1/-1}
   .lanes{grid-template-columns:1fr 1fr}.lane.hired{grid-column:1/-1}
-  .dl{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
   .hero{padding:40px 0 96px}.hero-mark{display:none}
@@ -236,7 +240,9 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
   .node .peek{margin:0;width:56px;height:46px}
   .detail{grid-template-columns:1fr}
   .lanes{grid-template-columns:1fr}.lane.hired .cards{grid-template-columns:1fr}
-  .dl{grid-template-columns:1fr}
+  .dl{grid-template-columns:1fr;padding:4px 18px}.dl>div:nth-last-child(2){border-bottom:1px solid var(--line)}
+  .node .d{width:46px;height:46px}.node .d svg{width:20px;height:20px}.path .rail{left:23px;top:23px;bottom:23px}
+  .pc.you{order:-1}
   .brand span{display:none}
   .nav{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent);padding-right:24px}
   .map{padding:22px 18px}
@@ -248,15 +254,14 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 <body>
 <header class="bar"><div class="bar-in">
   <a class="brand" href="#top"><img src="assets/logo.png" alt="Solid Rep"><span>Blueprint</span></a>
-  <nav class="nav" aria-label="Sections"><a href="#map" data-s="map">The map</a><a href="#automations" data-s="automations">Automations</a><a href="#stages" data-s="stages">Your 26 stages</a><a href="#decided" data-s="decided">Decided</a></nav>
+  <nav class="nav" aria-label="Sections"><a href="#map" data-s="map">Map</a><a href="#automations" data-s="automations">Automations</a><a href="#stages" data-s="stages">Stages</a><a href="#decided" data-s="decided">Decided</a></nav>
 </div></header>
 
 <main id="top">
 <section class="hero">
   <svg class="grid" aria-hidden="true"><defs><pattern id="g" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#fff"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>
   <div class="wrap hero-in">
-    <div><div class="eyebrow">Solid Rep Blueprint</div><h1 class="disp">How your firm runs, from first hello to registered.</h1><p>Every form, automation and stage we're building, placed on the step of the client's path where it does its job.</p></div>
-    <img class="hero-mark" src="assets/logo-white.png" alt="">
+    <div><div class="eyebrow">Solid Rep Blueprint</div><h1 class="disp">How Solid Rep's client system is set up</h1><p>Your pipeline stages, forms and automations in SmartFunnels Pro, shown on the step of the client process where each one is used.</p><p style="margin-top:14px;display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 14px;font:600 13.5px var(--ui);color:#fff"><span style="width:8px;height:8px;border-radius:50%;background:var(--green)"></span>Nothing is switched on yet. Folder 1 is drafted in your account and turned off.</p></div>
   </div>
 </section>
 
@@ -264,7 +269,7 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
   <div class="pulse" id="pulse"></div>
 
   <section class="sec" id="map">
-    <div class="sh reveal"><div><div class="eyebrow">The map</div><h2 class="disp">Follow one client through your system.</h2><p>Tap any step to see its stages, what the client sees, and what runs on its own.</p></div></div>
+    <div class="sh reveal"><div><div class="eyebrow">Client process</div><h2 class="disp">The 8 steps a client goes through</h2><p>Select a step to see its pipeline stages, the form the client fills in, and the automations used at that step.</p></div></div>
     <div class="map reveal">
       <div class="path" id="path"><div class="rail"><i id="railFill"></i></div></div>
       <div class="detail" id="detail" aria-live="polite"></div>
@@ -272,8 +277,8 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
   </section>
 
   <section class="sec" id="automations">
-    <div class="sh reveal"><div><div class="eyebrow">Automations</div><h2 class="disp">The work that runs itself.</h2><p>Fifteen proposed automations in four folders. Pick one and follow it top to bottom. Tap any message to read it exactly as it's sent.</p></div></div>
-    <div class="callout reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>These are proposals.</b> Nothing reaches a client until you and Alice approve it and we test it on a test contact first. The yellow notes are the questions to settle together.</div></div>
+    <div class="sh reveal"><div><div class="eyebrow">Automations</div><h2 class="disp">Proposed automations (15)</h2><p>Organized in 4 folders, named the same way in your account. Select one to see what starts it, each step in order, and the exact message it sends.</p></div></div>
+    <div class="callout reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>These are proposals.</b> Nothing reaches a client until you and Alice approve it and we test it on a test contact first. The yellow notes are the questions to settle together.<div style="margin-top:8px;font-size:13px;color:var(--muted)"><b>Words you'll see:</b> a <b>card</b> is one client on your pipeline board · a <b>tag</b> is a label on their record · the <b>opportunity owner</b> is the team member responsible for that card · <b>stale</b> means no activity for a while.</div></div></div>
     <div class="ftabs" id="ftabs" role="tablist"></div>
     <div class="ws reveal">
       <div class="wl" id="wl"></div>
@@ -283,12 +288,12 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
   </section>
 
   <section class="sec" id="stages">
-    <div class="sh reveal"><div><div class="eyebrow">Your 26 stages</div><h2 class="disp">Every client, one board.</h2><p>The Services pipeline you built. Tap a stage for how a client gets there and what's planned next.</p></div></div>
+    <div class="sh reveal"><div><div class="eyebrow">Pipeline</div><h2 class="disp">Your Services pipeline: 26 stages</h2><p>Select a stage to see how a client reaches it and what is proposed next.</p></div></div>
     <div class="lanes reveal" id="lanes"></div>
   </section>
 
   <section class="sec" id="decided">
-    <div class="sh reveal"><div><div class="eyebrow">Decided together</div><h2 class="disp">Settled, so nobody has to remember.</h2></div></div>
+    <div class="sh reveal"><div><div class="eyebrow">Decisions</div><h2 class="disp">Decisions made so far</h2></div></div>
     <div class="dl reveal" id="dl"></div>
   </section>
 </div>
@@ -301,11 +306,11 @@ footer{margin-top:72px;background:#fff;border-top:1px solid var(--line);padding:
 
 <script>
 /* ============ CONTENT (update at every harvest) ============ */
-const UPDATED={date:"Wednesday, November 11, 2026",what:"First version of your Blueprint"};
+const UPDATED={date:"Wednesday, November 11, 2026",what:"Your Blueprint, version 2"};
 const PULSE=[
- {k:"last",label:"Last session · Nov 10",b:"Your first 10 clients are in",s:"The automation plan went to you for Alice's review"},
+ {k:"last",label:"Last session · Nov 10",b:"Your 10 beta clients are imported",s:"The automation plan went to you for Alice's review"},
  {k:"next",label:"Next session · Tue Nov 17",b:"Alice's answer on the stages",s:"12:30 PM Central · 2:30 PM Puerto Rico"},
- {k:"you",label:"Waiting on your team",b:"Alice's review · Stripe products · test contacts",s:"The three things that unlock the next step"}
+ {k:"you",label:"Waiting on your team",b:"Alice's review · Stripe products · test contacts",s:"Before Tue Nov 17: Alice looks over the stages and the yellow questions below. Reply to Trey anytime."}
 ];
 const ACCOUNT="https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos";
 const SHOTS={
@@ -315,22 +320,23 @@ const SHOTS={
 };
 const WFLINK={"S1.1":ACCOUNT+"/automation/workflow/c041a608-cceb-4bd9-bf21-f9183de9870b","S1.2":ACCOUNT+"/automation/workflows?folder=bc602d75-cb9c-4ad7-918c-6ed060f02552","S1.3":ACCOUNT+"/automation/workflows?folder=bc602d75-cb9c-4ad7-918c-6ed060f02552"};
 const STEPS=[
- {n:"They reach out",ic:"wave",d:"Someone contacts you from the website, by phone or chat, or books a call.",stages:["New Prospect","Orientation","Legal Consult"],autos:["S2.1","S2.2"]},
- {n:"START NOW",ic:"form",d:"They sign up on your site: contact details and four quick questions about their trademark, then the package and payment.",stages:["Preliminary Factual Information"],autos:[],shot:"startnow",note:"The payment step goes in once package prices and filing fees are set."},
- {n:"Engagement letter",ic:"pen",d:"When a bill or retainer is needed, the engagement letter goes out to sign online.",stages:["Engagement Letter w/ Bill or Retainer"],autos:["S2.3","S2.4"]},
- {n:"New client",ic:"star",d:"Payment makes them a client: their card lands in New Service, your team hears about it, and they get a warm welcome.",stages:["New Service"],autos:["S1.1","S1.2"]},
- {n:"Worksheet",ic:"list",d:"The worksheet gathers everything your attorneys need to file, with friendly reminders until it's back.",stages:["Trademark Registration Worksheet","Worksheet Review"],autos:["S1.3"],shot:"worksheet"},
- {n:"Legal work",ic:"scale",d:"Assessment, conflict search, drafting and approvals. Each step hands your team a task, and Alice's approvals come straight to her.",stages:["Initial Legal Assessment","Conflict Search Report Draft","Conflict Search Report Approval by Attorney","Application Draft","Application Draft Approval by Attorney","Application Draft Approval by Client","Waiting for Client","Extension of Time","Grace Period","Waiting for Third Party"],autos:["S3.1","S3.2","S4.1","S4.3","S3.3"]},
- {n:"Filed",ic:"send",d:"The application is filed and the client hears about every milestone, without anyone writing an email.",stages:["Application Filing","Published for Opposition","Filing Statement of First Use","Response to Office Action"],autos:["S4.2"]},
- {n:"Registered",ic:"award",d:"Registration day: their certificate, your thank-you, and a request for a Google review.",stages:["Share Registration Certificate","Closed","Abandoned","Not Hired"],autos:["S4.4","S4.5"]}
+ {n:"First contact",ic:"wave",d:"A prospect contacts you through the website form, by phone or chat, or books an orientation or legal consult.",stages:["New Prospect","Orientation","Legal Consult"],autos:["S2.1","S2.2"]},
+ {n:"START NOW sign-up",ic:"form",d:"The client fills in the START NOW form on your website: contact details, four questions about the trademark, then the package and payment.",stages:["Preliminary Factual Information"],autos:[],shot:"startnow",note:"The payment step goes in once package prices and filing fees are set."},
+ {n:"Engagement letter",ic:"pen",d:"When a bill or retainer applies, your team sends the engagement letter for the client to sign online.",stages:["Engagement Letter w/ Bill or Retainer"],autos:["S2.3","S2.4"]},
+ {n:"New client",ic:"star",d:"After payment, the client's card is created in New Service, your team is notified, and the client receives a welcome email.",stages:["New Service"],autos:["S1.1","S1.2"]},
+ {n:"Registration worksheet",ic:"list",d:"The client receives the Trademark Registration Worksheet, which collects what your attorneys need to file. Reminders go out until it is returned.",stages:["Trademark Registration Worksheet","Worksheet Review"],autos:["S1.3"],shot:"worksheet"},
+ {n:"Legal work",ic:"scale",d:"Legal assessment, conflict search, application draft and approvals. Proposed: a task for your team at each stage, and attorney approvals sent to Alice.",stages:["Initial Legal Assessment","Conflict Search Report Draft","Conflict Search Report Approval by Attorney","Application Draft","Application Draft Approval by Attorney","Application Draft Approval by Client","Waiting for Client","Extension of Time","Grace Period","Waiting for Third Party"],autos:["S3.1","S3.2","S4.1","S4.3","S3.3"]},
+ {n:"Filing and updates",ic:"send",d:"The application is filed. Proposed: the client receives an email update at each milestone (filed, published, office action).",stages:["Application Filing","Published for Opposition","Filing Statement of First Use","Response to Office Action"],autos:["S4.2"]},
+ {n:"Registration and closing",ic:"award",d:"The client receives the registration certificate and a request for a Google review, and the card is closed with the right status.",stages:["Share Registration Certificate","Closed","Abandoned","Not Hired"],autos:["S4.4","S4.5"]}
 ];
 const DECIDED=[
  ["Operations first","Then funnels and workflows, then the website (Nov 10)"],
  ["New clients start in SmartFunnels Pro","Existing matters move over later (Nov 10)"],
- ["Few client emails at first","Each one approved before it goes live (Nov 10)"],
- ["Tasks come later","Get comfortable with the board first (Nov 10)"],
+ ["Few client emails at first","You and Alice pick the first wave from the proposals below (Nov 10)"],
+ ["Tasks come later","Get comfortable with the board first; the task steps below wait until you're ready (Nov 10)"],
  ["One system, both languages","Spanish built in, not a separate copy (Oct 28)"],
- ["Weekly check-ins on Tuesdays","Same time each week (Nov 10)"]
+ ["Payments through your own Stripe","Connected (Nov 6)"],
+ ["Check-ins on Tuesdays","Next one Tuesday, November 17 (Nov 10)"]
 ];
 const PHASES = [
  {id:"p", name:"Prospect", sub:"Before they hire you"},
@@ -341,7 +347,7 @@ const PHASES = [
 // st: built = in place now; today = we map it together today; ask = needs your answer
 const STAGES = [
  {p:"p", n:"New Prospect", how:"Someone reaches out: the contact form, a call, a chat, or a booking.", auto:["Your team gets an alert with their details","They get a short welcome email"], st:"today"},
- {p:"p", n:"Preliminary Factual Information", how:"They fill in the START NOW sheet on your site.", auto:["Their answers save to their client record","If they stop before paying, a friendly reminder goes out"], st:"built", note:"The START NOW sheet is built with your wording."},
+ {p:"p", n:"Preliminary Factual Information", how:"They fill in the START NOW form on your site.", auto:["Their answers save to their client record","If they stop before paying, a friendly reminder goes out"], st:"built", note:"The START NOW form is built with your wording."},
  {p:"p", n:"Orientation", how:"They book the 15-minute orientation call.", auto:["Confirmation and reminder emails","The call shows on your shared Google Calendar"], st:"ask", note:"Needs the orientation calendar (Alice's Google login)."},
  {p:"p", n:"Engagement Letter w/ Bill or Retainer", how:"Your team sends the engagement letter with the bill or retainer.", auto:["They sign online","The signed copy saves under Documents in their client file, and a copy goes to them and to your team"], st:"ask", note:"Waiting on the final letter text."},
  {p:"p", n:"Legal Consult", how:"They book the 45-minute legal consult.", auto:["Confirmation and reminder emails","A task for the attorney before the call"], st:"ask", note:"Needs the consultation calendar."},
@@ -370,15 +376,15 @@ const STAGES = [
 
 const WS_LINK="https://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP";
 const FOLDERS=[
- {id:"f1",code:"S1",name:"Services · 1 Sign-up & Worksheet",sub:"From payment to a returned worksheet. Runs on its own."},
+ {id:"f1",code:"S1",name:"Services · 1 Sign-up & Worksheet",sub:"From payment to a returned worksheet."},
  {id:"f2",code:"S2",name:"Services · 2 Prospects & Engagement",sub:"For people who reach out or book a call first."},
  {id:"f3",code:"S3",name:"Services · 3 Team Work",sub:"Tasks and alerts for your team while the trademark is in progress."},
- {id:"f4",code:"S4",name:"Services · 4 Client Updates & Close",sub:"What the client hears from you, and the finish line."}
+ {id:"f4",code:"S4",name:"Services · 4 Client Updates & Close",sub:"Client updates at each milestone, and closing the card."}
 ];
 const SIG="\n\nWarmly,\nThe Solid Rep Team";
 const NOTE_TO="Specific user: Fiarah Carrau";
 const WF=[
-{id:"S1.1",f:"f1",name:"S1.1 · Paid sign-up → Make them a client",merged:"Combines START NOW paid and bill or retainer paid: same steps, two ways in.",why:"Whoever pays, through START NOW or a bill, becomes a client card in New Service, and your team hears about it.",stages:["New Service"],
+{id:"S1.1",f:"f1",name:"S1.1 · Paid sign-up → Make them a client",merged:"Combines START NOW paid and bill or retainer paid: same steps, two ways in.",why:"Whoever pays, through START NOW or a bill, becomes a client card in New Service, and your team is notified.",stages:["New Service"],
  trigs:[{t:"Survey submitted",d:"Filter: Survey is START NOW"},{t:"Payment received",d:"Filter: the bill or retainer payment",c:"Only if billing moves into SmartFunnels Pro (Alice to confirm)."}],
  steps:[
   {k:"tag",t:"Add contact tag",d:"client-paid"},
@@ -399,7 +405,7 @@ const WF=[
     {k:"task",t:"Add task",d:"Call the client",m:{title:"Call {{contact.name}} about their worksheet",desc:"Their Trademark Registration Worksheet is still not back after two emails. Call {{contact.phone}} and offer to help them finish it.",assign:"Fiarah Carrau",due:"Today"},c:"Who makes this call?"}],
    no:[{k:"end",t:"End",d:"Worksheet is back. S1.3 takes over."}]}
  ]},
-{id:"S1.3",f:"f1",name:"S1.3 · Worksheet returned → Review task",why:"When the worksheet comes back, the card moves and someone is told to review it.",stages:["Worksheet Review"],
+{id:"S1.3",f:"f1",name:"S1.3 · Worksheet returned → Review task",why:"When the worksheet comes back, the card moves and a review task is created.",stages:["Worksheet Review"],
  trigs:[{t:"Survey submitted",d:"Filter: Survey is Solid Rep - Trademark Registration Worksheet"}],
  steps:[
   {k:"opp",t:"Update opportunity",d:"Pipeline: Services · Stage: Worksheet Review"},
@@ -409,14 +415,14 @@ const WF=[
  ]}
 ];
 WF.push(
-{id:"S2.1",f:"f2",name:"S2.1 · Contact form → New prospect",why:"Anyone who reaches out on your site becomes a card, and your team hears about it right away.",stages:["New Prospect"],
+{id:"S2.1",f:"f2",name:"S2.1 · Contact form → New prospect",why:"Anyone who reaches out on your site becomes a card, and your team is notified.",stages:["New Prospect"],
  trigs:[{t:"Form submitted",d:"Filter: Form is your site's contact form",c:"Which forms count as a new prospect?"}],
  steps:[
   {k:"opp",t:"Create/update opportunity",d:"Pipeline: Services · Stage: New Prospect · Status: Open"},
   {k:"notify",t:"Send internal notification",d:"Email to your team",m:{to:NOTE_TO,subj:"New prospect: {{contact.name}}",body:"{{contact.name}} reached out through the website.\n\nEmail: {{contact.email}}\nPhone: {{contact.phone}}\n\nTheir card is in New Prospect."}},
   {k:"email",t:"Send email",d:"Thank-you to the prospect",m:{subj:"Thanks for reaching out to Solid Rep",body:"Hi {{contact.first_name}},\n\nThank you for contacting Solid Rep. We've received your message, and a member of our team will be in touch shortly.\n\nIf you'd like to talk sooner, you can book a free 15-minute orientation call here:\n[Orientation booking link]"+SIG},c:"Is orientation free? Booking link comes once the calendar exists"}
  ]},
-{id:"S2.2",f:"f2",name:"S2.2 · Call booked → Move card + alert",merged:"Combines Orientation booked and Legal Consult booked: same pattern, one fork.",why:"Booking either call moves the card to the right stage and tells the right person.",stages:["Orientation","Legal Consult"],
+{id:"S2.2",f:"f2",name:"S2.2 · Call booked → Move card + alert",merged:"Combines Orientation booked and Legal Consult booked: same pattern, one fork.",why:"Booking either call moves the card to the right stage and notifies the right person.",stages:["Orientation","Legal Consult"],
  trigs:[{t:"Customer booked appointment",d:"Filter: Calendar is Orientation",c:"Needs the Orientation calendar"},{t:"Customer booked appointment",d:"Filter: Calendar is Legal Consult",c:"Needs the Legal Consult calendar"}],
  steps:[
   {k:"if",t:"If / else",d:"Condition: Appointment calendar is Orientation",branches:[
@@ -429,19 +435,19 @@ WF.push(
     {k:"notify",t:"Send internal notification",d:"Consult booked",m:{to:"Specific user: Alice Cabrera",subj:"Legal consult booked: {{contact.name}}",body:"{{contact.name}} booked a legal consult. Check the calendar for the time. A prep task is waiting for you."}}]}]},
   {k:"note",t:"Confirmations and reminders",d:"Set in each calendar's own notification settings, not here"}
  ]},
-{id:"S2.3",f:"f2",name:"S2.3 · Engagement Letter stage → Send letter",why:"Moving a card to this stage sends the letter for e-signature, so nobody emails it by hand.",stages:["Engagement Letter w/ Bill or Retainer"],
+{id:"S2.3",f:"f2",name:"S2.3 · Engagement Letter stage → Send letter",why:"Moving a card to this stage sends the letter for e-signature.",stages:["Engagement Letter w/ Bill or Retainer"],
  trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Engagement Letter w/ Bill or Retainer"}],
  steps:[
   {k:"doc",t:"Send documents & contracts",d:"Template: Engagement Letter · to the contact",c:"Needs the final letter text"},
   {k:"notify",t:"Send internal notification",d:"Letter sent",m:{to:NOTE_TO,subj:"Engagement letter sent: {{contact.name}}",body:"The engagement letter went to {{contact.name}} for signature. You'll get another alert when it's signed."}}
  ]},
-{id:"S2.4",f:"f2",name:"S2.4 · Letter signed → Alert + next stage",why:"When the client signs, the signed copy saves under Documents in their file and your team is told.",stages:["Engagement Letter w/ Bill or Retainer"],
+{id:"S2.4",f:"f2",name:"S2.4 · Letter signed → Alert + next stage",why:"When the client signs, the signed copy saves under Documents in their file and your team is notified.",stages:["Engagement Letter w/ Bill or Retainer"],
  trigs:[{t:"Documents & contracts",d:"Filters: Status is Signed/Accepted · Template is Engagement Letter"}],
  steps:[
   {k:"notify",t:"Send internal notification",d:"Letter signed",m:{to:NOTE_TO,subj:"Engagement letter signed: {{contact.name}}",body:"{{contact.name}} signed the engagement letter. The signed copy is under Documents in their contact record."}},
   {k:"opp",t:"Update opportunity",d:"Stage: Legal Consult",c:"After signing, does the card go to Legal Consult, or wait for payment?"}
  ]},
-{id:"S3.1",f:"f3",name:"S3.1 · Work stages → Task for the owner",merged:"Combines the 6 work stages and the 3 deadline stages: same steps, one list.",why:"Each working stage creates a task for whoever owns the card, so the work never sits unnoticed.",stages:["Initial Legal Assessment","Conflict Search Report Draft","Application Draft","Application Filing","Filing Statement of First Use","Response to Office Action","Extension of Time","Grace Period","Waiting for Third Party"],
+{id:"S3.1",f:"f3",name:"S3.1 · Work stages → Task for the owner",merged:"Combines the 6 work stages and the 3 deadline stages: same steps, one list.",why:"Each working stage creates a task for whoever owns the card, so open work is visible.",stages:["Initial Legal Assessment","Conflict Search Report Draft","Application Draft","Application Filing","Filing Statement of First Use","Response to Office Action","Extension of Time","Grace Period","Waiting for Third Party"],
  trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is any of the 9 stages listed"}],
  steps:[
   {k:"task",t:"Add task",d:"Task for the opportunity owner",m:{title:"{{contact.name}}: next step on their trademark",desc:"{{contact.name}}'s card just moved to a new stage. Open the card to see the stage and do the work for it. For Extension of Time, Grace Period and Response to Office Action, change this task's due date to the real legal deadline.",assign:"Opportunity owner",due:"In 3 days"},c:"Who owns each stage, and is 3 days right?"},
@@ -471,7 +477,7 @@ WF.push(
     {k:"task",t:"Add task",d:"Follow up",m:{title:"Follow up on draft approval: {{contact.name}}",desc:"No approval yet after a reminder. Call {{contact.phone}}.",assign:"Opportunity owner",due:"Today"}}],
    no:[{k:"end",t:"End",d:"They approved. Your team moves the card on."}]}
  ]},
-{id:"S4.2",f:"f4",name:"S4.2 · Milestones → Update the client",why:"The client hears from you at each milestone without anyone writing an email.",stages:["Application Filing","Published for Opposition","Response to Office Action"],
+{id:"S4.2",f:"f4",name:"S4.2 · Milestones → Update the client",why:"The client hears from you at each milestone by email.",stages:["Application Filing","Published for Opposition","Response to Office Action"],
  trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is any of the 3 stages listed"}],
  steps:[
   {k:"if",t:"If / else",d:"Condition: Opportunity stage is…",branches:[
@@ -479,7 +485,7 @@ WF.push(
    {l:"Published for Opposition",s:[{k:"email",t:"Send email",d:"Published",m:{subj:"Your trademark has been published",body:"Hi {{contact.first_name}},\n\nAn update on {{contact.mark_to_register}}: your trademark has been published for opposition. This is a normal step, when others have a set window to review it. We're watching it and will let you know if anything needs your attention."+SIG}}]},
    {l:"Response to Office Action",s:[{k:"email",t:"Send email",d:"Office action",m:{subj:"An update on your trademark application",body:"Hi {{contact.first_name}},\n\nThe trademark office has sent us a question about your application for {{contact.mark_to_register}}. Our team is preparing the response now. If we need anything from you, we'll reach out."+SIG}}]}]}
  ],c:"Approve the wording of each email"},
-{id:"S4.3",f:"f4",name:"S4.3 · Waiting for Client → Nudges",why:"When you're waiting on the client, they get polite nudges and your team gets a call task.",stages:["Waiting for Client"],
+{id:"S4.3",f:"f4",name:"S4.3 · Waiting for Client → Nudges",why:"When you're waiting on the client, they receive reminder emails and your team gets a call task.",stages:["Waiting for Client"],
  trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Waiting for Client"}],
  steps:[
   {k:"wait",t:"Wait",d:"3 days"},
@@ -490,7 +496,7 @@ WF.push(
     {k:"task",t:"Add task",d:"Call",m:{title:"Call {{contact.name}}: still waiting on them",desc:"Still no response after a reminder. Call {{contact.phone}}.",assign:"Opportunity owner",due:"Today"}}],
    no:[{k:"end",t:"End",d:"They responded"}]}
  ]},
-{id:"S4.4",f:"f4",name:"S4.4 · Registered → Certificate + review",why:"Registration day: the client gets the good news, then a request for a Google review.",stages:["Share Registration Certificate"],
+{id:"S4.4",f:"f4",name:"S4.4 · Registered → Certificate + review",why:"When the trademark is registered, the client receives the certificate, then a request for a Google review.",stages:["Share Registration Certificate"],
  trigs:[{t:"Pipeline stage changed",d:"Filters: In pipeline is Services · Pipeline stage is Share Registration Certificate"}],
  steps:[
   {k:"email",t:"Send email",d:"Registered",m:{subj:"Congratulations, {{contact.mark_to_register}} is registered",body:"Hi {{contact.first_name}},\n\nCongratulations! Your trademark {{contact.mark_to_register}} is officially registered. Your registration certificate is attached.\n\nIt was a pleasure working with you. If you ever need help protecting another name or logo, we're here."+SIG},c:"Your team attaches the certificate, or sends it separately?"},
@@ -537,15 +543,16 @@ $('#pulse').innerHTML=PULSE.map(p=>`<div class="pc ${p.k==='you'?'you':''} revea
 
 /* map */
 let cur=-1;
-$('#path').insertAdjacentHTML('beforeend',STEPS.map((s,i)=>`<button class="node" data-i="${i}" aria-label="Step ${i+1}: ${esc(s.n)}"><span class="d">${IC[s.ic]}</span><span class="txt"><span class="num">STEP ${i+1}</span><h3>${esc(s.n)}</h3><span class="tags"><span class="tag">${s.stages.length} stage${s.stages.length>1?'s':''}</span>${s.autos.length?`<span class="tag">⚡ ${s.autos.length}</span>`:''}</span></span>${s.shot?`<span class="peek"><img src="${SHOTS[s.shot].src}" alt=""></span>`:''}</button>`).join(''));
+$('#path').insertAdjacentHTML('beforeend',STEPS.map((s,i)=>`<button class="node" data-i="${i}" aria-label="Step ${i+1}: ${esc(s.n)}"><span class="d">${IC[s.ic]}</span><span class="txt"><span class="num">STEP ${i+1}</span><h3>${esc(s.n)}</h3><span class="tags"><span class="tag">${s.stages.length} stage${s.stages.length>1?'s':''}</span>${s.autos.length?`<span class="tag">⚡ ${s.autos.length}</span>`:''}</span></span>${s.shot?`<span class="tags" style="margin-top:4px"><span class="tag z">form</span></span>`:''}</button>`).join(''));
 function pick(i){
   cur=i;const s=STEPS[i];
-  $$('.node').forEach((n,k)=>{n.classList.toggle('sel',k===i);n.classList.toggle('done',k<i)});
+  $$('.node').forEach((n,k)=>n.classList.toggle('sel',k===i));
   const pct=i/(STEPS.length-1)*100;$('#railFill').style.width=pct+'%';$('#railFill').style.setProperty('--h',pct+'%');
   const sh=s.shot?SHOTS[s.shot]:null;
-  const mid=sh?`<button class="shot" data-zoom="${s.shot}"><img src="${sh.src}" alt="${esc(sh.cap)}"><span class="cap">${esc(sh.cap)}<span>⤢</span></span></button>${sh.href?`<a class="btn" style="margin-top:12px" href="${sh.href}" target="_blank" rel="noopener">${esc(sh.cta)} ↗</a>`:''}`:`<div class="ghost"><b>${s.autos.length?'Runs behind the scenes':'Handled by your team'}</b>${s.autos.length?'Your client gets emails and your team gets alerts and tasks. Open an automation to read them.':'No form here. Your team moves the card.'}</div>`;
-  const autos=s.autos.length?s.autos.map(id=>{const w=WFmap[id];return `<button class="abtn" data-wf="${id}"><span class="bolt">${IC.bolt}</span><span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span></span><em>Open →</em></button>`}).join(''):`<div class="ghost"><b>Nothing automatic yet</b>${esc(s.note||'')}</div>`;
-  $('#detail').innerHTML=`<div class="dt"><h4>Step ${i+1} of ${STEPS.length}</h4><h3>${esc(s.n)}</h3><p>${esc(s.d)}</p><h4>Stages in this step</h4><div class="slist">${s.stages.map(n=>`<button class="sbtn" data-stage="${esc(n)}"><i>${stageNo[n]}</i>${esc(n)}</button>`).join('')}</div>${s.note&&s.autos.length?`<p class="hint" style="margin-top:12px">${esc(s.note)}</p>`:''}</div><div><h4>What the client sees</h4>${mid}</div><div><h4>What runs on its own</h4><div class="alist">${autos}</div></div>`;
+  const mid=sh?`<button class="shot" data-zoom="${s.shot}"><img src="${sh.src}" alt="${esc(sh.cap)}"><span class="cap">${esc(sh.cap)}<span>⤢</span></span></button>${sh.href?`<a class="btn" style="margin-top:12px" href="${sh.href}" target="_blank" rel="noopener">${esc(sh.cta)} ↗</a>`:''}`:`<div class="ghost"><b>No form at this step</b>${s.autos.length?'The client receives emails and your team receives alerts and tasks. Open an automation to read them.':'Your team moves the card.'}</div>`;
+  const autos=s.autos.length?s.autos.map(id=>{const w=WFmap[id];return `<button class="abtn" data-wf="${id}"><span class="bolt">${IC.bolt}</span><span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span></span><em>Open →</em></button>`}).join(''):`<div class="ghost"><b>No automation at this step yet</b>${esc(s.note||'')}</div>`;
+  $('#detail').classList.toggle('two',!sh);
+  $('#detail').innerHTML=`<div class="dt"><h4>Step ${i+1} of ${STEPS.length}</h4><h3>${esc(s.n)}</h3><p>${esc(s.d)}</p><h4>Pipeline stages in this step</h4><div class="slist">${s.stages.map(n=>`<button class="sbtn" data-stage="${esc(n)}"><i>${stageNo[n]}</i>${esc(n)}</button>`).join('')}</div>${s.note&&s.autos.length?`<p class="hint" style="margin-top:12px">${esc(s.note)}</p>`:''}</div>${sh?`<div><h4>Form the client fills in</h4>${mid}</div>`:''}<div><h4>Automations at this step</h4><div class="alist">${autos}</div></div>`;
 }
 $$('.node').forEach(n=>n.onclick=()=>{pick(+n.dataset.i);if(innerWidth<760)$('#detail').scrollIntoView({behavior:'smooth',block:'start'})});
 pick(3);
@@ -604,11 +611,11 @@ function openWF(id){curW=id;curF=WFmap[id].f;renderWS();document.getElementById(
 
 /* stages */
 let k=0;
-$('#lanes').innerHTML=PHASES.map(ph=>{const l=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''}"><div class="lane-h"><h3>${ph.name}</h3><small>${l.length} stages</small></div><div class="cards">${l.map(s=>`<button class="st" data-stage="${esc(s.n)}"><i>${++k}</i>${esc(s.n)}</button>`).join('')}</div></div>`}).join('');
+$('#lanes').innerHTML=PHASES.map(ph=>{const l=STAGES.filter(s=>s.p===ph.id);return `<div class="lane ${ph.id==='h'?'hired':''}"><div class="lane-h"><h3>${ph.name}</h3><small>${l.length} stages</small></div><div class="cards">${l.map(s=>`<button class="st" data-stage="${esc(s.n)}"><i>${++k}</i><span style="flex:1">${esc(s.n)}</span>${WF.some(w=>w.stages.includes(s.n))?'<span class="sb" title="Has a proposed automation">⚡</span>':''}</button>`).join('')}</div></div>`}).join('');
 function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);$$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.stage===n));$('#dPh').textContent=`Stage ${stageNo[n]} · ${ph.name}`;$('#dN').textContent=n;$('#dHow').textContent=s.how;$('#dAuto').innerHTML=s.auto.map(a=>`<li>${esc(a)}</li>`).join('');$('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on')}
 
 /* decided + footer */
-$('#dl').innerHTML=DECIDED.map(([b,s])=>`<div>${IC.check}<div><b>${esc(b)}</b><span>${esc(s)}</span></div></div>`).join('');
+$('#dl').innerHTML=DECIDED.map(([b,s])=>{const m=s.match(/\(([^)]+)\)\s*$/);return `<div>${IC.check}<div><b>${esc(b)}</b><span>${esc(m?s.replace(m[0],'').trim():s)}</span></div><time>${m?esc(m[1]):''}</time></div>`}).join('');
 $('#upd').innerHTML=`Updated <b>${esc(UPDATED.date)}</b> · ${esc(UPDATED.what)}`;
 
 /* delegated clicks */
