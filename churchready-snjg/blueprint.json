@@ -1,0 +1,343 @@
+{
+ "schema": "bip-blueprint-partner-1",
+ "client": {
+  "name": "ChurchReady",
+  "person": "Erin",
+  "partner": "Trey",
+  "tagline": "What we're building together"
+ },
+ "updated": "2026-11-12",
+ "status": "Prayerly is live. The Workbook and the readiness check are being finished.",
+ "pulse": {
+  "lastMeeting": {
+   "date": "2026-11-05",
+   "title": "Team meeting",
+   "summary": "Prayerly is the main product. Readiness becomes the Workbook plus an app. One Prayerly church app for every church. Plan a Visit becomes a tab inside it."
+  }
+ },
+ "waitingOnYou": [
+  {
+   "title": "Business details for the phone registration",
+   "why": "Once the phone numbers are registered, the prayer line can call people back."
+  },
+  {
+   "title": "Finish and send the Readiness Workbook",
+   "why": "It's the $47 product churches buy after the readiness check."
+  },
+  {
+   "title": "Which assessment answers point to which workbook section",
+   "why": "So the readiness check sends each church to the right part of the Workbook."
+  }
+ ],
+ "waitingOnMe": [
+  {
+   "title": "Test the readiness check end to end",
+   "why": "As a real church would: form, results, follow-up and delivery."
+  },
+  {
+   "title": "Point the readiness check to the Workbook",
+   "why": "Its last step changes from booking a call to buying the $47 guide."
+  },
+  {
+   "title": "Polish the prayer-line follow-up texts",
+   "why": "Cleaner wording in the text people get when no one answers."
+  }
+ ],
+ "products": [
+  {
+   "id": "prayerly",
+   "name": "Prayerly",
+   "logo": "assets/prayerly.png",
+   "status": "live",
+   "statusLabel": "Live",
+   "hero": true,
+   "line": "Church growth that starts with prayer.",
+   "where": "prayerly.ai, and the Prayerly account inside ChurchReady",
+   "link": "https://prayerly.ai",
+   "done": [
+    "prayerly.ai is live, written to pastors",
+    "Ministry first section added to the page",
+    "Prayer line built and stress-tested together",
+    "Each caller is matched with a volunteer of the same gender",
+    "The AI never prays and never names the church; callers hear \"our prayer team\""
+   ],
+   "next": "Call-backs turn on once the phone registration clears."
+  },
+  {
+   "id": "workbook",
+   "name": "Church AI Readiness Workbook",
+   "status": "build",
+   "statusLabel": "Erin finishing",
+   "line": "The $47 guide. Seven themes, from Clarity Before Action to Financial Readiness.",
+   "where": "An AI Studio page with its own checkout",
+   "done": [
+    "Seven themes set: Clarity Before Action, Protection and Policies, Operational Optimization, Guarding the Sacred, Digital Local Outreach, Irreplaceable Community, Financial Readiness",
+    "Appendices: congregational survey, staff and volunteer survey, Google Business Profile steps"
+   ],
+   "next": "Erin finishes the Workbook; then it goes behind the checkout."
+  },
+  {
+   "id": "assessment",
+   "name": "Readiness check",
+   "status": "build",
+   "statusLabel": "Final test",
+   "line": "The assessment that scores a church and points it to the Workbook.",
+   "where": "The ChurchReady account",
+   "done": [
+    "Assessment built",
+    "Decided: the close sells the Workbook instead of booking a call"
+   ],
+   "next": "Full test as a real church, then it opens."
+  },
+  {
+   "id": "policy",
+   "name": "AI policy generator",
+   "status": "live",
+   "statusLabel": "Live",
+   "line": "A church answers a few questions and gets a starting AI policy.",
+   "where": "The ChurchReady account",
+   "done": [
+    "Live for churches"
+   ],
+   "next": ""
+  },
+  {
+   "id": "report",
+   "name": "Pastor Report",
+   "status": "build",
+   "statusLabel": "Built",
+   "line": "What each church sees: caller names and outcomes. No phone numbers, no prayer content.",
+   "where": "Will live inside the Prayerly church app",
+   "done": [
+    "Report built"
+   ],
+   "next": ""
+  },
+  {
+   "id": "volunteer",
+   "name": "Light the Week",
+   "status": "build",
+   "statusLabel": "Preview",
+   "line": "The volunteer sign-up app, so prayer slots stay covered.",
+   "where": "AI Studio, in the Prayerly account (preview, not published)",
+   "done": [
+    "Preview ready to look at together",
+    "Volunteers get a reminder text before their prayer slot"
+   ],
+   "next": ""
+  },
+  {
+   "id": "visit",
+   "name": "Plan a Visit quick save",
+   "status": "build",
+   "statusLabel": "Prototype",
+   "line": "A caller saves their spot for this Sunday in a few taps.",
+   "where": "Becomes a tab in the Prayerly church app",
+   "done": [
+    "Quick save flow chosen",
+    "The pastor gets the list of people planning to visit, so he can call them first"
+   ],
+   "next": ""
+  },
+  {
+   "id": "churchapp",
+   "name": "Prayerly church app",
+   "status": "plan",
+   "statusLabel": "Planned",
+   "line": "One app every church logs into: dashboard, volunteers, Plan a Visit, training, settings.",
+   "where": "A Prayerly subdomain such as app.prayerly.ai",
+   "done": [],
+   "next": ""
+  },
+  {
+   "id": "readyapp",
+   "name": "Church AI Readiness app",
+   "status": "plan",
+   "statusLabel": "Planned",
+   "line": "Surveys, results and a project tracker that go with the Workbook.",
+   "where": "Its own domain",
+   "done": [],
+   "next": ""
+  },
+  {
+   "id": "koinonia",
+   "name": "Koinonia",
+   "status": "plan",
+   "statusLabel": "Planned",
+   "line": "Meeting rooms, communities and calendars for churches.",
+   "where": "The ChurchReady account with its own menu",
+   "done": [],
+   "next": ""
+  },
+  {
+   "id": "cr",
+   "name": "Celebrate Recovery CRM",
+   "status": "hold",
+   "statusLabel": "Paused",
+   "line": "Check-ins and Step Study for Celebrate Recovery groups.",
+   "where": "AI Studio",
+   "done": [],
+   "next": ""
+  },
+  {
+   "id": "g2g",
+   "name": "Growth to Generosity Loop",
+   "status": "hold",
+   "statusLabel": "Later",
+   "line": "Product two after Prayerly. Waits until there's a list.",
+   "where": "",
+   "done": [],
+   "next": ""
+  }
+ ],
+ "sessions": [
+  {
+   "date": "2026-11-05",
+   "title": "Team meeting",
+   "points": [
+    "Prayerly is the main product; Church AI Readiness becomes the Workbook plus an app",
+    "prayerly.ai leads with a ministry-first section",
+    "One Prayerly church app every church logs into; Plan a Visit becomes a tab",
+    "Koinonia runs on the ChurchReady account with its own menu, no custom build",
+    "One Prayerly ad brand for every church; we make the ads"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "title": "Prayerly stress test",
+   "points": [
+    "Everything sits under the ChurchReady brand; the products are separate apps",
+    "Each caller is matched with a volunteer of the same gender",
+    "The AI never prays and never names the church",
+    "The line keeps looking for a volunteer for 3 minutes",
+    "Call-back failure traced to the carrier; phone registration comes first"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "title": "Team meeting",
+   "points": [
+    "Three tiers: Workbook and Readiness app, then Prayerly, then custom AI agents for pastors",
+    "Workbook price $47",
+    "The Workbook's seven themes set",
+    "Ads to a church's community say \"Real people, real prayer, real change\""
+   ]
+  },
+  {
+   "date": "2026-10-22",
+   "title": "Team meeting",
+   "points": [
+    "The people who pray are called volunteers",
+    "Tagline: Real people, real prayer, real growth",
+    "Volunteers only pray; ChurchReady does the inviting",
+    "Four call outcomes: prayer completed, wants to plan a visit, prayer incomplete, call dropped",
+    "Every church gets a report with no phone numbers and no prayer content"
+   ]
+  },
+  {
+   "date": "2026-10-15",
+   "title": "Team meeting",
+   "points": [
+    "\"Don't let your church miss what God is doing\"",
+    "End-times theology stays off the sales page"
+   ]
+  },
+  {
+   "date": "2026-10-08",
+   "title": "Team meeting",
+   "points": [
+    "\"Real people, real prayer\" is the tagline under the Prayerly mark",
+    "Prayerly and the Workbook are separate products"
+   ]
+  },
+  {
+   "date": "2026-10-01",
+   "title": "Team meeting",
+   "points": [
+    "Prayerly is its own front-door product",
+    "Growth to Generosity is product two"
+   ]
+  }
+ ],
+ "decisions": [
+  "Prayerly is the main product.",
+  "Everything sits under the ChurchReady brand.",
+  "Tagline: Real people, real prayer, real growth. Ads to a church's community say real change.",
+  "Volunteers only pray. ChurchReady does the inviting.",
+  "The AI never prays and never names the church.",
+  "One Prayerly church app for every church.",
+  "The readiness check sells the $47 Workbook."
+ ],
+ "brand": {
+  "colors": [
+   {
+    "name": "ChurchReady orange",
+    "hex": "#FF4F00",
+    "use": "Buttons, rules, accents"
+   },
+   {
+    "name": "Readable orange",
+    "hex": "#C2410C",
+    "use": "Orange text on light backgrounds"
+   },
+   {
+    "name": "Ink navy",
+    "hex": "#0F172A",
+    "use": "Headlines and dark panels"
+   },
+   {
+    "name": "Deep navy",
+    "hex": "#020262",
+    "use": "Accent lines"
+   },
+   {
+    "name": "Slate",
+    "hex": "#1E293B",
+    "use": "Secondary dark"
+   },
+   {
+    "name": "Cream",
+    "hex": "#FAF8F5",
+    "use": "Page background"
+   },
+   {
+    "name": "Body text",
+    "hex": "#475569",
+    "use": "Paragraphs"
+   },
+   {
+    "name": "Prayerly gold",
+    "hex": "#F5A921",
+    "use": "Prayerly's own accent"
+   }
+  ],
+  "type": [
+   {
+    "name": "Inter",
+    "use": "Headlines (500-600) and body"
+   },
+   {
+    "name": "Playfair Display italic",
+    "use": "Accent lines, deep navy with an orange underline"
+   }
+  ]
+ },
+ "together": [
+  {
+   "title": "When we meet",
+   "body": "Every week on Zoom. We walk this page together."
+  },
+  {
+   "title": "How to reach me",
+   "body": "Text me, or message me in the ChurchReady account."
+  },
+  {
+   "title": "Your own access",
+   "body": "You have your own login and AI Studio access, so you can open and edit everything listed here."
+  },
+  {
+   "title": "How this page works",
+   "body": "The dark box at the top shows what's waiting on you. The tiles show everything we've built and where it stands. I update it after every meeting."
+  }
+ ]
+}

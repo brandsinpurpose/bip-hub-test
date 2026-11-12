@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>ChurchReady Blueprint</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF8F5;--white:#FFFFFF;--ink:#0F172A;--slate:#1E293B;--deep:#020262;--orange:#FF4F00;--orange-read:#C2410C;
+--border:#E7E5E4;--body:#475569;--muted:#475569;--on-dark:#CBD5E1;--orange-dark:#FF7A40;--gold:#F5A921;
+--live:#15803D;--live-bg:#DCFCE7;--build-bg:#FFEDD5;--plan-bg:#E2E8F0;--hold-bg:#F1F5F9;
+--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--serif:"Playfair Display",Georgia,serif;
+--sh:0 1px 2px rgba(15,23,42,.05),0 14px 30px -18px rgba(15,23,42,.28)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left;padding:0}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(250,248,245,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.bar .wrap{display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap;padding-block:8px}
+.bar img{height:26px;width:auto;display:block}
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav button{white-space:nowrap;font-size:14px;font-weight:500;color:var(--muted);padding:8px 12px;border-radius:9px}
+.nav button:hover{color:var(--ink)}
+.nav button[aria-current="true"]{background:var(--white);color:var(--ink);font-weight:600;box-shadow:0 0 0 1px var(--border)}
+.view{display:none;padding-block:36px 72px}.view.on{display:block}html.moved .view.on{animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-read)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--orange)}
+h1{margin:12px 0 0;font-size:clamp(30px,4.4vw,46px);line-height:1.15;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.accent{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--deep);text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:4px;text-underline-offset:8px}
+.lede{margin:14px 0 0;color:var(--body);max-width:62ch;font-size:16px}
+.head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end}
+.stat{text-align:right;font-size:14px;color:var(--body)}
+.stat b{color:var(--ink)}
+.stat small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+/* pills */
+.pill{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.s-live{background:var(--live-bg);color:var(--live)}
+.s-build{background:var(--build-bg);color:var(--orange-read)}
+.s-plan{background:var(--plan-bg);color:var(--slate)}
+.s-hold{background:var(--hold-bg);color:var(--slate)}
+/* waiting bar */
+.wait{margin-top:28px;background:var(--ink);color:var(--on-dark);border-radius:16px;padding:20px 22px;display:grid;gap:14px}
+.wait h2{margin:0;font-size:15px;font-weight:600;color:#fff;display:flex;align-items:center;gap:10px}
+.wait h2::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--orange-dark);box-shadow:0 0 0 4px rgba(255,122,64,.2)}
+.wait ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;counter-reset:w}
+.wait li{background:var(--slate);border-radius:12px;padding:12px 14px;counter-increment:w;min-width:0}
+.wait li b{display:block;color:#fff;font-size:14px;margin-bottom:2px}
+.wait li b::before{content:counter(w) ". ";color:var(--orange-dark)}
+.wait li span{font-size:14px;line-height:1.5}
+/* shelf */
+.sect{margin-top:40px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sect h2{margin:0;font-size:20px;font-weight:600}
+.sect p{margin:0;color:var(--muted);font-size:14px}
+.shelf{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.prod{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:18px;display:grid;gap:10px;align-content:start;min-width:0;box-shadow:var(--sh);transition:transform .2s,box-shadow .2s;width:100%}
+.prod:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(15,23,42,.05),0 22px 40px -20px rgba(15,23,42,.35)}
+.prod .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.prod h3{margin:0;font-size:16px;font-weight:600;line-height:1.3}
+.prod p{margin:0;font-size:14px;color:var(--body);line-height:1.5}
+.prod .where{font-size:14px;color:var(--muted);border-top:1px dashed var(--border);padding-top:9px}
+.prod .more{font-size:14px;font-weight:600;color:var(--orange-read)}
+.prod.hero{grid-column:span 2;border-top:4px solid var(--gold);grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px}
+.prod.hero .row,.prod.hero .where,.prod.hero .more{grid-column:1/-1}
+.prod.hero img{height:44px;width:auto}
+.prod ul{margin:0;padding-left:18px;font-size:14px;color:var(--body);display:grid;gap:4px}
+.deck{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.deck .prod{box-shadow:none;background:transparent;padding:14px 16px}
+/* last meeting */
+.lastm{margin-top:40px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+.date{align-self:start;background:var(--orange-read);color:#fff;border-radius:12px;width:58px;text-align:center;padding:6px 0;line-height:1.1}
+.date b{display:block;font-size:22px}.date span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lastm h3{margin:0;font-size:15px}.lastm p{margin:4px 0 0;color:var(--body);font-size:14px}
+/* built view */
+.detail{margin-top:28px;display:grid;gap:16px}
+.dcard{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px;scroll-margin-top:90px}
+.dcard.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--orange)}100%{box-shadow:0 0 0 0 transparent}}
+.dcard h3{margin:8px 0 4px;font-size:20px}
+.dcard img{height:40px;width:auto;display:block}
+.dcard .k{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.dcard p{margin:0;color:var(--body)}
+.dcard ul{margin:0;padding-left:18px;color:var(--body);display:grid;gap:5px}
+.dcard .nx{margin-top:12px;background:var(--cream);border-left:3px solid var(--orange);border-radius:8px;padding:10px 12px;font-size:14px}
+.dcard a.go{display:inline-block;margin-top:12px;font-weight:600;color:var(--orange-read)}
+/* two lists */
+.duo{margin-top:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;min-width:0}
+.box h2{margin:0 0 12px;font-size:16px}
+.box ol{margin:0;padding-left:20px;display:grid;gap:10px}
+.box li b{display:block}.box li span{color:var(--body);font-size:14px}
+.box.you{background:var(--ink);color:var(--on-dark);border-color:var(--ink)}
+.box.you h2{color:#fff}.box.you li b{color:#fff}.box.you li span{color:var(--on-dark)}
+/* meetings */
+.mtl{margin-top:28px;display:grid;gap:14px;position:relative}
+.mt{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+.mt h3{margin:0 0 6px;font-size:16px}
+.mt ul{margin:0;padding-left:18px;color:var(--body);font-size:14px;display:grid;gap:4px}
+.mt:not(:first-child) .date{background:var(--ink)}
+.dec{margin-top:36px;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px}
+.dec h2{margin:0 0 10px;font-size:16px}
+.dec ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.dec li{background:var(--cream);border-radius:10px;padding:10px 12px;font-size:14px;border-left:3px solid var(--orange)}
+/* brand */
+.logos{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.logo{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;display:grid;gap:12px;place-items:center;text-align:center;font-size:14px;color:var(--muted)}
+.logo img{max-height:70px;width:auto;max-width:100%;object-fit:contain}.logo{min-width:0}
+.sw{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.chip{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;width:100%}
+.chip i{display:block;height:72px;border-bottom:1px solid var(--border)}
+.chip div{padding:10px 12px;font-size:14px;color:var(--body)}
+.chip b{display:block;color:var(--ink);font-size:14px}
+.chip code{font:600 14px ui-monospace,Menlo,monospace;color:var(--orange-read)}
+.types{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.type{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px}
+.type .s1{font-size:30px;font-weight:600}.type .s2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:30px;color:var(--deep)}
+.type p{margin:6px 0 0;color:var(--body);font-size:14px}
+/* together */
+.tg{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.tg div{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px}
+.tg h3{margin:0 0 6px;font-size:16px}.tg p{margin:0;color:var(--body);font-size:14px}
+.foot{padding-block:24px 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--border)}
+@media (max-width:820px){.prod.hero{grid-column:auto;grid-template-columns:1fr}.dcard{grid-template-columns:1fr}.duo{grid-template-columns:1fr}.head{grid-template-columns:1fr}.stat{text-align:left}.nav{margin-left:0;width:100%}.nav button{padding:6px 10px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <img src="assets/wordmark.png" alt="ChurchReady">
+  <nav class="nav" id="nav" aria-label="Sections"></nav>
+</div></header>
+<main>
+  <section class="view on" id="v-home"><div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">Erin &amp; Trey</div><h1>What we're <span class="accent">building together</span></h1></div>
+      <div class="stat" id="stat"></div>
+    </div>
+    <div class="wait" id="wait"></div>
+    <div class="sect"><h2>Live and in progress</h2><p>Tap any tile for the details and where it lives.</p></div>
+    <div class="shelf" id="shelf"></div>
+    <div class="sect"><h2>On deck</h2><p>Planned, paused, or saved for later.</p></div>
+    <div class="deck" id="deck"></div>
+    <div class="lastm" id="lastm"></div>
+  </div></section>
+
+  <section class="view" id="v-built"><div class="wrap">
+    <div class="eyebrow">What we've built</div><h1>Every piece, and <span class="accent">where it lives</span></h1>
+    <div class="duo" id="duo"></div>
+    <div class="detail" id="detail"></div>
+  </div></section>
+
+  <section class="view" id="v-meetings"><div class="wrap">
+    <div class="eyebrow">Past meetings</div><h1>What we've <span class="accent">decided</span></h1>
+    <div class="dec" id="dec"></div>
+    <div class="mtl" id="mtl"></div>
+  </div></section>
+
+  <section class="view" id="v-brand"><div class="wrap">
+    <div class="eyebrow">Brand book</div><h1>The ChurchReady <span class="accent">look</span></h1>
+    <div class="logos">
+      <div class="logo"><img src="assets/wordmark.png" alt="ChurchReady wordmark">Wordmark, for light backgrounds</div>
+      <div class="logo"><img src="assets/mark.png" alt="ChurchReady mark">The mark</div>
+      <div class="logo"><img src="assets/prayerly.png" alt="Prayerly logo">Prayerly keeps its own logo</div>
+    </div>
+    <div class="sect"><h2>Colors</h2></div>
+    <div class="sw" id="sw"></div>
+    <div class="sect"><h2>Type</h2></div>
+    <div class="types">
+      <div class="type"><div class="s1">Inter</div><p>Headlines (500-600) and body text.</p></div>
+      <div class="type"><div class="s2">Playfair italic</div><p>Accent lines, in deep navy with an orange underline.</p></div>
+    </div>
+  </div></section>
+
+  <section class="view" id="v-together"><div class="wrap">
+    <div class="eyebrow">How we work together</div><h1>How this <span class="accent">works</span></h1>
+    <div class="tg" id="tg"></div>
+  </div></section>
+</main>
+<div class="wrap foot" id="upd"></div>
+
+<script>document.write('<script src="blueprint.js?v='+Date.now()+'"><\/script>')</script>
+<script>
+(function(){
+var B=window.BP||{};
+function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dparts(iso){var p=iso.split('-');return{m:MON[+p[1]-1],d:+p[2]}}
+function dateBox(iso){var x=dparts(iso);return '<div class="date"><span>'+x.m+'</span><b>'+x.d+'</b></div>'}
+function pill(p){return '<span class="pill s-'+e(p.status)+'">'+e(p.statusLabel)+'</span>'}
+var views=[['home','Launchpad'],['built',"What we've built"],['meetings','Past meetings'],['brand','Brand book'],['together','How we work together']];
+var nav=document.getElementById('nav');
+nav.innerHTML=views.map(function(v){return '<button data-v="'+v[0]+'">'+v[1]+'</button>'}).join('');
+function show(v,focus){
+  if(!document.getElementById('v-'+v))v='home';
+  document.querySelectorAll('.view').forEach(function(s){s.classList.toggle('on',s.id==='v-'+v)});
+  nav.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-current',b.dataset.v===v?'true':'false')});
+  if(focus){var el=document.getElementById('p-'+focus);if(el){setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash')},60);return}}
+  window.scrollTo(0,0);
+}
+nav.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;document.documentElement.classList.add('moved');location.hash=b.dataset.v});
+document.addEventListener('click',function(ev){var b=ev.target.closest('[data-go]');if(b){document.documentElement.classList.add('moved');location.hash=b.dataset.go}});
+window.addEventListener('hashchange',function(){route()});
+function route(){var h=location.hash.slice(1);var m=h.match(/^p-(.+)$/);if(m)show('built',m[1]);else show(h||'home')}
+
+var P=B.products||[];
+var active=P.filter(function(p){return p.status==='live'||p.status==='build'});
+var deck=P.filter(function(p){return p.status==='plan'||p.status==='hold'});
+var nLive=P.filter(function(p){return p.status==='live'}).length,nBuild=P.filter(function(p){return p.status==='build'}).length;
+var lm=(B.pulse||{}).lastMeeting||{};
+document.getElementById('stat').innerHTML='<b>'+nLive+' live</b> · '+nBuild+' being built · '+deck.length+' on deck'+(lm.date?'<small>Last met: '+dparts(lm.date).m+' '+dparts(lm.date).d+' '+e(lm.title.toLowerCase())+'</small>':'');
+var W=B.waitingOnYou||[];
+document.getElementById('wait').innerHTML='<h2>Waiting on you, '+e((B.client||{}).person||'')+' ('+W.length+')</h2><ol>'+W.map(function(w){return '<li><b>'+e(w.title)+'</b><span>'+e(w.why)+'</span></li>'}).join('')+'</ol>';
+function tile(p){
+  var body=p.hero?'<div><p>'+e(p.line)+'</p></div><ul>'+p.done.slice(0,4).map(function(d){return '<li>'+e(d)+'</li>'}).join('')+'</ul>':'<p>'+e(p.line)+'</p>';
+  var head=p.logo&&p.hero?'<img src="'+e(p.logo)+'" alt="'+e(p.name)+'">':'<h3>'+e(p.name)+'</h3>';
+  return '<a class="prod'+(p.hero?' hero':'')+'" href="#p-'+e(p.id)+'" style="text-decoration:none"><div class="row">'+head+pill(p)+'</div>'+body+(p.where?'<div class="where">Lives in: '+e(p.where)+'</div>':'')+'</a>';
+}
+document.getElementById('shelf').innerHTML=active.map(tile).join('');
+document.getElementById('deck').innerHTML=deck.map(function(p){return '<a class="prod" href="#p-'+e(p.id)+'" style="text-decoration:none"><div class="row"><h3>'+e(p.name)+'</h3>'+pill(p)+'</div><p>'+e(p.line)+'</p></a>'}).join('');
+if(lm.date)document.getElementById('lastm').innerHTML=dateBox(lm.date)+'<div><h3>Last time we met: '+e(lm.title)+'</h3><p>'+e(lm.summary)+'</p><p><button data-go="meetings" style="color:var(--orange-read);font-weight:600;text-decoration:underline">All past meetings →</button></p></div>';
+else document.getElementById('lastm').hidden=true;
+
+var M=B.waitingOnMe||[];
+document.getElementById('duo').innerHTML='<div class="box you"><h2>Waiting on you</h2><ol>'+W.map(function(w){return '<li><b>'+e(w.title)+'</b><span>'+e(w.why)+'</span></li>'}).join('')+'</ol></div><div class="box"><h2>Waiting on me</h2><ol>'+M.map(function(w){return '<li><b>'+e(w.title)+'</b><span>'+e(w.why)+'</span></li>'}).join('')+'</ol></div>';
+document.getElementById('detail').innerHTML=P.map(function(p){
+  var left='<div>'+(p.logo?'<img src="'+e(p.logo)+'" alt="'+e(p.name)+'">':'')+'<div style="margin-top:8px">'+pill(p)+'</div><h3>'+e(p.name)+'</h3><p>'+e(p.line)+'</p>'+(p.link?'<a class="go" href="'+e(p.link)+'" target="_blank" rel="noopener">Open '+e(p.link.replace(/^https?:\/\//,''))+' ↗</a>':'')+'</div>';
+  var right='<div>'+(p.where?'<p class="k">Where it lives</p><p style="margin-bottom:14px">'+e(p.where)+'</p>':'')+(p.done.length?'<p class="k">Where it stands</p><ul>'+p.done.map(function(d){return '<li>'+e(d)+'</li>'}).join('')+'</ul>':'')+(p.next?'<div class="nx"><b>Up next:</b> '+e(p.next)+'</div>':'')+'</div>';
+  return '<article class="dcard" id="p-'+e(p.id)+'">'+left+right+'</article>';
+}).join('');
+
+document.getElementById('dec').innerHTML='<h2>Decided together</h2><ul>'+(B.decisions||[]).map(function(d){return '<li>'+e(d)+'</li>'}).join('')+'</ul>';
+document.getElementById('mtl').innerHTML=(B.sessions||[]).map(function(s){return '<article class="mt">'+dateBox(s.date)+'<div><h3>'+e(s.title)+'</h3><ul>'+s.points.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul></div></article>'}).join('');
+document.getElementById('sw').innerHTML=((B.brand||{}).colors||[]).map(function(c){return '<div class="chip"><i style="background:'+e(c.hex)+'"></i><div><b>'+e(c.name)+'</b><code>'+e(c.hex)+'</code><br>'+e(c.use)+'</div></div>'}).join('');
+document.getElementById('tg').innerHTML=(B.together||[]).map(function(t){return '<div><h3>'+e(t.title)+'</h3><p>'+e(t.body)+'</p></div>'}).join('');
+if(B.updated){var u=dparts(B.updated);document.getElementById('upd').textContent='Kept up to date by Trey · last updated '+u.m+' '+u.d;}
+route();
+})();
+</script>
+</body>
+</html>
