@@ -7,33 +7,33 @@
   "account": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos",
   "board": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list"
  },
- "updated": "Wednesday, November 11, 2026",
- "status": "Nothing is switched on yet: 3 automations are set up and turned off, and 12 are proposals for you to review.",
+ "updated": "Tuesday, November 17, 2026",
+ "status": "Nothing is switched on yet. Your process now runs on six pipelines; the Potential Client pipeline is being designed first.",
  "pulse": [
   {
    "k": "last",
-   "label": "Last meeting · Nov 10",
-   "b": "Your first 10 clients are in the system",
-   "s": "The automation plan went to Fiarah to review with Alice"
+   "label": "Last meeting · Nov 17",
+   "b": "Six pipelines, starting with Potential Client",
+   "s": "Trey is designing the Potential Client pipeline and its alerts for your review"
   },
   {
    "k": "you",
    "label": "Waiting on your team",
    "b": "5 things to send or answer",
    "list": [
-    "The price of each package and its filing fee",
-    "The final engagement letter text",
-    "Set up the orientation and legal consult calendars with Trey",
-    "Answer the questions marked on each automation",
-    "A test email and phone number for practice messages"
+    "Set up the orientation and legal consultation calendars, and send Trey their names",
+    "The reasons a potential client does not hire you, for the Closed lost stage",
+    "Review the PRTO steps with Alice and map the USPTO process for the next session",
+    "Check your charges, then bring your Stripe products into SmartFunnels Pro",
+    "The price of each package and its filing fee"
    ],
    "s": "Reply to Trey's email anytime, or bring it to your next meeting.",
    "short": [
-    "Package prices",
-    "Engagement letter",
     "Calendars",
-    "Open questions",
-    "Test contact"
+    "Lost reasons",
+    "PRTO and USPTO steps",
+    "Stripe products",
+    "Package prices"
    ],
    "act": [
     null,
@@ -42,10 +42,7 @@
      "b": "Book a meeting",
      "href": "https://go.brandsinpurpose.com/session"
     },
-    {
-     "b": "Open Automations",
-     "go": "automations"
-    },
+    null,
     null
    ]
   }
@@ -94,6 +91,30 @@
   }
  ],
  "sessions": [
+  {
+   "d": "Tue Nov 17, 2026",
+   "t": "Weekly check-in",
+   "who": "Fiarah and Trey",
+   "cov": [
+    "Alice's answer on the pipeline: one pipeline per process instead of one long board",
+    "The Potential Client pipeline: 10 stages from first contact to hired",
+    "Alerts when a potential client stalls: no orientation booked, consultation not booked, estimate not paid",
+    "Booking calendars inside SmartFunnels Pro instead of Google links",
+    "Estimates, invoices and payment links made in SmartFunnels Pro",
+    "Later: a phone line with call recording, and an assistant that drafts estimates"
+   ],
+   "dec": [
+    "Six pipelines: Potential Client, USPTO package, PRTO package, USPTO renewal, PRTO renewal, General legal services",
+    "Build Potential Client first",
+    "Calendars move into SmartFunnels Pro",
+    "Billing moves into SmartFunnels Pro",
+    "Team alerts first, task lists later"
+   ],
+   "next": [
+    "Trey sends his Potential Client proposal",
+    "Fiarah sets up the two calendars and maps the USPTO process"
+   ]
+  },
   {
    "d": "Tue Nov 10, 2026",
    "t": "Working session 2",
@@ -170,6 +191,22 @@
   }
  ],
  "decisions": [
+  [
+   "Six pipelines, one per process",
+   "Potential Client, USPTO package, PRTO package, USPTO renewal, PRTO renewal and General legal services, because each office runs its own steps (Nov 17)"
+  ],
+  [
+   "Potential Client is built first",
+   "The other pipelines follow one at a time, USPTO next (Nov 17)"
+  ],
+  [
+   "Booking and billing live in SmartFunnels Pro",
+   "Orientation and consultation calendars, estimates, invoices and payment links (Nov 17)"
+  ],
+  [
+   "Each mark is its own opportunity",
+   "A client with several marks or classes has one card for each (Nov 17)"
+  ],
   [
    "Your client process first",
    "Then your sign-up pages, then the website (Nov 10)"
@@ -1483,7 +1520,7 @@
  ],
  "pipeline": {
   "name": "Services",
-  "view": "In your account this is one board: 26 stages, left to right, in exactly this order. The four groups are only here to make it easier to read. Prospect and Hired are Fiarah's own headings from her stage list; On hold and Ending pull out the pause and end stages, so Hired shows the working path from New Service to Share Registration Certificate.",
+  "view": "This board shows the earlier single Services pipeline (26 stages). On Nov 17 Alice chose six pipelines instead - Potential Client, USPTO package, PRTO package, USPTO renewal, PRTO renewal and General legal services - so this view will be rebuilt pipeline by pipeline, starting with Potential Client.",
   "intro": "Select a stage to see what moves a card there and which proposed automations run at it. One automation is proposed for every stage: if a card sits for 5 days, its owner gets an alert.",
   "now": "Your first 10 clients are already cards on this board. Until automations are switched on, your team moves cards and sends client emails by hand."
  },
@@ -1494,7 +1531,7 @@
    "Website"
   ],
   "current": 0,
-  "line": "Your pipeline is set up and your first 10 clients are in. Nothing is switched on yet: 3 automations are set up and turned off, and 12 are proposals waiting on your review."
+  "line": "Your first 10 clients are in. Alice chose six pipelines, one per process. Trey is designing the Potential Client pipeline first; nothing is switched on yet."
  },
  "meetingLinks": [
   {
