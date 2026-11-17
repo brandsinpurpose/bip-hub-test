@@ -243,6 +243,23 @@ a{color:inherit}
 .kcol .nt{color:var(--muted);font-size:13.5px}
 .kcol.slim{flex-basis:200px}
 .khint{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+
+/* grouped horizontal board + arrows (2026-11-17 v2) */
+.knav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.knav .jump{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.knav .jump button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:700 13px var(--ui);color:var(--navy);cursor:pointer}
+.knav .jump button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.knav .arr{display:flex;gap:8px}
+.knav .arr button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font:700 20px var(--ui);color:var(--navy);cursor:pointer;display:grid;place-items:center}
+.knav .arr button:disabled{opacity:.35;cursor:default}
+.kb{scrollbar-width:thin;scroll-behavior:smooth;align-items:stretch}
+.kg{flex:0 0 auto;display:flex;flex-direction:column;gap:10px;scroll-snap-align:start}
+.kg .gh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;background:var(--navy);color:#fff;border-radius:12px;padding:10px 16px}
+.kg .gh b{font:700 13px var(--ui);letter-spacing:.1em;text-transform:uppercase}
+.kg .gh small{font:600 13px var(--ui);color:var(--green)}
+.kg .gc{display:flex;gap:14px;flex:1}
+.kflow{flex:0 0 26px;display:grid;place-items:center;color:var(--muted);font:700 20px var(--ui);align-self:center}
+.kcol{scroll-snap-align:none}
 /* stages */
 .lanes{display:grid;grid-template-columns:1fr 2.1fr 1fr 1fr;gap:16px;align-items:start}
 .lane{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:14px}
@@ -666,7 +683,7 @@ function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s
 $('#boardLink').href=BOARD;
 if(D.systemNote){['v-process','v-automations'].forEach(id=>{const w=document.querySelector('#'+id+' .ph .wrap');if(w)w.insertAdjacentHTML('beforeend',`<div class="pempty" style="margin-top:18px;border-style:solid;border-left:3px solid var(--green2);color:var(--navy)"><b>Being updated.</b> ${esc(D.systemNote)} <a href="#stages" style="color:var(--navy);font-weight:700">Open the Pipeline board</a></div>`)})}
 const PIPES=D.pipelines||[];
-function showPipe(id){const P=PIPES.find(x=>x.id===id)||PIPES[0];if(!P)return;$$('.pchip').forEach(c=>{const on=c.dataset.p===P.id;c.classList.toggle('on',on);c.setAttribute('aria-selected',on)});const rich=P.stages.some(s=>s.how);$('#pbody').innerHTML=`<div class="pmeta"><h3>${esc(P.name)}</h3><span>${P.stages.length} stages · ${esc(P.status||'')}</span></div><p class="pintro">${esc(P.intro||'')}</p><p class="khint">Scroll sideways to see every stage, left to right as on your board.</p><div class="kb">${P.stages.map((s,i)=>`<div class="kcol ${rich?'':'slim'}"><div class="kh"><i>${i+1}</i><b>${esc(s.n)}</b></div>${(s.how||(s.props||[]).length||s.note)?`<div class="kb2">${s.how?`<div>${esc(s.how)}</div>`:''}${(s.props||[]).map(p=>`<div class="pr"><small>Proposed</small>${esc(p)}</div>`).join('')}${s.note?`<div class="nt">${esc(s.note)}</div>`:''}</div>`:''}</div>`).join('')}</div>`}
+function showPipe(id){const P=PIPES.find(x=>x.id===id)||PIPES[0];if(!P)return;$$('.pchip').forEach(c=>{const on=c.dataset.p===P.id;c.classList.toggle('on',on);c.setAttribute('aria-selected',on)});const rich=P.stages.some(s=>s.how);let n=0;const col=s=>`<div class="kcol ${rich?'':'slim'}"><div class="kh"><i>${++n}</i><b>${esc(s.n)}</b></div>${(s.how||(s.props||[]).length||s.note)?`<div class="kb2">${s.how?`<div>${esc(s.how)}</div>`:''}${(s.props||[]).map(p=>`<div class="pr"><small>Proposed</small>${esc(p)}</div>`).join('')}${s.note?`<div class="nt">${esc(s.note)}</div>`:''}</div>`:''}</div>`;const groups=[];P.stages.forEach(s=>{const g=s.g||'';if(!groups.length||groups[groups.length-1].h!==g)groups.push({h:g,st:[]});groups[groups.length-1].st.push(s)});const grouped=groups.some(g=>g.h);const body=grouped?groups.map((g,gi)=>`${gi?'<div class="kflow" aria-hidden="true">→</div>':''}<div class="kg" data-g="${gi}"><div class="gh"><b>${esc(g.h)}</b><small>${g.st.length} stage${g.st.length>1?'s':''}</small></div><div class="gc">${g.st.map(col).join('')}</div></div>`).join(''):P.stages.map(col).join('');$('#pbody').innerHTML=`<div class="pmeta"><h3>${esc(P.name)}</h3><span>${P.stages.length} stages · ${esc(P.status||'')}</span></div><p class="pintro">${esc(P.intro||'')}</p><div class="knav">${grouped?`<div class="jump">${groups.map((g,gi)=>`<button data-j="${gi}">${esc(g.h)}</button>`).join('')}</div>`:'<div class="jump"></div>'}<div class="arr"><button id="kPrev" aria-label="Previous stages">‹</button><button id="kNext" aria-label="Next stages">›</button></div></div><div class="kb" id="kb">${body}</div>`;const kb=$('#kb');const step=()=>grouped?null:kb.clientWidth*0.85;const targets=()=>grouped?[...kb.querySelectorAll('.kg')].map(e=>e.offsetLeft-kb.offsetLeft):null;const upd=()=>{$('#kPrev').disabled=kb.scrollLeft<=4;$('#kNext').disabled=kb.scrollLeft+kb.clientWidth>=kb.scrollWidth-4;if(grouped){const t=targets();let cur=0;t.forEach((x,i)=>{if(kb.scrollLeft>=x-40)cur=i});$$('.knav .jump button').forEach((b,i)=>b.classList.toggle('on',i===cur))}};const go2=dir=>{if(grouped){const t=targets(),x=kb.scrollLeft;const nx=dir>0?t.find(v=>v>x+8):[...t].reverse().find(v=>v<x-8);kb.scrollTo({left:nx==null?(dir>0?kb.scrollWidth:0):nx})}else kb.scrollBy({left:dir*step()})};$('#kPrev').onclick=()=>go2(-1);$('#kNext').onclick=()=>go2(1);$$('.knav .jump button').forEach(b=>b.onclick=()=>kb.scrollTo({left:targets()[+b.dataset.j]}));kb.addEventListener('scroll',upd,{passive:true});setTimeout(upd,50)}
 if(PIPES.length){$('#pchips').innerHTML=PIPES.map(P=>`<button class="pchip" role="tab" data-p="${P.id}">${esc(P.name)}<small>${esc(P.status||'')}</small></button>`).join('');$$('.pchip').forEach(c=>c.addEventListener('click',()=>showPipe(c.dataset.p)));showPipe(PIPES[0].id);$('#pipeH').textContent=''}else{$('#pchips').remove();$('#pbody').remove();$('.oldb').open=true}
 
 

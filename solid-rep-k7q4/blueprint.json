@@ -956,13 +956,15 @@
      "props": [
       "Alert to the paralegal if no orientation is booked within 24 hours, to reach out the way the person prefers"
      ],
-     "note": null
+     "note": null,
+     "g": "Getting to know them"
     },
     {
      "n": "Orientation Scheduled",
      "how": "The person books on the orientation calendar.",
      "props": [],
-     "note": "Waits on the orientation calendar Fiarah is creating"
+     "note": "Waits on the orientation calendar Fiarah is creating",
+     "g": "Getting to know them"
     },
     {
      "n": "Orientation Completed",
@@ -970,13 +972,15 @@
      "props": [
       "Reminder to the team to check the next step went out (timing to confirm)"
      ],
-     "note": null
+     "note": null,
+     "g": "Getting to know them"
     },
     {
      "n": "Preliminary Factual Info Completed",
      "how": "The person has filled in the preliminary questions.",
      "props": [],
-     "note": null
+     "note": null,
+     "g": "Legal consultation"
     },
     {
      "n": "Legal Consultation Pending Booking",
@@ -984,7 +988,8 @@
      "props": [
       "Alert to the paralegal if no consultation is booked within 24 hours"
      ],
-     "note": null
+     "note": null,
+     "g": "Legal consultation"
     },
     {
      "n": "Legal Consultation Scheduled",
@@ -992,7 +997,8 @@
      "props": [
       "Alice is notified, inside the account and by email"
      ],
-     "note": "Waits on the legal consultation calendar Fiarah is creating"
+     "note": "Waits on the legal consultation calendar Fiarah is creating",
+     "g": "Legal consultation"
     },
     {
      "n": "Estimate / Engagement Sent",
@@ -1000,7 +1006,8 @@
      "props": [
       "One estimate for each mark"
      ],
-     "note": null
+     "note": null,
+     "g": "Estimate and payment"
     },
     {
      "n": "Pending Acceptance / Payment",
@@ -1008,7 +1015,8 @@
      "props": [
       "Alert to the paralegal and admin after 72 hours unpaid"
      ],
-     "note": null
+     "note": null,
+     "g": "Estimate and payment"
     },
     {
      "n": "Closed Won / Hired",
@@ -1016,13 +1024,15 @@
      "props": [
       "Paying the invoice opens a card in the USPTO or PRTO pipeline, one for each mark (we are testing this before building it)"
      ],
-     "note": null
+     "note": null,
+     "g": "Outcome"
     },
     {
      "n": "Closed Lost / Not Hired",
      "how": "Marked with the reason your team picks.",
      "props": [],
-     "note": "Reason list coming from Fiarah"
+     "note": "Reason list coming from Fiarah",
+     "g": "Outcome"
     }
    ]
   },
