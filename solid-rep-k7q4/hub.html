@@ -181,6 +181,26 @@ a{color:inherit}
 .btn:hover{background:var(--green2);transform:translateY(-1px)}
 .hint{font-size:14px;color:var(--muted)}
 
+/* pipelines (six-pipeline board, 2026-11-17) */
+.pchips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
+.pchip{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;font:700 15px/1.3 var(--ui);color:var(--navy);text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.pchip small{font:600 12px var(--ui);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.pchip.on{border-color:var(--navy);box-shadow:0 10px 22px -14px rgba(5,46,92,.55)}
+.pchip.on small{color:var(--navy2)}
+.pintro{max-width:760px;margin:0 0 28px;color:var(--ink);font-size:16px;line-height:1.6}
+.pgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;align-items:start}
+.pg h3{margin:0 0 14px;font:700 13px var(--ui);color:var(--navy);text-transform:uppercase;letter-spacing:.1em}
+.pg .pcards{display:flex;flex-direction:column;gap:16px}
+.pst{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.pst .top{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+.pst i{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font:700 14px var(--ui);color:var(--navy2);font-style:normal}
+.pst b{font:700 15px/1.4 var(--ui);color:var(--navy)}
+.pst p{margin:0;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.pst .al{margin-top:12px;padding:9px 12px;border-radius:10px;background:var(--soft);border-left:3px solid var(--green2);font-size:13.5px;line-height:1.5;color:var(--navy)}
+.pempty{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:28px;max-width:760px;color:var(--muted);font-size:15px;line-height:1.6}
+.oldb{margin-top:44px}
+.oldb summary{cursor:pointer;font:700 15px var(--ui);color:var(--navy);padding:14px 0}
+.oldb .lanes{margin-top:12px}
 /* stages */
 .lanes{display:grid;grid-template-columns:1fr 2.1fr 1fr 1fr;gap:16px;align-items:start}
 .lane{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:14px}
@@ -449,7 +469,7 @@ body.at-brand footer{display:none}
 
 <div class="view" id="v-stages">
   <div class="ph"><div class="wrap"><div class="eyebrow">Your system</div><h1 class="disp">How your client system works</h1><p class="sysint">One system, three ways to look at it: the <b>journey</b> a client takes, the <b>pipeline board</b> your team works from, and the <b>automations</b> that run along the way. The same stage numbers and names appear in all three.</p><nav class="lens" aria-label="Ways to look at your system"><a href="#process" data-lens="process">Client journey</a><a href="#stages" data-lens="stages">Pipeline board</a><a href="#automations" data-lens="automations">Automations</a></nav><p class="lensint"><b id="pipeH"></b> <span id="pipeIntro"></span></p><div class="pview" id="pipeView"></div><p class="phnote" id="pipeNow"></p><a class="go2" href="${BOARD}" id="boardLink" target="_blank" rel="noopener">Open the pipeline board in your account ↗</a></div></div>
-  <div class="wrap pad"><div class="lanes" id="lanes"></div></div>
+  <div class="wrap pad"><div class="pchips" id="pchips" role="tablist" aria-label="Pipelines"></div><div id="pbody"></div><details class="oldb"><summary>Your current board in the account: Services, 26 stages</summary><div class="lanes" id="lanes"></div></details></div>
 </div>
 
 <div class="view" id="v-sessions">
@@ -602,6 +622,11 @@ const STLBL={built:["Form ready","b"],ask:["Waiting on an answer from you","a"]}
 function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s.p);$$('.st').forEach(b=>b.classList.toggle('sel',b.dataset.stage===n));$('#dPh').textContent=`Stage ${stageNo[n]} · ${ph.name}`;$('#dN').textContent=n;const L=STLBL[s.st];$('#dSt').innerHTML=(L||s.note)?`<div class="stnote ${L?L[1]:''}">${L?`<b>${L[0]}</b>`:''}${s.note?`<span>${esc(s.note)}</span>`:''}</div>`:'';$('#dHow').textContent=s.how;const ws=WF.filter(w=>w.stages.includes(n)||w.stages.includes('Every stage'));$('#dAuto').innerHTML=ws.length?ws.map(w=>`<button class="abtn" data-wf="${w.id}"><span class="bolt">${IC.bolt}</span><span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span></span><em>Open →</em></button>`).join(''):`<div class="ghost"><b>No automation proposed here yet</b>Your team handles this stage by hand.</div>`;$('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#scrim').classList.add('on')}
 
 $('#boardLink').href=BOARD;
+if(D.systemNote){['v-process','v-automations'].forEach(id=>{const w=document.querySelector('#'+id+' .ph .wrap');if(w)w.insertAdjacentHTML('beforeend',`<div class="pempty" style="margin-top:18px;border-style:solid;border-left:3px solid var(--green2);color:var(--navy)"><b>Being updated.</b> ${esc(D.systemNote)} <a href="#stages" style="color:var(--navy);font-weight:700">Open the Pipeline board</a></div>`)})}
+const PIPES=D.pipelines||[];
+function showPipe(id){const P=PIPES.find(x=>x.id===id)||PIPES[0];if(!P)return;$$('.pchip').forEach(c=>{const on=c.dataset.p===P.id;c.classList.toggle('on',on);c.setAttribute('aria-selected',on)});let n=0;$('#pbody').innerHTML=`<p class="pintro"><b>${esc(P.name)}.</b> ${esc(P.intro||'')}</p>`+((P.groups||[]).length?`<div class="pgroups">${P.groups.map(g=>`<div class="pg"><h3>${esc(g.h)}</h3><div class="pcards">${g.stages.map(s=>`<div class="pst"><div class="top"><i>${++n}</i><b>${esc(s.n)}</b></div><p>${esc(s.how)}</p>${(s.chips||[]).map(c=>`<div class="al">${esc(c)}</div>`).join('')}</div>`).join('')}</div></div>`).join('')}</div>`:`<div class="pempty">The stages for this pipeline come next. Once they are agreed and set up in your account, they show here.</div>`)}
+if(PIPES.length){$('#pchips').innerHTML=PIPES.map(P=>`<button class="pchip" role="tab" data-p="${P.id}">${esc(P.name)}<small>${esc(P.status||'')}</small></button>`).join('');$$('.pchip').forEach(c=>c.addEventListener('click',()=>showPipe(c.dataset.p)));showPipe(PIPES[0].id);$('#pipeH').textContent=`Your pipelines: ${PIPES.length}.`}else{$('#pchips').remove();$('#pbody').remove();$('.oldb').open=true}
+
 
 /* home */
 $('#autoCount').textContent=WF.length;

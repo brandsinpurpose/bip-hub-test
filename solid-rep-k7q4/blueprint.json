@@ -1520,9 +1520,9 @@
  ],
  "pipeline": {
   "name": "Services",
-  "view": "This board shows the earlier single Services pipeline (26 stages). On Nov 17 Alice chose six pipelines instead - Potential Client, USPTO package, PRTO package, USPTO renewal, PRTO renewal and General legal services - so this view will be rebuilt pipeline by pipeline, starting with Potential Client.",
-  "intro": "Select a stage to see what moves a card there and which proposed automations run at it. One automation is proposed for every stage: if a card sits for 5 days, its owner gets an alert.",
-  "now": "Your first 10 clients are already cards on this board. Until automations are switched on, your team moves cards and sends client emails by hand."
+  "view": "On Nov 17 Alice chose six pipelines, one for each process, so each office's steps can differ. Potential Client is first; the others fill in one at a time.",
+  "intro": "Select a pipeline to see its stages and the alerts at each one.",
+  "now": "Your current board in the account is still the single Services pipeline (26 stages), where your first 10 clients sit. It stays until the new pipelines replace it."
  },
  "now": {
   "phases": [
@@ -1546,5 +1546,138 @@
  "zoom": {
   "link": "https://brandsinpurpose.com/zoom",
   "passcode": "Victory!"
- }
+ },
+ "pipelines": [
+  {
+   "id": "pc",
+   "name": "Potential Client",
+   "status": "Proposed - waiting on your OK",
+   "short": "PC",
+   "intro": "Everyone who reaches out, from first contact until they hire you or decide not to. Built first. These are Fiarah's stages from Nov 17, with the alerts we talked through.",
+   "groups": [
+    {
+     "h": "Getting to know them",
+     "stages": [
+      {
+       "n": "Potential client",
+       "how": "The website contact form creates the card. Admin and paralegal get an alert with everything the person wrote, and the person gets an email with the orientation booking link.",
+       "chips": [
+        "Alert after 24 hours with no orientation booked: the paralegal reaches out the way the person prefers"
+       ]
+      },
+      {
+       "n": "Orientation scheduled",
+       "how": "The person books on the orientation calendar.",
+       "chips": []
+      },
+      {
+       "n": "Orientation completed",
+       "how": "The orientation call has happened.",
+       "chips": [
+        "Reminder to the team to check the next step went out (timing to confirm)"
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Legal consultation",
+     "stages": [
+      {
+       "n": "Preliminary factual information completed / Legal consultation pending booking",
+       "how": "The person has filled in the preliminary questions and still needs to book the paid legal consultation.",
+       "chips": [
+        "Alert to the paralegal after 24 hours with no consultation booked"
+       ]
+      },
+      {
+       "n": "Legal consultation scheduled",
+       "how": "Booked on the legal consultation calendar.",
+       "chips": [
+        "Alice is notified"
+       ]
+      },
+      {
+       "n": "Legal consultation completed",
+       "how": "The appointment date passes without a cancellation.",
+       "chips": [
+        "Alice is notified"
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Estimate and payment",
+     "stages": [
+      {
+       "n": "Estimate / engagement letter sent",
+       "how": "The estimate is made in SmartFunnels Pro and emailed with a payment link.",
+       "chips": [
+        "Proposed: one estimate for each mark, so each mark gets its own card"
+       ]
+      },
+      {
+       "n": "Pending acceptance / payment",
+       "how": "Waiting for the person to accept and pay.",
+       "chips": [
+        "Alert to the paralegal and admin after 72 hours unpaid"
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Outcome",
+     "stages": [
+      {
+       "n": "Closed won / hired",
+       "how": "Payment received. A card opens in the right service pipeline for the work, one for each mark.",
+       "chips": []
+      },
+      {
+       "n": "Closed lost / not hired",
+       "how": "Marked with the reason your team picks.",
+       "chips": [
+        "Reason list coming from Fiarah"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uspto",
+   "name": "USPTO trademark package",
+   "status": "Next session",
+   "intro": "The federal filing work. Fiarah is mapping the steps for the next session.",
+   "groups": []
+  },
+  {
+   "id": "prto",
+   "name": "PRTO trademark package",
+   "status": "Steps coming",
+   "intro": "The Puerto Rico filing work. Fiarah is reviewing the steps with Alice; PRTO publishes to a newsletter, so its steps differ from USPTO.",
+   "groups": []
+  },
+  {
+   "id": "usptor",
+   "name": "USPTO renewal",
+   "status": "Steps coming",
+   "intro": "Renewals for federal registrations, driven by the registration date.",
+   "groups": []
+  },
+  {
+   "id": "prtor",
+   "name": "PRTO renewal",
+   "status": "Steps coming",
+   "intro": "Renewals for Puerto Rico registrations.",
+   "groups": []
+  },
+  {
+   "id": "gls",
+   "name": "General legal services",
+   "status": "Steps coming",
+   "intro": "Legal work outside trademark filings. Stages to be decided.",
+   "groups": []
+  }
+ ],
+ "systemNote": "The client journey and automations below were mapped to the earlier single Services pipeline. Since Nov 17 your process runs on six pipelines, so these views are being redone pipeline by pipeline, starting with Potential Client. The Pipeline board shows the new structure."
 }
