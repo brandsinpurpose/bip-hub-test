@@ -1171,8 +1171,8 @@
   {
    "id": "prto",
    "name": "PRTO Draft",
-   "status": "Draft",
-   "intro": "The Puerto Rico filing work, set up in your account as a draft. Fiarah is reviewing these steps with Alice.",
+   "status": "Draft, copied from USPTO",
+   "intro": "The Puerto Rico filing work, set up in your account as a draft. Right now it is a copy of the USPTO steps with three removed, so it still includes federal steps. Fiarah is reviewing the Puerto Rico steps with Alice, and this pipeline will change to match them.",
    "stages": [
     {
      "n": "Trademark Registration Worksheet",
@@ -1284,7 +1284,7 @@
    "id": "rus",
    "name": "Renewal USPTO",
    "status": "Placeholder",
-   "intro": "Set up in your account with the four starter stages. The real renewal steps come later.",
+   "intro": "Set up in your account with the four starter stage names the platform gives every new pipeline (New Lead, Contacted, Proposal Sent, Closed). They are not your process; the real stages come later.",
    "stages": [
     {
      "n": "New Lead",
@@ -1318,7 +1318,7 @@
    "id": "rpr",
    "name": "Renewal PRTO",
    "status": "Placeholder",
-   "intro": "Set up in your account with the four starter stages. The real renewal steps come later.",
+   "intro": "Set up in your account with the four starter stage names the platform gives every new pipeline (New Lead, Contacted, Proposal Sent, Closed). They are not your process; the real stages come later.",
    "stages": [
     {
      "n": "New Lead",
@@ -1352,7 +1352,7 @@
    "id": "ols",
    "name": "Other Legal Services",
    "status": "Placeholder",
-   "intro": "Set up in your account with the four starter stages. Stages to be decided.",
+   "intro": "Set up in your account with the four starter stage names the platform gives every new pipeline (New Lead, Contacted, Proposal Sent, Closed). They are not your process; the real stages are still to be decided.",
    "stages": [
     {
      "n": "New Lead",

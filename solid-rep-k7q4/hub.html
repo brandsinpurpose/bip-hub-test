@@ -273,11 +273,12 @@ a{color:inherit}
 @media (max-width:760px){.kgrid{grid-template-columns:1fr}.knav .arr{display:none}}
 
 /* pipeline map picker (2026-11-17) */
+#wc{scroll-margin-top:80px}
 .pmap{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;gap:0;align-items:start;margin:0 0 14px}
 .pmap .pcolh{font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 .pmap .pcols{font:500 13.5px/1.45 var(--ui);color:var(--ink);margin:-4px 0 10px;min-height:40px}
 .pmap .pc{display:flex;flex-direction:column;gap:10px}
-.pmap .ar{display:grid;place-items:center;align-self:center;color:var(--navy2);font:700 22px var(--ui)}
+.pmap .ar{display:grid;place-items:center;align-self:center;pointer-events:none;color:var(--navy2);font:700 22px var(--ui)}
 .pn{display:flex;flex-direction:row;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;transition:border-color .2s,box-shadow .2s}
 .pn:hover{border-color:var(--navy)}
 .pn.on{border-color:var(--navy);box-shadow:0 0 0 3px rgba(182,237,94,.6)}
@@ -290,7 +291,7 @@ a{color:inherit}
 .plegend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .plegend .old{margin-left:auto}
 .plegend button{background:none;border:0;font:600 13px var(--ui);color:var(--navy2);text-decoration:underline;cursor:pointer;padding:0}
-@media (max-width:760px){.pmap{grid-template-columns:1fr}.pmap .ar{transform:rotate(90deg);height:30px}.plegend .old{margin-left:0}}
+@media (max-width:760px){.pmap{grid-template-columns:1fr}.pmap .ar{transform:none;height:30px;width:auto}.pmap .ar::before{content:'↓'}.pmap .ar{font-size:0}.pmap .ar::before{font-size:22px}.plegend .old{margin-left:0}}
 
 @media (max-width:760px){
  #ftabs{flex-wrap:wrap}#ftabs .ftab{flex:1 1 100%}
@@ -689,7 +690,7 @@ function renderWS(){
   renderTabs();MS.length=0;
   const list=WF.filter(w=>w.f===curF);
   $('#wl').innerHTML=list.map(w=>{const all=w.steps.flatMap(s=>[s].concat(s.yes||[],s.no||[],(s.branches||[]).flatMap(b=>b.s)));const ce=all.filter(x=>x.k==='email'||x.k==='review'||x.k==='doc').length,tt=all.filter(x=>x.k==='task'||x.k==='notify').length;const msgs=[ce?`${ce} to the client`:'',tt?`${tt} for your team`:''].filter(Boolean).join(' · ')||'Behind the scenes';return `<button class="wi ${w.id===curW?'on':''}" data-w="${w.id}"><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span><em>${msgs}</em></button>`}).join('');
-  $$('.wi').forEach(b=>b.onclick=()=>{curW=b.dataset.w;renderWS()});
+  $$('.wi').forEach(b=>b.onclick=()=>{curW=b.dataset.w;renderWS();const c=$('#wc');if(c){const r=c.getBoundingClientRect();if(r.top<70||r.top>window.innerHeight*0.6)c.scrollIntoView({behavior:'smooth',block:'start'})}});
   const w=WFmap[curW];let n=0;
   const steps=w.steps.filter(s=>s.k!=='note').map(s=>{s._n=++n;return card(s,false)}).join('');
   $('#wc').innerHTML=`<span class="wst ${w.f==='f1'?'b':''}">${w.f==='f1'?'Set up in your account, turned off':'Proposal, not built yet'}</span><h3>${esc(plain(w.name))}</h3><p>${esc(w.why)}</p><ol class="tl">${w.trigs.map(t=>card(t,true)).join('')}${steps}</ol>`;
