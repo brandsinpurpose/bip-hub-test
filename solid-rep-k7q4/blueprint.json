@@ -428,7 +428,7 @@
    "id": "f1",
    "code": "S1",
    "name": "Built earlier · Turned off",
-   "sub": "Set up in your account for the first single-pipeline draft. Turned off, and will be redone for the new pipelines."
+   "sub": "Set up in your account for the earlier single pipeline (now called Original Draft), so they move cards to its New Service stage. Turned off, and will be redone for the new pipelines."
   }
  ],
  "automations": [
@@ -917,7 +917,7 @@
  "pipeline": {
   "name": "",
   "view": "",
-  "intro": "Your account has 7 pipelines. Pick one to see its stages in the same order as your board. Stage names match your account exactly. Green notes are automations we proposed; nothing is switched on yet.",
+  "intro": "Your account has 6 pipelines for the new process, plus Original Draft, the earlier single pipeline. Pick one to see its stages in the same order and wording as your board. Notes marked Proposed are automations we proposed; nothing is switched on yet.",
   "now": ""
  },
  "now": {
