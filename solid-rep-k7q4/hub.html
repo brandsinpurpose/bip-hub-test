@@ -223,6 +223,26 @@ a{color:inherit}
 .oldb{margin-top:44px}
 .oldb summary{cursor:pointer;font:700 15px var(--ui);color:var(--navy);padding:14px 0}
 .oldb .lanes{margin-top:12px}
+
+.pview:empty,.phnote:empty{display:none}
+/* kanban mirror of the account board (2026-11-17) */
+.pchips{gap:8px;margin:0 0 22px}
+.pchip{padding:10px 14px}
+.pmeta{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;margin:0 0 18px}
+.pmeta h3{margin:0;font:700 22px/1.2 var(--disp);color:var(--navy)}
+.pmeta span{font:600 14px var(--ui);color:var(--muted)}
+.pintro{margin:0 0 22px}
+.kb{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 18px;scroll-snap-type:x proximity}
+.kcol{flex:0 0 250px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column}
+.kcol .kh{min-height:70px;box-sizing:border-box;padding:14px 16px 12px;border-bottom:3px solid var(--navy);display:flex;gap:10px;align-items:flex-start}
+.kcol .kh i{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font:700 13px var(--ui);color:var(--navy2);font-style:normal}
+.kcol .kh b{font:700 14.5px/1.35 var(--ui);color:var(--navy)}
+.kcol .kb2{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.55;color:var(--ink)}
+.kcol .pr{background:var(--soft);border-left:3px solid var(--green2);border-radius:8px;padding:8px 10px;color:var(--navy)}
+.kcol .pr small{display:block;font:700 11px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:2px}
+.kcol .nt{color:var(--muted);font-size:13.5px}
+.kcol.slim{flex-basis:200px}
+.khint{font-size:13.5px;color:var(--muted);margin:0 0 10px}
 /* stages */
 .lanes{display:grid;grid-template-columns:1fr 2.1fr 1fr 1fr;gap:16px;align-items:start}
 .lane{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:14px}
@@ -469,7 +489,7 @@ body.at-brand footer{display:none}
 </div>
 
 <div class="view" id="v-process">
-  <div class="ph"><div class="wrap"><div class="eyebrow">Your system</div><h1 class="disp">How your client system works</h1><p class="sysint">One system, three ways to look at it: the <b>journey</b> a client takes, the <b>pipeline board</b> your team works from, and the <b>automations</b> that run along the way. The same stage numbers and names appear in all three.</p><nav class="lens" aria-label="Ways to look at your system"><a href="#process" data-lens="process">Client journey</a><a href="#stages" data-lens="stages">Pipeline board</a><a href="#automations" data-lens="automations">Automations</a></nav><p class="lensint">The 8 steps a client goes through. Select a step to see its pipeline stages, the form the client fills in, and the automations at that step.</p></div></div>
+  <div class="ph"><div class="wrap"><div class="eyebrow">Your system</div><h1 class="disp">How your client system works</h1><p class="sysint">One system, three ways to look at it: the <b>journey</b> a client takes, the <b>pipeline board</b> your team works from, and the <b>automations</b> that run along the way. The same stage numbers and names appear in all three.</p><nav class="lens" aria-label="Ways to look at your system"><a href="#process" data-lens="process">Client journey</a><a href="#stages" data-lens="stages">Pipeline board</a><a href="#automations" data-lens="automations">Automations</a></nav><p class="lensint">The steps a potential client goes through. Select a step to see its pipeline stages, the form the client fills in, and the automations at that step.</p></div></div>
 <div class="wrap pad">
   <section id="map">
     <div class="map">
@@ -483,7 +503,7 @@ body.at-brand footer{display:none}
 <div class="view" id="v-automations">
   <div class="ph"><div class="wrap"><div class="eyebrow">Your system</div><h1 class="disp">How your client system works</h1><p class="sysint">One system, three ways to look at it: the <b>journey</b> a client takes, the <b>pipeline board</b> your team works from, and the <b>automations</b> that run along the way. The same stage numbers and names appear in all three.</p><nav class="lens" aria-label="Ways to look at your system"><a href="#process" data-lens="process">Client journey</a><a href="#stages" data-lens="stages">Pipeline board</a><a href="#automations" data-lens="automations">Automations</a></nav><p class="lensint"><span id="autoCount"></span> automations, grouped by part of the journey. Select one to see what starts it, each step in order, and the exact message it sends.</p></div></div>
   <div class="wrap pad">
-    <div class="callout reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>Nothing reaches a client until Fiarah and Alice approve it</b> and we test it with practice messages first. Yellow notes are questions to settle together. Grey steps are tasks for your team; those stay off at first, as decided Nov 10. To pick the first ones to switch on or answer a question, reply to Trey's email with the automation name, or bring it to your next session.<div style="margin-top:8px;font-size:14px;color:var(--muted)">A <b>card</b> is one client on your pipeline board. The <b>card owner</b> is the team member responsible for it.</div></div></div>
+    <div class="callout reveal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#052E5C" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>Nothing is switched on.</b> The Potential Client (PC) automations are what we proposed on Nov 17; we build them after Fiarah and Alice approve, and test with practice messages first. The three built earlier are set up in your account for the first single-pipeline draft and stay turned off. Yellow notes are things still to settle. To ask about one, reply to Trey's email with the automation name, or bring it to your next session.<div style="margin-top:8px;font-size:14px;color:var(--muted)">A <b>card</b> is one client on your pipeline board. The <b>card owner</b> is the team member responsible for it.</div></div></div>
     <div class="ftabs" id="ftabs" role="tablist"></div>
     <div class="ws"><div class="wl" id="wl"></div><div class="wc" id="wc"></div><div class="wp" id="wp"></div></div>
   </div>
@@ -491,7 +511,7 @@ body.at-brand footer{display:none}
 
 <div class="view" id="v-stages">
   <div class="ph"><div class="wrap"><div class="eyebrow">Your system</div><h1 class="disp">How your client system works</h1><p class="sysint">One system, three ways to look at it: the <b>journey</b> a client takes, the <b>pipeline board</b> your team works from, and the <b>automations</b> that run along the way. The same stage numbers and names appear in all three.</p><nav class="lens" aria-label="Ways to look at your system"><a href="#process" data-lens="process">Client journey</a><a href="#stages" data-lens="stages">Pipeline board</a><a href="#automations" data-lens="automations">Automations</a></nav><p class="lensint"><b id="pipeH"></b> <span id="pipeIntro"></span></p><div class="pview" id="pipeView"></div><p class="phnote" id="pipeNow"></p><a class="go2" href="${BOARD}" id="boardLink" target="_blank" rel="noopener">Open the pipeline board in your account ↗</a></div></div>
-  <div class="wrap pad"><div class="pchips" id="pchips" role="tablist" aria-label="Pipelines"></div><div id="pbody"></div><details class="oldb"><summary>Your current board in the account: Services, 26 stages</summary><div class="lanes" id="lanes"></div></details></div>
+  <div class="wrap pad"><div class="pchips" id="pchips" role="tablist" aria-label="Pipelines"></div><div id="pbody"></div><div class="lanes" id="lanes" style="display:none"></div></div>
 </div>
 
 <div class="view" id="v-sessions">
@@ -554,7 +574,7 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const WFmap=Object.fromEntries(WF.map(w=>[w.id,w]));
 const stageNo=Object.fromEntries(STAGES.map((s,i)=>[s.n,i+1]));
-const plain=t=>String(t).replace(/^S\d\.\d · /,'');
+const plain=t=>String(t).replace(/^(S\d\.\d|PC\d) · /,'');
 const mf=t=>esc(t).replace(/https?:\/\/\S+/g,'<span class="mf">Worksheet button</span>').replace(/\{\{[^}]+\}\}/g,x=>`<span class="mf">${x.includes('first_name')?'First name':x.includes('mark_to_register')?'Their trademark':x.includes('.name')?'Client name':x.includes('email')?'Email':x.includes('phone')?'Phone':'Detail'}</span>`);
 
 /* pulse */
@@ -576,7 +596,7 @@ $$('.node').forEach(n=>n.onclick=()=>{pick(+n.dataset.i);if(innerWidth<760)$('#d
 pick(0);
 
 /* workspace */
-let curF='f1',curW='S1.1',curM=null;const MS=[];
+let curF=(FOLDERS[0]||{}).id,curW=((WF.find(w=>w.f===curF))||WF[0]).id,curM=null;const MS=[];
 function trigPlain(s){const d=s.d||'',t=s.t;let m;
  if(t==='Survey submitted')return /START NOW/.test(d)?'A client finishes the START NOW form':'A client sends back the Registration Worksheet';
  if(t==='Payment received')return 'A client pays a bill or retainer';
@@ -646,8 +666,8 @@ function openStage(n){const s=STAGES.find(x=>x.n===n),ph=PHASES.find(p=>p.id===s
 $('#boardLink').href=BOARD;
 if(D.systemNote){['v-process','v-automations'].forEach(id=>{const w=document.querySelector('#'+id+' .ph .wrap');if(w)w.insertAdjacentHTML('beforeend',`<div class="pempty" style="margin-top:18px;border-style:solid;border-left:3px solid var(--green2);color:var(--navy)"><b>Being updated.</b> ${esc(D.systemNote)} <a href="#stages" style="color:var(--navy);font-weight:700">Open the Pipeline board</a></div>`)})}
 const PIPES=D.pipelines||[];
-function showPipe(id){const P=PIPES.find(x=>x.id===id)||PIPES[0];if(!P)return;$$('.pchip').forEach(c=>{const on=c.dataset.p===P.id;c.classList.toggle('on',on);c.setAttribute('aria-selected',on)});let n=0;$('#pbody').innerHTML=`<p class="pintro"><b>${esc(P.name)}.</b> ${esc(P.intro||'')}</p>`+((P.groups||[]).length?`<div class="pgroups">${P.groups.map(g=>`<div class="pg"><h3>${esc(g.h)}</h3><div class="pcards">${g.stages.map(s=>`<div class="pst"><div class="top"><i>${++n}</i><b>${esc(s.n)}</b></div><p>${esc(s.how)}</p>${(s.chips||[]).map(c=>`<div class="al">${esc(c)}</div>`).join('')}</div>`).join('')}</div></div>`).join('')}</div>`:`<div class="pempty">The stages for this pipeline come next. Once they are agreed and set up in your account, they show here.</div>`)}
-if(PIPES.length){$('#pchips').innerHTML=PIPES.map(P=>`<button class="pchip" role="tab" data-p="${P.id}">${esc(P.name)}<small>${esc(P.status||'')}</small></button>`).join('');$$('.pchip').forEach(c=>c.addEventListener('click',()=>showPipe(c.dataset.p)));showPipe(PIPES[0].id);$('#pipeH').textContent=`Your pipelines: ${PIPES.length}.`}else{$('#pchips').remove();$('#pbody').remove();$('.oldb').open=true}
+function showPipe(id){const P=PIPES.find(x=>x.id===id)||PIPES[0];if(!P)return;$$('.pchip').forEach(c=>{const on=c.dataset.p===P.id;c.classList.toggle('on',on);c.setAttribute('aria-selected',on)});const rich=P.stages.some(s=>s.how);$('#pbody').innerHTML=`<div class="pmeta"><h3>${esc(P.name)}</h3><span>${P.stages.length} stages · ${esc(P.status||'')}</span></div><p class="pintro">${esc(P.intro||'')}</p><p class="khint">Scroll sideways to see every stage, left to right as on your board.</p><div class="kb">${P.stages.map((s,i)=>`<div class="kcol ${rich?'':'slim'}"><div class="kh"><i>${i+1}</i><b>${esc(s.n)}</b></div>${(s.how||(s.props||[]).length||s.note)?`<div class="kb2">${s.how?`<div>${esc(s.how)}</div>`:''}${(s.props||[]).map(p=>`<div class="pr"><small>Proposed</small>${esc(p)}</div>`).join('')}${s.note?`<div class="nt">${esc(s.note)}</div>`:''}</div>`:''}</div>`).join('')}</div>`}
+if(PIPES.length){$('#pchips').innerHTML=PIPES.map(P=>`<button class="pchip" role="tab" data-p="${P.id}">${esc(P.name)}<small>${esc(P.status||'')}</small></button>`).join('');$$('.pchip').forEach(c=>c.addEventListener('click',()=>showPipe(c.dataset.p)));showPipe(PIPES[0].id);$('#pipeH').textContent=''}else{$('#pchips').remove();$('#pbody').remove();$('.oldb').open=true}
 
 
 /* home */
