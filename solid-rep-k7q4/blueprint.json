@@ -1034,12 +1034,14 @@
      "note": "Reason list coming from Fiarah",
      "g": "Outcome"
     }
-   ]
+   ],
+   "col": 1,
+   "lvl": "set"
   },
   {
    "id": "uspto",
    "name": "USPTO",
-   "status": "Stages set up · steps next session",
+   "status": "Stages set up",
    "intro": "The federal filing work. These stages are set up in your account. We go through the steps and their automations together in the next session.",
    "stages": [
     {
@@ -1162,12 +1164,14 @@
      "props": [],
      "note": null
     }
-   ]
+   ],
+   "col": 2,
+   "lvl": "set"
   },
   {
    "id": "prto",
    "name": "PRTO Draft",
-   "status": "Stages set up · draft",
+   "status": "Draft",
    "intro": "The Puerto Rico filing work, set up in your account as a draft. Fiarah is reviewing these steps with Alice.",
    "stages": [
     {
@@ -1272,12 +1276,14 @@
      "props": [],
      "note": null
     }
-   ]
+   ],
+   "col": 2,
+   "lvl": "draft"
   },
   {
    "id": "rus",
    "name": "Renewal USPTO",
-   "status": "Placeholder stages",
+   "status": "Placeholder",
    "intro": "Set up in your account with the four starter stages. The real renewal steps come later.",
    "stages": [
     {
@@ -1304,12 +1310,14 @@
      "props": [],
      "note": null
     }
-   ]
+   ],
+   "col": 3,
+   "lvl": "placeholder"
   },
   {
    "id": "rpr",
    "name": "Renewal PRTO",
-   "status": "Placeholder stages",
+   "status": "Placeholder",
    "intro": "Set up in your account with the four starter stages. The real renewal steps come later.",
    "stages": [
     {
@@ -1336,12 +1344,14 @@
      "props": [],
      "note": null
     }
-   ]
+   ],
+   "col": 3,
+   "lvl": "placeholder"
   },
   {
    "id": "ols",
    "name": "Other Legal Services",
-   "status": "Placeholder stages",
+   "status": "Placeholder",
    "intro": "Set up in your account with the four starter stages. Stages to be decided.",
    "stages": [
     {
@@ -1368,7 +1378,9 @@
      "props": [],
      "note": null
     }
-   ]
+   ],
+   "col": 2,
+   "lvl": "placeholder"
   },
   {
    "id": "old",
@@ -1532,7 +1544,9 @@
      "props": [],
      "note": null
     }
-   ]
+   ],
+   "col": 0,
+   "lvl": "old"
   }
  ]
 }
