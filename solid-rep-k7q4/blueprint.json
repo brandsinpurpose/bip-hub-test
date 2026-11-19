@@ -7,8 +7,8 @@
   "account": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos",
   "board": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list"
  },
- "updated": "Tuesday, November 17, 2026",
- "status": "Nothing is switched on yet. Your pipelines are set up in your account; the Potential Client automations are proposed.",
+ "updated": "Thursday, November 19, 2026",
+ "status": "Nothing is switched on yet. Two Potential Client reminders are built and waiting for a test together.",
  "pulse": [
   {
    "k": "last",
@@ -19,24 +19,21 @@
   {
    "k": "you",
    "label": "Waiting on your team",
-   "b": "5 things to send or answer",
+   "b": "4 things to send or answer",
    "list": [
-    "Set up the orientation and legal consultation calendars, and send Trey their names",
-    "The reasons a potential client does not hire you, for the Closed lost stage",
-    "Review the PRTO steps with Alice and map the USPTO process for the next session",
+    "How you file additional trademark classes (one application or separate ones)",
+    "Review the PRTO steps with Alice; your USPTO overview is in, thank you",
     "Check your charges, then bring your Stripe products into SmartFunnels Pro",
     "The price of each package and its filing fee"
    ],
    "s": "Reply to Trey's email anytime, or bring it to your next meeting.",
    "short": [
-    "Calendars",
-    "Lost reasons",
+    "Trademark classes",
     "PRTO and USPTO steps",
     "Stripe products",
     "Package prices"
    ],
    "act": [
-    null,
     null,
     {
      "b": "Book a meeting",
@@ -191,6 +188,14 @@
   }
  ],
  "decisions": [
+  [
+   "Orientation follow-ups",
+   "A reminder to the paralegal if no orientation is booked within 48 hours, and a reminder to the paralegal and admin 24 hours after each orientation call (Nov 18 and 19, by email)"
+  ],
+  [
+   "Your calendars",
+   "Service Orientation Call and Legal Consultation, set up in SmartFunnels Pro (Nov 18, by email)"
+  ],
   [
    "Six pipelines, one per process",
    "Potential Client, USPTO package, PRTO package, USPTO renewal, PRTO renewal and General legal services, because each office runs its own steps (Nov 17)"
@@ -422,7 +427,7 @@
    "id": "pc",
    "code": "PC",
    "name": "Potential Client (PC) · Proposed",
-   "sub": "What we proposed on Nov 17. None are built yet."
+   "sub": "What we proposed on Nov 17. PC2 and PC4 are built in your account (not switched on); the rest are not built yet."
   },
   {
    "id": "f1",
@@ -477,26 +482,26 @@
   {
    "id": "PC2",
    "f": "pc",
-   "name": "PC2 · No orientation in 24 hours → Paralegal reaches out",
-   "why": "If someone has not booked an orientation within a day, the paralegal gets an alert to reach out personally.",
+   "name": "PC2 · No orientation in 48 hours → Paralegal reaches out",
+   "why": "If someone has not booked an orientation within two days, Camila gets an alert to reach out personally. Built in your account, not switched on yet.",
    "stages": [
     "Potential Client (PC)"
    ],
    "trigs": [
     {
      "t": "Card sits in a stage",
-     "d": "Potential Client (PC) for 24 hours"
+     "d": "Potential Client (PC) for 2 days with no activity"
     }
    ],
    "steps": [
     {
      "k": "notify",
      "t": "Send internal notification",
-     "d": "Alert to the paralegal",
+     "d": "Email to paralegal@solidreptm.com",
      "m": {
-      "to": "Paralegal",
-      "subj": "Reach out to {{contact.name}}",
-      "body": "{{contact.name}} has not booked an orientation yet. Reach out by their preferred contact method: {{contact.preferred_contact_method}}."
+      "to": "paralegal@solidreptm.com",
+      "subj": "No orientation booked yet: {{contact.name}}",
+      "body": "{{contact.name}} reached out 2 days ago and hasn't booked a Service Orientation Call yet.\nPlease reach out and help them book it. Phone: {{contact.phone}} Email: {{contact.email}}"
      }
     }
    ]
@@ -527,8 +532,8 @@
   {
    "id": "PC4",
    "f": "pc",
-   "name": "PC4 · Orientation completed → Reminder to the team",
-   "why": "After the orientation, the team gets a reminder to check the next step went out.",
+   "name": "PC4 · 24 hours after orientation → Reminder to paralegal and admin",
+   "why": "A day after each orientation call, Camila and admin get a reminder to check the Preliminary Factual Sheet and send the estimate or engagement letter. Built in your account, not switched on yet.",
    "stages": [
     "Orientation Completed"
    ],
@@ -542,16 +547,16 @@
     {
      "k": "wait",
      "t": "Wait",
-     "d": "(timing to confirm)"
+     "d": "24 hours"
     },
     {
      "k": "notify",
      "t": "Send internal notification",
-     "d": "Reminder to the team",
+     "d": "Email to paralegal@, copy to admin@",
      "m": {
-      "to": "Paralegal",
-      "subj": "Check the next step for {{contact.name}}",
-      "body": "{{contact.name}} finished orientation. Check that the next step went out."
+      "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
+      "subj": "Next step for {{contact.name}}: check the sheet, send the estimate",
+      "body": "{{contact.name}} had their orientation call yesterday. Please check they finished the Preliminary Factual Sheet, then prepare and send any estimate or engagement letter from what came up on the call.\nPhone: {{contact.phone}} Email: {{contact.email}}"
      }
     }
    ]
@@ -954,23 +959,23 @@
      "n": "Potential Client (PC)",
      "how": "Someone fills in the contact form on your website. A card is created here, admin and paralegal get an alert with everything they wrote, and they get an email with the orientation booking link.",
      "props": [
-      "Alert to the paralegal if no orientation is booked within 24 hours, to reach out the way the person prefers"
+      "Alert to the paralegal if no orientation is booked within 48 hours of the invitation, to reach out the way the person prefers"
      ],
      "note": null,
      "g": "Getting to know them"
     },
     {
      "n": "Orientation Scheduled",
-     "how": "The person books on the orientation calendar.",
+     "how": "The person books on the Service Orientation Call calendar.",
      "props": [],
-     "note": "Waits on the orientation calendar Fiarah is creating",
+     "note": null,
      "g": "Getting to know them"
     },
     {
      "n": "Orientation Completed",
      "how": "The orientation call has happened.",
      "props": [
-      "Reminder to the team to check the next step went out (timing to confirm)"
+      "24 hours after the orientation call, an alert to the paralegal and admin: check the Preliminary Factual Sheet is done, then prepare and send any estimate or engagement letter"
      ],
      "note": null,
      "g": "Getting to know them"
@@ -993,11 +998,11 @@
     },
     {
      "n": "Legal Consultation Scheduled",
-     "how": "Booked on the legal consultation calendar.",
+     "how": "Booked on the Legal Consultation calendar.",
      "props": [
       "Alice is notified, inside the account and by email"
      ],
-     "note": "Waits on the legal consultation calendar Fiarah is creating",
+     "note": null,
      "g": "Legal consultation"
     },
     {
@@ -1030,8 +1035,10 @@
     {
      "n": "Closed Lost / Not Hired",
      "how": "Marked with the reason your team picks.",
-     "props": [],
-     "note": "Reason list coming from Fiarah",
+     "props": [
+      "Reasons your team picks from: Rejected Client (DM), Hired Other Attorney, Cost Concerns, Conflict Issue, Other, Unresponsive"
+     ],
+     "note": null,
      "g": "Outcome"
     }
    ],
