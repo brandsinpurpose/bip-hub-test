@@ -830,54 +830,62 @@
      "k": "if",
      "t": "Find opportunity",
      "d": "Find their card in the Services pipeline",
-     "yes": [
+     "branches": [
       {
-       "k": "opp",
-       "t": "Update opportunity",
-       "d": "Pipeline: Services · Stage: Worksheet Review"
+       "l": "Has a card",
+       "s": [
+        {
+         "k": "opp",
+         "t": "Update opportunity",
+         "d": "Pipeline: Services · Stage: Worksheet Review"
+        },
+        {
+         "k": "task",
+         "t": "Add task",
+         "d": "Review task",
+         "m": {
+          "title": "Review worksheet: {{contact.name}}",
+          "desc": "{{contact.name}} returned their Trademark Registration Worksheet. Open their contact record to see the answers and uploads, then move the card to Initial Legal Assessment.",
+          "assign": "Fiarah Carrau",
+          "due": "In 2 days"
+         },
+         "c": "Who reviews worksheets?"
+        },
+        {
+         "k": "notify",
+         "t": "Send internal notification",
+         "d": "Email to paralegal@, copy to admin@",
+         "m": {
+          "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
+          "subj": "Worksheet back: {{contact.name}}",
+          "body": "{{contact.name}} returned their Trademark Registration Worksheet. A review task is waiting for you."
+         }
+        },
+        {
+         "k": "email",
+         "t": "Send email",
+         "d": "Confirmation to the client",
+         "m": {
+          "subj": "We've received your worksheet",
+          "body": "Hi {{contact.first_name}},\n\nThank you, we've received your Trademark Registration Worksheet. Our team is reviewing it now, and we'll be in touch if we need anything else.\n\nWarmly,\nThe Solid Rep Team"
+         }
+        }
+       ]
       },
       {
-       "k": "task",
-       "t": "Add task",
-       "d": "Review task",
-       "m": {
-        "title": "Review worksheet: {{contact.name}}",
-        "desc": "{{contact.name}} returned their Trademark Registration Worksheet. Open their contact record to see the answers and uploads, then move the card to Initial Legal Assessment.",
-        "assign": "Fiarah Carrau",
-        "due": "In 2 days"
-       },
-       "c": "Who reviews worksheets?"
-      },
-      {
-       "k": "notify",
-       "t": "Send internal notification",
-       "d": "Email to paralegal@, copy to admin@",
-       "m": {
-        "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
-        "subj": "Worksheet back: {{contact.name}}",
-        "body": "{{contact.name}} returned their Trademark Registration Worksheet. A review task is waiting for you."
-       }
-      },
-      {
-       "k": "email",
-       "t": "Send email",
-       "d": "Confirmation to the client",
-       "m": {
-        "subj": "We've received your worksheet",
-        "body": "Hi {{contact.first_name}},\n\nThank you, we've received your Trademark Registration Worksheet. Our team is reviewing it now, and we'll be in touch if we need anything else.\n\nWarmly,\nThe Solid Rep Team"
-       }
-      }
-     ],
-     "no": [
-      {
-       "k": "notify",
-       "t": "Send internal notification",
-       "d": "Email to paralegal@, copy to admin@",
-       "m": {
-        "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
-        "subj": "Worksheet back: {{contact.name}}",
-        "body": "{{contact.name}} returned their Trademark Registration Worksheet, but they don't have a card in the Services pipeline yet, so no review task was created. Open their contact record to see the answers."
-       }
+       "l": "No card yet",
+       "s": [
+        {
+         "k": "notify",
+         "t": "Send internal notification",
+         "d": "Email to paralegal@, copy to admin@",
+         "m": {
+          "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
+          "subj": "Worksheet back: {{contact.name}}",
+          "body": "{{contact.name}} returned their Trademark Registration Worksheet, but they don't have a card in the Services pipeline yet, so no review task was created. Open their contact record to see the answers."
+         }
+        }
+       ]
       }
      ]
     }
