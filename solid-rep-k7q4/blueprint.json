@@ -7,8 +7,8 @@
   "account": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos",
   "board": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list"
  },
- "updated": "Thursday, November 19, 2026",
- "status": "Nothing is switched on yet. Two Potential Client reminders are built and waiting for a test together.",
+ "updated": "Monday, November 23, 2026",
+ "status": "Nothing is switched on yet. Two Potential Client reminders and the worksheet alerts are built and waiting for a test together.",
  "pulse": [
   {
    "k": "last",
@@ -188,6 +188,10 @@
   }
  ],
  "decisions": [
+  [
+   "Worksheet alerts",
+   "When a worksheet comes back, the paralegal and admin inboxes get an email, even if the client has no Services card yet (Nov 23, by email)"
+  ],
   [
    "Orientation follow-ups",
    "A reminder to the paralegal if no orientation is booked within 48 hours, and a reminder to the paralegal and admin 24 hours after each orientation call (Nov 18 and 19, by email)"
@@ -811,7 +815,7 @@
    "id": "S1.3",
    "f": "f1",
    "name": "S1.3 · Worksheet returned → Review task",
-   "why": "When the worksheet comes back, the card moves and a review task is created.",
+   "why": "When the worksheet comes back, Camila and admin get an email. If the client has a Services card, it moves to Worksheet Review and a review task is created. If the worksheet came in by link or QR code from someone without a card, the email still goes out. Built in your account, not switched on yet.",
    "stages": [
     "Worksheet Review"
    ],
@@ -823,40 +827,59 @@
    ],
    "steps": [
     {
-     "k": "opp",
-     "t": "Update opportunity",
-     "d": "Pipeline: Services · Stage: Worksheet Review"
-    },
-    {
-     "k": "task",
-     "t": "Add task",
-     "d": "Review task",
-     "m": {
-      "title": "Review worksheet: {{contact.name}}",
-      "desc": "{{contact.name}} returned their Trademark Registration Worksheet. Open their contact record to see the answers and uploads, then move the card to Initial Legal Assessment.",
-      "assign": "Fiarah Carrau",
-      "due": "In 2 days"
-     },
-     "c": "Who reviews worksheets?"
-    },
-    {
-     "k": "notify",
-     "t": "Send internal notification",
-     "d": "Email to the reviewer",
-     "m": {
-      "to": "Specific user: Fiarah Carrau",
-      "subj": "Worksheet back: {{contact.name}}",
-      "body": "{{contact.name}} returned their Trademark Registration Worksheet. A review task is waiting for you."
-     }
-    },
-    {
-     "k": "email",
-     "t": "Send email",
-     "d": "Confirmation to the client",
-     "m": {
-      "subj": "We've received your worksheet",
-      "body": "Hi {{contact.first_name}},\n\nThank you, we've received your Trademark Registration Worksheet. Our team is reviewing it now, and we'll be in touch if we need anything else.\n\nWarmly,\nThe Solid Rep Team"
-     }
+     "k": "if",
+     "t": "Find opportunity",
+     "d": "Find their card in the Services pipeline",
+     "yes": [
+      {
+       "k": "opp",
+       "t": "Update opportunity",
+       "d": "Pipeline: Services · Stage: Worksheet Review"
+      },
+      {
+       "k": "task",
+       "t": "Add task",
+       "d": "Review task",
+       "m": {
+        "title": "Review worksheet: {{contact.name}}",
+        "desc": "{{contact.name}} returned their Trademark Registration Worksheet. Open their contact record to see the answers and uploads, then move the card to Initial Legal Assessment.",
+        "assign": "Fiarah Carrau",
+        "due": "In 2 days"
+       },
+       "c": "Who reviews worksheets?"
+      },
+      {
+       "k": "notify",
+       "t": "Send internal notification",
+       "d": "Email to paralegal@, copy to admin@",
+       "m": {
+        "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
+        "subj": "Worksheet back: {{contact.name}}",
+        "body": "{{contact.name}} returned their Trademark Registration Worksheet. A review task is waiting for you."
+       }
+      },
+      {
+       "k": "email",
+       "t": "Send email",
+       "d": "Confirmation to the client",
+       "m": {
+        "subj": "We've received your worksheet",
+        "body": "Hi {{contact.first_name}},\n\nThank you, we've received your Trademark Registration Worksheet. Our team is reviewing it now, and we'll be in touch if we need anything else.\n\nWarmly,\nThe Solid Rep Team"
+       }
+      }
+     ],
+     "no": [
+      {
+       "k": "notify",
+       "t": "Send internal notification",
+       "d": "Email to paralegal@, copy to admin@",
+       "m": {
+        "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
+        "subj": "Worksheet back: {{contact.name}}",
+        "body": "{{contact.name}} returned their Trademark Registration Worksheet, but they don't have a card in the Services pipeline yet, so no review task was created. Open their contact record to see the answers."
+       }
+      }
+     ]
     }
    ]
   }
