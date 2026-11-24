@@ -462,7 +462,7 @@ body.at-brand footer{display:none}
 .stnote{border-radius:12px;padding:10px 12px;margin:0 0 18px;background:var(--soft);border:1px solid var(--line);font-size:14px}.stnote b{display:block;font:700 14px var(--ui);color:var(--navy)}.stnote.a{background:#EEF3F9;border-color:#B6ED5E}.stnote.b{background:#EEF3F9;border-color:#DCE5F0}
 .plist{margin:6px 0 8px;padding-left:18px;font-size:14px;line-height:1.5}.plist li{margin:2px 0}
 .card.later,.chip.later{opacity:.62;background:var(--soft)}
-.wst{display:inline-block;margin-bottom:8px;font:700 14px var(--ui);padding:3px 10px;border-radius:4px;background:var(--soft);color:var(--muted);border:1px solid var(--line)}.wst.b{background:#EEF3F9;color:#052E5C;border-color:#DCE5F0}
+.wst{display:inline-block;margin-bottom:8px;font:700 14px var(--ui);padding:3px 10px;border-radius:4px;background:var(--soft);color:var(--muted);border:1px solid var(--line)}.wst.b{background:#EEF3F9;color:#052E5C;border-color:#DCE5F0}.wst.g{background:#E6F6EC;color:#11663A;border-color:#BFE6CE}.wi .wst{display:table;margin-bottom:6px;font-size:12px;padding:1px 8px}
 .stag{display:table;margin-top:4px;font:700 14px var(--ui);padding:2px 7px;border-radius:4px}.stag.a{background:#EEF3F9;color:#052E5C}.stag.b{background:#EEF3F9;color:#052E5C}
 .phnote{margin-top:10px!important;font-weight:600;color:var(--navy)!important}
 .go2{display:inline-block;margin-top:14px;background:var(--green);color:var(--navy);font:700 14px var(--ui);padding:9px 16px;border-radius:4px;text-decoration:none}
@@ -628,7 +628,7 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const WFmap=Object.fromEntries(WF.map(w=>[w.id,w]));
 const stageNo=Object.fromEntries(STAGES.map((s,i)=>[s.n,i+1]));
-const plain=t=>String(t).replace(/^(S\d\.\d|PC\d) · /,'');
+const plain=t=>String(t); // 2026-11-24: show names exactly as they appear in SmartFunnels Pro
 const mf=t=>esc(t).replace(/https?:\/\/\S+/g,'<span class="mf">Worksheet button</span>').replace(/\{\{[^}]+\}\}/g,x=>`<span class="mf">${x.includes('first_name')?'First name':x.includes('mark_to_register')?'Their trademark':x.includes('.name')?'Client name':x.includes('email')?'Email':x.includes('phone')?'Phone':'Detail'}</span>`);
 
 /* pulse */
@@ -685,15 +685,16 @@ function chip(c){
   const m=c.m&&(c.m.body||c.m.desc);let id='';if(m){MS.push(c);id=MS.length-1}
   return `<div class="chip ${m?'msg':''} ${c.k==='task'?'later':''}" ${m?`data-m="${id}" role="button" tabindex="0"`:''}><small>${KIND[c.k]||''}${c.k==='task'?' · later':''}</small>${esc(c.k==='end'?c.d:label(c))}</div>`;
 }
-function renderTabs(){$('#ftabs').innerHTML=FOLDERS.map((f,i)=>`<button class="ftab ${f.id===curF?'on':''}" data-f="${f.id}" role="tab" aria-selected="${f.id===curF}"><b>${i+1}</b><span>${esc(f.name.replace(/^Services · \d /,''))}<small>${WF.filter(w=>w.f===f.id).length} automations</small></span></button>`).join('');$$('.ftab').forEach(b=>b.onclick=()=>{curF=b.dataset.f;curW=WF.find(w=>w.f===curF).id;renderWS()})}
+const LIVE={on:['On: running in your account','g'],off:['Built in your account, switched off','b'],proposed:['Proposed, not built yet',''],unused:['Archived demo, switched off','']};
+function renderTabs(){$('#ftabs').innerHTML=FOLDERS.map((f,i)=>`<button class="ftab ${f.id===curF?'on':''}" data-f="${f.id}" role="tab" aria-selected="${f.id===curF}"><b>${i+1}</b><span>${esc(f.name)}<small>${WF.filter(w=>w.f===f.id).length} automations</small></span></button>`).join('');$$('.ftab').forEach(b=>b.onclick=()=>{curF=b.dataset.f;curW=WF.find(w=>w.f===curF).id;renderWS()})}
 function renderWS(){
   renderTabs();MS.length=0;
   const list=WF.filter(w=>w.f===curF);
-  $('#wl').innerHTML=list.map(w=>{const all=w.steps.flatMap(s=>[s].concat(s.yes||[],s.no||[],(s.branches||[]).flatMap(b=>b.s)));const ce=all.filter(x=>x.k==='email'||x.k==='review'||x.k==='doc').length,tt=all.filter(x=>x.k==='task'||x.k==='notify').length;const msgs=[ce?`${ce} to the client`:'',tt?`${tt} for your team`:''].filter(Boolean).join(' · ')||'Behind the scenes';return `<button class="wi ${w.id===curW?'on':''}" data-w="${w.id}"><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span><em>${msgs}</em></button>`}).join('');
+  $('#wl').innerHTML=list.map(w=>{const all=w.steps.flatMap(s=>[s].concat(s.yes||[],s.no||[],(s.branches||[]).flatMap(b=>b.s)));const ce=all.filter(x=>x.k==='email'||x.k==='review'||x.k==='doc').length,tt=all.filter(x=>x.k==='task'||x.k==='notify').length;const msgs=[ce?`${ce} to the client`:'',tt?`${tt} for your team`:''].filter(Boolean).join(' · ')||'Behind the scenes';return `<button class="wi ${w.id===curW?'on':''}" data-w="${w.id}"><span class="wst ${(LIVE[w.live]||LIVE.proposed)[1]}">${(LIVE[w.live]||LIVE.proposed)[0]}</span><b>${esc(plain(w.name))}</b><span>${esc(w.why)}</span><em>${msgs}</em></button>`}).join('');
   $$('.wi').forEach(b=>b.onclick=()=>{curW=b.dataset.w;renderWS();const c=$('#wc');if(c){const r=c.getBoundingClientRect();if(r.top<70||r.top>window.innerHeight*0.6)c.scrollIntoView({behavior:'smooth',block:'start'})}});
   const w=WFmap[curW];let n=0;
   const steps=w.steps.filter(s=>s.k!=='note').map(s=>{s._n=++n;return card(s,false)}).join('');
-  $('#wc').innerHTML=`<span class="wst ${w.f==='f1'?'b':''}">${w.f==='f1'?'Set up in your account, turned off':'Proposal, not built yet'}</span><h3>${esc(plain(w.name))}</h3><p>${esc(w.why)}</p><ol class="tl">${w.trigs.map(t=>card(t,true)).join('')}${steps}</ol>`;
+  $('#wc').innerHTML=`<span class="wst ${(LIVE[w.live]||LIVE.proposed)[1]}">${(LIVE[w.live]||LIVE.proposed)[0]}</span><h3>${esc(plain(w.name))}</h3><p>${esc(w.why)}</p><ol class="tl">${w.trigs.map(t=>card(t,true)).join('')}${steps}</ol>`;
   $$('[data-m]').forEach(el=>{el.onclick=()=>showMsg(+el.dataset.m);el.onkeydown=e=>{if(e.key==='Enter')showMsg(+el.dataset.m)}});
   curM=MS.findIndex(s=>s.k==='email');if(curM<0)curM=MS.length?0:null;
   showMsg(curM);

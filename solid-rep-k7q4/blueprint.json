@@ -7,8 +7,8 @@
   "account": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos",
   "board": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list"
  },
- "updated": "Monday, November 23, 2026",
- "status": "Nothing is switched on yet. Two Potential Client reminders and the worksheet alerts are built and waiting for a test together.",
+ "updated": "Tuesday, November 24, 2026",
+ "status": "One automation is on: the worksheet alert (S1.3). Everything else is built and switched off, or proposed and not built yet.",
  "pulse": [
   {
    "k": "last",
@@ -83,7 +83,7 @@
   },
   {
    "b": "Your pipeline board",
-   "s": "Opportunities > Services, in your account",
+   "s": "Opportunities, in your account: pick a pipeline at the top",
    "href": "https://app.smartfunnelspro.com/v2/location/RkLJFyuG3EEDa60fRDos/opportunities/list"
   }
  ],
@@ -190,7 +190,7 @@
  "decisions": [
   [
    "Worksheet alerts",
-   "When a worksheet comes back, the paralegal and admin inboxes get an email, even if the client has no Services card yet (Nov 23, by email)"
+   "When a worksheet comes back, the paralegal and admin inboxes get an email, even if the client has no card yet (Nov 23, by email)"
   ],
   [
    "Orientation follow-ups",
@@ -430,14 +430,20 @@
   {
    "id": "pc",
    "code": "PC",
-   "name": "Potential Client (PC) · Proposed",
-   "sub": "What we proposed on Nov 17. PC2 and PC4 are built in your account (not switched on); the rest are not built yet."
+   "name": "Potential Client · 1 Team alerts",
+   "sub": "PC2 and PC4 are built in this folder and switched off until we test them together. PC1, PC3, PC5, PC6, PC7 and PC8 are proposed and not built yet; they are shown so you can see the whole plan."
   },
   {
    "id": "f1",
    "code": "S1",
-   "name": "Built earlier · Turned off",
-   "sub": "Set up in your account for the earlier single pipeline (now called Original Draft), so they move cards to its New Service stage. Turned off, and will be redone for the new pipelines."
+   "name": "Services · 1 Sign-up & Worksheet",
+   "sub": "Built for the earlier single pipeline, Original Draft. S1.3, the worksheet alert, is switched on. S1.1 and S1.2 were switched off on Nov 24 and will be rebuilt for USPTO New Trademark and PRTO Draft."
+  },
+  {
+   "id": "zz",
+   "code": "ZZ",
+   "name": "zz Archive · September demos (off)",
+   "sub": "The demo automations from our September walkthrough. All switched off and not part of your process. Kept for reference, never deleted."
   }
  ],
  "automations": [
@@ -481,13 +487,14 @@
       "body": "Hi {{contact.first_name}},\n\nThank you for reaching out to Solid Rep. The next step is a short orientation, where we learn about your brand and explain how registration works.\n\nPick a time here: [orientation booking link]\n\nThe Solid Rep Team"
      }
     }
-   ]
+   ],
+   "live": "proposed"
   },
   {
    "id": "PC2",
    "f": "pc",
-   "name": "PC2 · No orientation in 48 hours → Paralegal reaches out",
-   "why": "If someone has not booked an orientation within two days, Camila gets an alert to reach out personally. Built in your account, not switched on yet.",
+   "name": "PC2 · No orientation booked in 48 hours → Alert paralegal",
+   "why": "If someone has not booked an orientation within two days, Camila gets an alert to reach out personally. Built in your account, switched off until we test it together.",
    "stages": [
     "Potential Client (PC)"
    ],
@@ -508,7 +515,8 @@
       "body": "{{contact.name}} reached out 2 days ago and hasn't booked a Service Orientation Call yet.\nPlease reach out and help them book it. Phone: {{contact.phone}} Email: {{contact.email}}"
      }
     }
-   ]
+   ],
+   "live": "off"
   },
   {
    "id": "PC3",
@@ -531,13 +539,14 @@
      "t": "Update opportunity",
      "d": "Stage: Orientation Scheduled"
     }
-   ]
+   ],
+   "live": "proposed"
   },
   {
    "id": "PC4",
    "f": "pc",
-   "name": "PC4 · 24 hours after orientation → Reminder to paralegal and admin",
-   "why": "A day after each orientation call, Camila and admin get a reminder to check the Preliminary Factual Sheet and send the estimate or engagement letter. Built in your account, not switched on yet.",
+   "name": "PC4 · 24 hours after orientation → Alert paralegal + admin",
+   "why": "A day after each orientation call, Camila and admin get a reminder to check the Preliminary Factual Sheet and send the estimate or engagement letter. Built in your account, switched off until we test it together.",
    "stages": [
     "Orientation Completed"
    ],
@@ -563,7 +572,8 @@
       "body": "{{contact.name}} had their orientation call yesterday. Please check they finished the Preliminary Factual Sheet, then prepare and send any estimate or engagement letter from what came up on the call.\nPhone: {{contact.phone}} Email: {{contact.email}}"
      }
     }
-   ]
+   ],
+   "live": "off"
   },
   {
    "id": "PC5",
@@ -590,7 +600,8 @@
       "body": "{{contact.name}} has not booked the legal consultation yet."
      }
     }
-   ]
+   ],
+   "live": "proposed"
   },
   {
    "id": "PC6",
@@ -623,7 +634,8 @@
       "body": "{{contact.name}} booked a legal consultation."
      }
     }
-   ]
+   ],
+   "live": "proposed"
   },
   {
    "id": "PC7",
@@ -650,7 +662,8 @@
       "body": "{{contact.name}}'s estimate is still unpaid after 72 hours."
      }
     }
-   ]
+   ],
+   "live": "proposed"
   },
   {
    "id": "PC8",
@@ -678,14 +691,15 @@
      "t": "Create opportunity",
      "d": "Opens a card in the USPTO or PRTO pipeline for the work"
     }
-   ]
+   ],
+   "live": "proposed"
   },
   {
    "id": "S1.1",
    "f": "f1",
    "name": "S1.1 · Paid sign-up → Make them a client",
    "merged": "Combines START NOW paid and bill or retainer paid: same steps, two ways in.",
-   "why": "Whoever pays, through START NOW or a bill, becomes a client card in New Service, and your team is notified.",
+   "why": "Whoever pays through START NOW gets tagged as a paid client and a card in Original Draft. Switched off on Nov 24; it will be rebuilt so a payment opens the card in USPTO New Trademark or PRTO Draft.",
    "stages": [
     "New Service"
    ],
@@ -709,7 +723,7 @@
     {
      "k": "opp",
      "t": "Create/update opportunity",
-     "d": "Pipeline: Services · Stage: New Service · Status: Open · Name: {{contact.name}} · Value: payment total"
+     "d": "Pipeline: Original Draft · Stage: New Service · Status: Open · Name: {{contact.name}} · Value: payment total"
     },
     {
      "k": "notify",
@@ -730,13 +744,14 @@
       "body": "Hi {{contact.first_name}},\n\nThank you for choosing Solid Rep to protect {{contact.mark_to_register}}. Your payment went through, and our team is getting started.\n\nIn a moment you'll receive one more email: your Trademark Registration Worksheet. It gives our attorneys the details we need to prepare your application. Please complete it as soon as you can, since we begin as soon as it's back.\n\nIf you have any questions, just reply to this email.\n\nWarmly,\nThe Solid Rep Team"
      }
     }
-   ]
+   ],
+   "live": "off"
   },
   {
    "id": "S1.2",
    "f": "f1",
    "name": "S1.2 · New Service → Send worksheet + reminders",
-   "why": "Every new client gets the worksheet right away, with reminders until it's back.",
+   "why": "Moves a new client to the worksheet stage and emails them the worksheet link. Switched off on Nov 24. The reminders are planned, not built yet.",
    "stages": [
     "New Service",
     "Trademark Registration Worksheet"
@@ -744,7 +759,7 @@
    "trigs": [
     {
      "t": "Pipeline stage changed",
-     "d": "Filters: In pipeline is Services · Pipeline stage is New Service"
+     "d": "Original Draft · New Service"
     }
    ],
    "steps": [
@@ -762,60 +777,15 @@
       "body": "Hi {{contact.first_name}},\n\nHere is your Trademark Registration Worksheet:\nhttps://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP\n\nIt takes about 15 minutes. Have handy your business details, how and where you use your trademark, and any image showing it in use (a label, packaging, a website screenshot).\n\nOnce it's back, our team reviews it and starts the next steps.\n\nWarmly,\nThe Solid Rep Team"
      },
      "c": "Is 15 minutes about right?"
-    },
-    {
-     "k": "wait",
-     "t": "Wait",
-     "d": "2 days",
-     "c": "How long before the first reminder?"
-    },
-    {
-     "k": "if",
-     "t": "If / else",
-     "d": "Condition: Opportunity stage is still Trademark Registration Worksheet",
-     "yes": [
-      {
-       "k": "email",
-       "t": "Send email",
-       "d": "Reminder",
-       "m": {
-        "subj": "Reminder: your trademark worksheet",
-        "body": "Hi {{contact.first_name}},\n\nA quick reminder that we're waiting on your Trademark Registration Worksheet before we can move forward:\nhttps://link.smartfunnelspro.com/widget/survey/fykhllIQwTfaaCwUwNsP\n\nIf anything is unclear, just reply and we'll help.\n\nWarmly,\nThe Solid Rep Team"
-       }
-      },
-      {
-       "k": "wait",
-       "t": "Wait",
-       "d": "3 days"
-      },
-      {
-       "k": "task",
-       "t": "Add task",
-       "d": "Call the client",
-       "m": {
-        "title": "Call {{contact.name}} about their worksheet",
-        "desc": "Their Trademark Registration Worksheet is still not back after two emails. Call {{contact.phone}} and offer to help them finish it.",
-        "assign": "Fiarah Carrau",
-        "due": "Today"
-       },
-       "c": "Who makes this call?"
-      }
-     ],
-     "no": [
-      {
-       "k": "end",
-       "t": "End",
-       "d": "Worksheet is back. S1.3 takes over."
-      }
-     ]
     }
-   ]
+   ],
+   "live": "off"
   },
   {
    "id": "S1.3",
    "f": "f1",
    "name": "S1.3 · Worksheet returned → Review task",
-   "why": "When the worksheet comes back, Camila and admin get an email. If the client has a Services card, it moves to Worksheet Review and a review task is created. If the worksheet came in by link or QR code from someone without a card, the email still goes out. Built in your account, not switched on yet.",
+   "why": "When the worksheet comes back, the paralegal and admin get an email. If the client has a card in Original Draft, it moves to Worksheet Review and the client gets a confirmation email. If there is no card, the team email still goes out. Switched on.",
    "stages": [
     "Worksheet Review"
    ],
@@ -829,7 +799,7 @@
     {
      "k": "if",
      "t": "Find opportunity",
-     "d": "Find their card in the Services pipeline",
+     "d": "Find their card in Original Draft",
      "branches": [
       {
        "l": "Has a card",
@@ -837,7 +807,7 @@
         {
          "k": "opp",
          "t": "Update opportunity",
-         "d": "Pipeline: Services · Stage: Worksheet Review"
+         "d": "Pipeline: Original Draft · Stage: Worksheet Review"
         },
         {
          "k": "task",
@@ -849,7 +819,7 @@
           "assign": "Fiarah Carrau",
           "due": "In 2 days"
          },
-         "c": "Who reviews worksheets?"
+         "c": "Switched off for now. Tasks come later."
         },
         {
          "k": "notify",
@@ -882,12 +852,141 @@
          "m": {
           "to": "paralegal@solidreptm.com, copy admin@solidreptm.com",
           "subj": "Worksheet back: {{contact.name}}",
-          "body": "{{contact.name}} returned their Trademark Registration Worksheet, but they don't have a card in the Services pipeline yet, so no review task was created. Open their contact record to see the answers."
+          "body": "{{contact.name}} returned their Trademark Registration Worksheet, but they don't have a card yet, so no review task was created. Open their contact record to see the answers."
          }
         }
        ]
       }
      ]
+    }
+   ],
+   "live": "on"
+  },
+  {
+   "id": "Z1",
+   "f": "zz",
+   "live": "unused",
+   "name": "5 Days With No Activity - Alert Us",
+   "why": "A September demo, in the Case Tracking folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
+    }
+   ]
+  },
+  {
+   "id": "Z2",
+   "f": "zz",
+   "live": "unused",
+   "name": "Filed with the USPTO - Set the Status Check",
+   "why": "A September demo, in the Case Tracking folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
+    }
+   ]
+  },
+  {
+   "id": "Z3",
+   "f": "zz",
+   "live": "unused",
+   "name": "Moved to a New Stage - Alert Us",
+   "why": "A September demo, in the Case Tracking folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
+    }
+   ]
+  },
+  {
+   "id": "Z4",
+   "f": "zz",
+   "live": "unused",
+   "name": "Email Drip Sequence",
+   "why": "A September demo, in the Drafts - Not Live folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
+    }
+   ]
+  },
+  {
+   "id": "Z5",
+   "f": "zz",
+   "live": "unused",
+   "name": "Task Overdue Escalation",
+   "why": "A September demo, in the Drafts - Not Live folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
+    }
+   ]
+  },
+  {
+   "id": "Z6",
+   "f": "zz",
+   "live": "unused",
+   "name": "New Intake - Open the Client File",
+   "why": "A September demo, in the New Clients & Intake folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
+    }
+   ]
+  },
+  {
+   "id": "Z7",
+   "f": "zz",
+   "live": "unused",
+   "name": "Someone Asked a Question - Log It and Reply",
+   "why": "A September demo, in the New Clients & Intake folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
+    }
+   ]
+  },
+  {
+   "id": "Z8",
+   "f": "zz",
+   "live": "unused",
+   "name": "Started But Did Not Finish - Nudge Them",
+   "why": "A September demo, in the New Clients & Intake folder inside the archive. Switched off and not used.",
+   "stages": [],
+   "trigs": [],
+   "steps": [
+    {
+     "k": "end",
+     "t": "End",
+     "d": "Not in use"
     }
    ]
   }
@@ -953,7 +1052,7 @@
  "pipeline": {
   "name": "",
   "view": "",
-  "intro": "Your account has 6 pipelines for the new process, plus Original Draft, the earlier single pipeline. Pick one to see its stages in the same order and wording as your board. Notes marked Proposed are automations we proposed; nothing is switched on yet.",
+  "intro": "Your account has 7 pipelines: 6 for the new process, plus Original Draft, the earlier single pipeline. Pick one to see its stages with the same names and in the same order as your board. Notes marked Proposed are automations we proposed and have not built yet.",
   "now": ""
  },
  "now": {
@@ -963,7 +1062,7 @@
    "Website"
   ],
   "current": 0,
-  "line": "Your account has the new pipelines: Potential Client (PC) with its 10 stages, USPTO, PRTO Draft, and placeholders for renewals and other legal services. Two Potential Client reminders are built and waiting for a test together; nothing is switched on yet."
+  "line": "Your account has 7 pipelines: Potential Client (PC), USPTO New Trademark, PRTO Draft, Renewal USPTO, Renewal PRTO, Other Legal Services, and Original Draft (the earlier single pipeline). One automation is on: the worksheet alert."
  },
  "meetingLinks": [
   {
@@ -984,7 +1083,7 @@
    "id": "pc",
    "name": "Potential Client (PC)",
    "status": "Agreed · automations proposed",
-   "intro": "Everyone who reaches out, from first contact until they hire you or decide not to. The stages are set up in your account; the alerts and emails under each one are what we proposed on Nov 17, and none are switched on yet.",
+   "intro": "Everyone who reaches out, from first contact until they hire you or decide not to. The stages are set up in your account. Two of the alerts under them are built and switched off until we test them together; the rest are proposed and not built yet.",
    "stages": [
     {
      "n": "Potential Client (PC)",
@@ -1078,10 +1177,16 @@
   },
   {
    "id": "uspto",
-   "name": "USPTO",
-   "status": "Draft",
-   "intro": "The federal filing work, as drafted in your account. We go through it together, step by step, in a coming session.",
+   "name": "USPTO New Trademark",
+   "status": "Being mapped",
+   "intro": "The federal filing work, as your team set it up in your account (last updated by Fiarah on Nov 24). Automations for these stages come next, once your team sends its list of alerts.",
    "stages": [
+    {
+     "n": "USPTO New Trademark",
+     "how": "",
+     "props": [],
+     "note": null
+    },
     {
      "n": "Trademark Registration Worksheet",
      "how": "",
@@ -1095,7 +1200,7 @@
      "note": null
     },
     {
-     "n": "Initial Legal Assessment",
+     "n": "Attorney Assessment Call",
      "how": "",
      "props": [],
      "note": null
@@ -1108,6 +1213,12 @@
     },
     {
      "n": "Conflict Search Report Approval by Attorney",
+     "how": "",
+     "props": [],
+     "note": null
+    },
+    {
+     "n": "Additional Class Offered",
      "how": "",
      "props": [],
      "note": null
@@ -1137,13 +1248,7 @@
      "note": null
     },
     {
-     "n": "Application Filing",
-     "how": "",
-     "props": [],
-     "note": null
-    },
-    {
-     "n": "Published for Opposition Notice",
+     "n": "Application Filed",
      "how": "",
      "props": [],
      "note": null
@@ -1155,19 +1260,25 @@
      "note": null
     },
     {
-     "n": "Response to Office Action Sent",
+     "n": "Office Action Answered",
+     "how": "",
+     "props": [],
+     "note": null
+    },
+    {
+     "n": "Published for Opposition Notice",
+     "how": "",
+     "props": [],
+     "note": null
+    },
+    {
+     "n": "Opposition Received",
      "how": "",
      "props": [],
      "note": null
     },
     {
      "n": "Notice of Allowance Received",
-     "how": "",
-     "props": [],
-     "note": null
-    },
-    {
-     "n": "Check for Add-ons",
      "how": "",
      "props": [],
      "note": null
@@ -1201,6 +1312,12 @@
      "how": "",
      "props": [],
      "note": null
+    },
+    {
+     "n": "Abandoned",
+     "how": "",
+     "props": [],
+     "note": null
     }
    ],
    "col": 2,
@@ -1209,9 +1326,15 @@
   {
    "id": "prto",
    "name": "PRTO Draft",
-   "status": "Draft",
-   "intro": "The Puerto Rico filing work, as drafted in your account. We go through it together, step by step, in a coming session.",
+   "status": "Being mapped",
+   "intro": "The Puerto Rico filing work, as your team set it up in your account (last updated on Nov 24). Automations come after USPTO.",
    "stages": [
+    {
+     "n": "PRTO New Trademark",
+     "how": "",
+     "props": [],
+     "note": null
+    },
     {
      "n": "Trademark Registration Worksheet",
      "how": "",
@@ -1220,12 +1343,6 @@
     },
     {
      "n": "Worksheet Review",
-     "how": "",
-     "props": [],
-     "note": null
-    },
-    {
-     "n": "Initial Legal Assessment",
      "how": "",
      "props": [],
      "note": null
@@ -1243,7 +1360,19 @@
      "note": null
     },
     {
+     "n": "Conflict Search Report Discussion Call",
+     "how": "",
+     "props": [],
+     "note": null
+    },
+    {
      "n": "Conflict Search Report Approval by Client",
+     "how": "",
+     "props": [],
+     "note": null
+    },
+    {
+     "n": "Additional Class Offered",
      "how": "",
      "props": [],
      "note": null
@@ -1267,13 +1396,7 @@
      "note": null
     },
     {
-     "n": "Application Filing",
-     "how": "",
-     "props": [],
-     "note": null
-    },
-    {
-     "n": "Published for Opposition Notice",
+     "n": "Application Filed",
      "how": "",
      "props": [],
      "note": null
@@ -1285,7 +1408,13 @@
      "note": null
     },
     {
-     "n": "Response to Office Action Sent",
+     "n": "Office Action Answered",
+     "how": "",
+     "props": [],
+     "note": null
+    },
+    {
+     "n": "PRTO Published for Opposition",
      "how": "",
      "props": [],
      "note": null
