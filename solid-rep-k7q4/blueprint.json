@@ -12,33 +12,27 @@
  "pulse": [
   {
    "k": "last",
-   "label": "Last meeting · Nov 17",
-   "b": "Six pipelines, starting with Potential Client",
-   "s": "Trey is designing the Potential Client pipeline and its alerts for your review"
+   "label": "Last meeting · Nov 24",
+   "b": "USPTO, classes on the cards, and what happens on payment",
+   "s": "Trey is building the class fields and the new card on payment, then sends you an update"
   },
   {
    "k": "you",
    "label": "Waiting on your team",
-   "b": "4 things to send or answer",
+   "b": "3 things to send",
    "list": [
-    "How you file additional trademark classes (one application or separate ones)",
-    "Review the PRTO steps with Alice; your USPTO overview is in, thank you",
-    "Check your charges, then bring your Stripe products into SmartFunnels Pro",
-    "The price of each package and its filing fee"
+    "The application-type wording for the cards",
+    "Your list of USPTO alerts, and who gets each one",
+    "Your Stripe products, checked with Alice and imported"
    ],
    "s": "Reply to Trey's email anytime, or bring it to your next meeting.",
    "short": [
-    "Trademark classes",
-    "PRTO and USPTO steps",
-    "Stripe products",
-    "Package prices"
+    "Application type",
+    "USPTO alerts",
+    "Stripe products"
    ],
    "act": [
     null,
-    {
-     "b": "Book a meeting",
-     "href": "https://go.brandsinpurpose.com/session"
-    },
     null,
     null
    ]
@@ -88,6 +82,27 @@
   }
  ],
  "sessions": [
+  {
+   "d": "Tue Nov 24, 2026",
+   "t": "USPTO working session",
+   "who": "Fiarah and Trey",
+   "cov": [
+    "Clients who call in: your team creates their card by hand after the phone orientation, so they don't get the automatic booking email",
+    "When someone pays, a new card opens in USPTO or PRTO for the service, with a note linking back to their Potential Client card",
+    "Showing the trademark name, the class or classes, and the application type on every USPTO and PRTO card",
+    "The USPTO alerts your team wants, all timed from the payment date",
+    "A live test of the paid sign-up: the card wasn't found because the test used the filing fee, not a service product"
+   ],
+   "dec": [
+    "On payment, a new card opens in USPTO or PRTO; the Potential Client card stays closed as won",
+    "Trademark name, classes and application type show on the card for now",
+    "Aim: USPTO and PRTO pipelines working in the system by the second week of December"
+   ],
+   "next": [
+    "Trey builds the class and application-type fields, the new card on payment, and the website contact form email, sets up test products for a new test, then sends an update",
+    "Fiarah sends the application-type wording and the USPTO alert list with owners, and imports the Stripe products after Thanksgiving"
+   ]
+  },
   {
    "d": "Tue Nov 17, 2026",
    "t": "Weekly check-in",
@@ -188,6 +203,14 @@
   }
  ],
  "decisions": [
+  [
+   "A new card on payment",
+   "Paying opens a new card in USPTO or PRTO for the service, with a note linking back; the Potential Client card stays closed as won (Nov 24)"
+  ],
+  [
+   "Classes on every card",
+   "Each USPTO and PRTO card shows the trademark name, its classes and the application type (Nov 24)"
+  ],
   [
    "Worksheet alerts",
    "When a worksheet comes back, the paralegal and admin inboxes get an email, even if the client has no card yet (Nov 23, by email)"
@@ -1082,7 +1105,7 @@
   {
    "id": "pc",
    "name": "Potential Client (PC)",
-   "status": "Agreed · automations proposed",
+   "status": "Set up · 2 alerts built, switched off",
    "intro": "Everyone who reaches out, from first contact until they hire you or decide not to. The stages are set up in your account. Two of the alerts under them are built and switched off until we test them together; the rest are proposed and not built yet.",
    "stages": [
     {
